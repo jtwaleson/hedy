@@ -1,83 +1,107 @@
 {% extends "auth.html" %}
-
 {% block full_width_content %}
-    <div class="bg-blue-200 mb-4">
-        <div class="py-4 flex items-center w-full copy-container mx-auto">
-            <div class="tracking-wide text-xl font-extralight">{{ page_title }}</div>
-        </div>
+  <div class="bg-blue-200 mb-4">
+    <div class="py-4 flex items-center w-full copy-container mx-auto">
+      <div class="tracking-wide text-xl font-extralight">{{ page_title }}</div>
     </div>
-    <div class="copy-container text-business-copy" id="teacher_documentation">
-        <div class="flex gap-8">
-            <div class="flex-0 text-links-plain rounded-md bg-gray-200 p-4">
-                {# Section nav #}
-                {% for key, title in section_titles %}
-                {% if key == section_key %}
-                    <div class="font-bold my-2">
-                        <a href="/for-teachers/manual/{{key}}">
-                            <div class="flex flex-row items-center gap-2">
-                                <i class="fa-solid fa-chevron-down w-4"></i>
-                                <span>{{ title }}</span>
-                            </div>
-                        </a>
-                    </div>
-                    {# Subsection nav #}
-                    {% for title in subsection_titles %}
-                        <div class="ltr:ml-8 rtl:mr-8 text-sm"><a href="#{{title|slugify}}">· {{ title }}</a></div>
-                    {% endfor %}
-                {% else %}
-                    <div class="my-2">
-                        <a href="/for-teachers/manual/{{key}}">
-                            <div class="flex flex-row items-center gap-2">
-                                <i class="fa-solid fa-chevron-right w-4"></i>
-                                <span>{{ title }}</span>
-                            </div>
-                        </a>
-                    </div>
-                {% endif %}
-                {% endfor %}
+  </div>
+  <div class="copy-container text-business-copy" id="teacher_documentation">
+    <div class="flex gap-8">
+      <div class="flex-0 text-links-plain rounded-md bg-gray-200 p-4">
+        {# Section nav #}
+        {% for key, title in section_titles %}
+          {%
+            if key ==
+            section_key
+          %}
+            <div class="font-bold my-2">
+              <a href="/for-teachers/manual/{{ key }}">
+                <div class="flex flex-row items-center gap-2">
+                  <i class="fa-solid fa-chevron-down w-4"></i>
+                  <span>{{ title }}</span>
+                </div>
+              </a>
             </div>
-
-            <div class="flex-1">
-                {# Main content #}
-                <h2>{{ section_title }}</h2>
-
-                {% if intro %}
-                    <p>{{ intro|commonmark }}</p>
-                {% endif %}
-
-                {# Plain text content #}
-                {% for subsection in subsections %}
-                    <h3 id="{{subsection.title|slugify}}">{{ subsection.title }}</h3>
-                    <p>{{ subsection.text|commonmark }}</p>
-                {% endfor %}
-
-                {# Per-level content, has different structure #}
-                {% for level in levels %}
-                    <h3 id="{{level.title|slugify}}">{{ level.title }}</h3>
-                    {% for mistake_section in level.sections %}
-                        <div>
-                            <h4>{{ mistake_section.title }}</h4>
-                            {% if mistake_section.example %} <!-- In this case we expect an error/solution combination -->
-                                <p>{{ mistake_section.example.error_text|commonmark }}</p>
-                                <div class="w-full lg:w-1/2 turn-pre-into-ace my-5">
-                                    <pre class="common-mistakes" level="{{ level.level }}" style="font-size: 0.95em;">{{ mistake_section.example.error_code }}</pre>
-                                </div>
-                                <p>{{ mistake_section.example.solution_text|commonmark }}</p>
-                                <div class="w-full lg:w-1/2 turn-pre-into-ace my-5">
-                                    <pre class="common-mistakes" level="{{ level.level }}" style="font-size: 0.95em;">{{ mistake_section.example.solution_code }}</pre>
-                                </div>
-                            {% else %}
-                                <p>{{ mistake_section.text|commonmark }}</p>
-                                {% if mistake_section.code %}
-                                        <div class="w-full lg:w-1/2 turn-pre-into-ace my-5">
-                                            <pre class="common-mistakes" level="{{ level.level }}" style="font-size: 0.95em;">{{ mistake_section.code }}</pre>
-                                        </div>
-                                {% endif %}
-                            {% endif %}
-                        </div>
-                    {% endfor %}
-                {% endfor %}
+            {# Subsection nav #}
+            {% for title in subsection_titles %}
+              <div class="ltr:ml-8 rtl:mr-8 text-sm">
+                <a href="#{{ title|slugify }}">· {{ title }}</a>
+              </div>
+            {% endfor %}
+          {% else %}
+            <div class="my-2">
+              <a href="/for-teachers/manual/{{ key }}">
+                <div class="flex flex-row items-center gap-2">
+                  <i class="fa-solid fa-chevron-right w-4"></i>
+                  <span>{{ title }}</span>
+                </div>
+              </a>
             </div>
-        </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="flex-1">
+        {# Main content #}
+        <h2>{{ section_title }}</h2>
+
+        {% if intro %}
+          <p>{{ intro|commonmark }}</p>
+        {% endif %}
+        {# Plain text content #}
+        {% for subsection in subsections %}
+          <h3 id="{{ subsection.title|slugify }}">{{ subsection.title }}</h3>
+          <p>{{ subsection.text|commonmark }}</p>
+        {% endfor %}
+        {# Per-level content, has different structure #}
+        {%
+          for level
+          in levels
+        %}
+          <h3 id="{{ level.title|slugify }}">{{ level.title }}</h3>
+          {% for mistake_section in level.sections %}
+            <div>
+              <h4>{{ mistake_section.title }}</h4>
+              {% if mistake_section.example %}
+                <!-- In this case we expect an error/solution combination -->
+                <p>{{ mistake_section.example.error_text|commonmark }}</p>
+                <div class="w-full lg:w-1/2 turn-pre-into-ace my-5">
+                  <pre
+                    class="common-mistakes"
+                    level="{{ level.level }}"
+                    style="font-size: 0.95em"
+                  >
+{{ mistake_section.example.error_code }}</pre
+                  >
+                </div>
+                <p>{{ mistake_section.example.solution_text|commonmark }}</p>
+                <div class="w-full lg:w-1/2 turn-pre-into-ace my-5">
+                  <pre
+                    class="common-mistakes"
+                    level="{{ level.level }}"
+                    style="font-size: 0.95em"
+                  >
+{{ mistake_section.example.solution_code }}</pre
+                  >
+                </div>
+              {% else %}
+                <p>{{ mistake_section.text|commonmark }}</p>
+                {% if mistake_section.code %}
+                  <div class="w-full lg:w-1/2 turn-pre-into-ace my-5">
+                    <pre
+                      class="common-mistakes"
+                      level="{{ level.level }}"
+                      style="font-size: 0.95em"
+                    >
+{{ mistake_section.code }}</pre
+                    >
+                  </div>
+                {% endif %}
+              {% endif %}
+            </div>
+          {% endfor %}
+        {% endfor %}
+      </div>
     </div>
+  </div>
 {% endblock %}

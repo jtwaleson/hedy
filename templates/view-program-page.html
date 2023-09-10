@@ -1,18 +1,31 @@
 {% extends "layout.html" %}
 {% block full_width_content %}
-<div style="height: 30px;"></div>
-<div tabindex="0" class="flex-grow px-8 common-page-container">
-  {% if initial_adventure.submitted %}
+  <div style="height: 30px"></div>
+  <div tabindex="0" class="flex-grow px-8 common-page-container">
+    {% if initial_adventure.submitted %}
       <div class="text-center">
-        <h2>{{_('submitted_header')}}</h2>
-        <h3 class="inline-block mt-0">{{_('submission_time')}}: {{program_timestamp}}</h3>
+        <h2>{{ _('submitted_header') }}</h2>
+        <h3 class="inline-block mt-0">
+          {{ _('submission_time') }}: {{ program_timestamp }}
+        </h3>
       </div>
-  {% endif %}
-  <h1>{{initial_adventure.name}}</h1>
-  <h2 class="mt-0">{{_('level_title')}} {{level}}</h2>
-  <div>{{_('by')}}
-      <a {% if initial_adventure.public_profile %}onclick="window.open('/user/{{initial_adventure.username}}', '_self')"{% endif %} class="{% if initial_adventure.public_profile %}cursor-pointer{% else %}text-black{% endif %} no-underline">{{ initial_adventure.username }}</a>
+    {% endif %}
+    <h1>{{ initial_adventure.name }}</h1>
+    <h2 class="mt-0">{{ _('level_title') }} {{ level }}</h2>
+    <div>
+      {{ _('by') }}
+      <a
+        {%
+          if
+          initial_adventure.public_profile
+        %}
+          onclick="window.open('/user/{{ initial_adventure.username }}',
+          '_self')"
+        {% endif %}
+        class="{% if initial_adventure.public_profile %}cursor-pointer{% else %}text-black{% endif %} no-underline"
+        >{{ initial_adventure.username }}</a
+      >
+    </div>
+    {% include "incl/editor-and-output.html" %}
   </div>
-  {% include "incl/editor-and-output.html" %}
-</div>
 {% endblock %}

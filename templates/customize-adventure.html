@@ -1,62 +1,140 @@
 {% extends "auth.html" %}
-
 {% block regular_content %}
-<div class="flex flex-col gap-2">
-    <h2>{{_('customize_adventure')}}: {{adventure.name}}</h2>
+  <div class="flex flex-col gap-2">
+    <h2>{{ _('customize_adventure') }}: {{ adventure.name }}</h2>
     <div class="border-gray-400 border rounded-lg p-4">
-        <form onsubmit="event.preventDefault (); hedyApp.update_adventure('{{ adventure.id }}', {% if adventure.content|length > 0 %}false{% else %}true{% endif %}, '{{_('update_adventure_prompt')}}')">
-            <div class="flex flex-col lg:flex-row gap-4">
-                <div class="flex flex-col w-full lg:w-1/2">
-                    <h3 class="text-center mt-0 mb-4">{{_('general_settings')}}</h3>
-                    <div class="flex flex-row items-center mb-4">
-                        <label for="name" class="inline-block w-40 text-xl">{{_('name')}}</label>
-                        <input id="custom_adventure_name" required value="{{ adventure.name }}" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 ltr:pr-8 rtl:pl-8 rounded">
-                    </div>
-                    <div class="flex flex-row items-center mb-4">
-                        <label for="level" class="inline-block w-40 text-xl">{{_('level')}}</label>
-                        <select id="custom_adventure_level" required class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 ltr:pr-8 rtl:pl-8 rounded">
-                            <option disabled selected value="">{{_('level')}}</option>
-                            {% for i in range(1, (max_level + 1)) %}
-                                <option value="{{ i }}" {% if i|string == adventure.level or i == adventure.level %}selected{% endif %}>{{ i }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <div class="border border-black rounded-lg p-4 text-sm">
-                        {{_('adventure_exp_1')}}
-                        <div class="flex flex-row my-2 items-center">
-                            <pre class="code-teacher">&lt;code&gt;&#123;{{parse_keyword('print')}}&#125;&lt;/code&gt;</pre>
-                            <b class="mx-4">&rarr;</b>
-                            <code class="text-base">{{parse_keyword('print')}}</code>
-                        </div>
-                        {{_('adventure_exp_2')}}
-                        <div class="flex flex-row items-center">
-                            <pre class="code-teacher">&lt;pre&gt;<br>&#123;{{parse_keyword('print')}}&#125; {{_('hello_world')}}<br>&lt;/pre&gt;</pre>
-                            <b class="mx-4">&rarr;</b>
-                            <div class="turn-pre-into-ace w-64" style="white-space: pre-wrap;">
-                                <pre level="1">{{parse_keyword('print')}} {{_('hello_world')}}</pre>
-                            </div>
-                        </div>
-                        {{_('adventure_exp_3')}}
-                    </div>
-                </div>
-                <div class="flex flex-col w-full lg:w-1/2">
-                    <h3 class="text-center mt-0 mb-4">{{ _('adventure') }}</h3>
-                    <textarea id="custom_adventure_content" class="block appearance-none w-full h-96 bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 rounded">{% if adventure.content|length > 0 %}{{ adventure.content }}{% else %}{{_('template_code')}}{% endif %}</textarea>
-                    <div class="mt-2 mb-0 flex flex-row items-center text-center border-gray-500 border p-4 rounded-lg">
-                        <input type="checkbox" name="agree_public" id="agree_public" class="mr-4" {% if adventure.public %}checked{% endif %}>
-                        <label for="agree_public" class="text-sm italic w-full">{{_('adventure_terms')}}</label>
-                    </div>
-                </div>
+      <form
+        onsubmit="event.preventDefault (); hedyApp.update_adventure('{{ adventure.id }}', {% if adventure.content|length > 0 %}false{% else %}true{% endif %}, '{{ _('update_adventure_prompt') }}')"
+      >
+        <div class="flex flex-col lg:flex-row gap-4">
+          <div class="flex flex-col w-full lg:w-1/2">
+            <h3 class="text-center mt-0 mb-4">{{ _('general_settings') }}</h3>
+            <div class="flex flex-row items-center mb-4">
+              <label for="name" class="inline-block w-40 text-xl"
+                >{{ _('name') }}</label
+              >
+              <input
+                id="custom_adventure_name"
+                required
+                value="{{ adventure.name }}"
+                class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 ltr:pr-8 rtl:pl-8 rounded"
+              />
             </div>
-            <div class="flex flex-row justify-end gap-2 my-4">
-                <button class="blue-btn" id="preview_adventure_button" onclick="hedyApp.preview_adventure();event.preventDefault();">{{_('preview')}}</button>
-                <button type="submit" class="green-btn" id="save_adventure_button">{{_('save')}}</button>
-                <button type="reset" class="red-btn" id="remove_adventure_button" onclick="hedyApp.delete_adventure('{{ adventure.id }}', '{{_('delete_adventure_prompt')}}')">{{_('remove')}}</button>
+            <div class="flex flex-row items-center mb-4">
+              <label for="level" class="inline-block w-40 text-xl"
+                >{{ _('level') }}</label
+              >
+              <select
+                id="custom_adventure_level"
+                required
+                class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 ltr:pr-8 rtl:pl-8 rounded"
+              >
+                <option disabled selected value="">{{ _('level') }}</option>
+                {% for i in range(1, (max_level + 1)) %}
+                  <option
+                    value="{{ i }}"
+                    {%
+                      if
+                      i|string=""
+                      ="adventure.level"
+                      or
+                      i=""
+                      ="adventure.level"
+                    %}
+                      selected
+                    {% endif %}
+                  >
+                    {{ i }}
+                  </option>
+                {% endfor %}
+              </select>
             </div>
-        </form>
+            <div class="border border-black rounded-lg p-4 text-sm">
+              {{ _('adventure_exp_1') }}
+              <div class="flex flex-row my-2 items-center">
+                <pre class="code-teacher">
+&lt;code&gt;&#123;{{ parse_keyword('print') }}&#125;&lt;/code&gt;</pre
+                >
+                <b class="mx-4">&rarr;</b>
+                <code class="text-base">{{ parse_keyword('print') }}</code>
+              </div>
+              {{ _('adventure_exp_2') }}
+              <div class="flex flex-row items-center">
+                <pre
+                  class="code-teacher"
+                >&lt;pre&gt;<br>&#123;{{ parse_keyword('print') }}&#125; {{ _('hello_world') }}<br>&lt;/pre&gt;</pre>
+                <b class="mx-4">&rarr;</b>
+                <div
+                  class="turn-pre-into-ace w-64"
+                  style="white-space: pre-wrap"
+                >
+                  <pre level="1">
+{{ parse_keyword('print') }} {{ _('hello_world') }}</pre
+                  >
+                </div>
+              </div>
+              {{ _('adventure_exp_3') }}
+            </div>
+          </div>
+          <div class="flex flex-col w-full lg:w-1/2">
+            <h3 class="text-center mt-0 mb-4">{{ _('adventure') }}</h3>
+            <textarea
+              id="custom_adventure_content"
+              class="block appearance-none w-full h-96 bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 rounded"
+            >
+{% if adventure.content|length > 0 %}{{ adventure.content }}{% else %}{{ _('template_code') }}{% endif %}</textarea
+            >
+            <div
+              class="mt-2 mb-0 flex flex-row items-center text-center border-gray-500 border p-4 rounded-lg"
+            >
+              <input
+                type="checkbox"
+                name="agree_public"
+                id="agree_public"
+                class="mr-4"
+                {%
+                  if
+                  adventure.public
+                %}
+                  checked
+                {% endif %}
+              />
+              <label for="agree_public" class="text-sm italic w-full"
+                >{{ _('adventure_terms') }}</label
+              >
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-row justify-end gap-2 my-4">
+          <button
+            class="blue-btn"
+            id="preview_adventure_button"
+            onclick="hedyApp.preview_adventure();event.preventDefault();"
+          >
+            {{ _('preview') }}
+          </button>
+          <button type="submit" class="green-btn" id="save_adventure_button">
+            {{ _('save') }}
+          </button>
+          <button
+            type="reset"
+            class="red-btn"
+            id="remove_adventure_button"
+            onclick="hedyApp.delete_adventure('{{ adventure.id }}', '{{ _('delete_adventure_prompt') }}')"
+          >
+            {{ _('remove') }}
+          </button>
+        </div>
+      </form>
     </div>
     <div>
-        <button class="blue-btn" id="go_back_button" onclick="window.open('/for-teachers', '_self');">{{_('back_to_teachers_page')}}</button>
+      <button
+        class="blue-btn"
+        id="go_back_button"
+        onclick="window.open('/for-teachers', '_self');"
+      >
+        {{ _('back_to_teachers_page') }}
+      </button>
     </div>
-</div>
+  </div>
 {% endblock %}

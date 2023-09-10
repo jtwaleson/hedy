@@ -44,14 +44,16 @@ export interface Adventure {
    * Either a ServerSaveInfo object if the program was loaded from a server save,
    * or the string 'local-storage' if the program was loaded from local storage.
    */
-  save_info?: ServerSaveInfo | 'local-storage';
+  save_info?: ServerSaveInfo | "local-storage";
 }
 
 /**
  * Whether the given field is actually a SaveInfo object
  */
-export function isServerSaveInfo(x: Adventure['save_info']): x is ServerSaveInfo {
-  return !!x && typeof x === 'object' && !!x.id;
+export function isServerSaveInfo(
+  x: Adventure["save_info"],
+): x is ServerSaveInfo {
+  return !!x && typeof x === "object" && !!x.id;
 }
 
 export interface ServerSaveInfo {

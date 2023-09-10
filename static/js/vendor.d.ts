@@ -26,18 +26,27 @@ declare const Sk: {
   configure(options: any): void;
 
   misceval: {
-    asyncToPromise<A>(fn: () => Suspension, handler?: Record<string, () => void>): Promise<A>;
+    asyncToPromise<A>(
+      fn: () => Suspension,
+      handler?: Record<string, () => void>,
+    ): Promise<A>;
     promiseToSuspension;
-    Suspension: { }
-  },
+    Suspension: {};
+  };
 
-  importMainWithBody(name: string, dumpJS: boolean, body: string, canSuspend: boolean): Suspension;
+  importMainWithBody(
+    name: string,
+    dumpJS: boolean,
+    body: string,
+    canSuspend: boolean,
+  ): Suspension;
 
   setTimeout?: (func: () => void, delay: number) => any;
   insertPyGameEvent: (eventName: string) => null;
-  bindPygameListeners(); void;
+  bindPygameListeners();
+  void;
   unbindPygameListeners(): void;
-}
+};
 
 interface Variable {
   readonly v: unknown;
@@ -48,7 +57,11 @@ interface Variable {
 // somewhere else.
 type Module = any;
 type RequireFunction = (name: string) => Module;
-declare function define(name: string, dependencies: string[], handler: (require: RequireFunction, exports: Module, module: Module) => void): void;
+declare function define(
+  name: string,
+  dependencies: string[],
+  handler: (require: RequireFunction, exports: Module, module: Module) => void,
+): void;
 
 // Apparently Ace also comes with a global require()
 declare function require(name: string): Module;
@@ -64,16 +77,13 @@ declare function require(name: string): Module;
 // the classes live) as well as the `AceAjax.Ace` interface (where the functions live).
 declare var ace: AceAjax & AceAjax.Ace;
 
-
 // Types for JSConfetti
 declare class JSConfetti {
-    constructor(options: {
-        canvas: HTMLElement
-    });
+  constructor(options: { canvas: HTMLElement });
 
-    public addConfetti(options?: {
-      readonly emojis: string[] | string[][]; // Probably not correct but it's what it is right now
-      readonly emojiSize: number;
-      readonly confettiNumber: number;
-    }): void;
+  public addConfetti(options?: {
+    readonly emojis: string[] | string[][]; // Probably not correct but it's what it is right now
+    readonly emojiSize: number;
+    readonly confettiNumber: number;
+  }): void;
 }

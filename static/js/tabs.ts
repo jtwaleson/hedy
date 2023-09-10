@@ -1,4 +1,4 @@
-import { EventEmitter } from './event-emitter';
+import { EventEmitter } from "./event-emitter";
 
 export interface SwitchTabsEvent {
   readonly oldTab: string;
@@ -33,17 +33,17 @@ export interface TabOptions {
  * TARGET by the *absence* of the '.hidden' class.
  */
 export class Tabs {
-  private _currentTab: string = '';
+  private _currentTab: string = "";
 
   private tabEvents = new EventEmitter<TabEvents>({
     beforeSwitch: true,
     afterSwitch: true,
   });
 
-  constructor(options: TabOptions={}) {
-    $('*[data-tab]').on('click', (e) => {
+  constructor(options: TabOptions = {}) {
+    $("*[data-tab]").on("click", (e) => {
       const tab = $(e.target);
-      const tabName = tab.data('tab') as string;
+      const tabName = tab.data("tab") as string;
 
       e.preventDefault();
       this.switchToTab(tabName);
@@ -55,11 +55,11 @@ export class Tabs {
     // 3. Otherwise the first one we find
     let initialTab = options.initialTab;
     if (!initialTab && window.location.hash) {
-      const hashFragment = window.location.hash.replace(/^#/, '');
+      const hashFragment = window.location.hash.replace(/^#/, "");
       initialTab = hashFragment;
     }
     if (!initialTab) {
-      initialTab = $('.tab:first').attr('data-tab');
+      initialTab = $(".tab:first").attr("data-tab");
     }
 
     if (initialTab) {
@@ -73,30 +73,35 @@ export class Tabs {
       this._currentTab = tabName;
 
       // Do a 'replaceState' to add a '#anchor' to the URL
-      const hashFragment = tabName !== 'level' ? tabName : '';
-      if (window.history) { window.history.replaceState(null, '', '#' + hashFragment); }
+      const hashFragment = tabName !== "level" ? tabName : "";
+      if (window.history) {
+        window.history.replaceState(null, "", "#" + hashFragment);
+      }
 
       // Find the tab that leads to this selection, and its siblings
       const tab = $('*[data-tab="' + tabName + '"]');
-      const allTabs = tab.siblings('*[data-tab]');
+      const allTabs = tab.siblings("*[data-tab]");
 
       // Find the target associated with this selection, and its siblings
       const target = $('*[data-tabtarget="' + tabName + '"]');
-      const allTargets = target.siblings('*[data-tabtarget]');
+      const allTargets = target.siblings("*[data-tabtarget]");
 
       // Fix classes
-      allTabs.removeClass('tab-selected');
-      tab.addClass('tab-selected');
+      allTabs.removeClass("tab-selected");
+      tab.addClass("tab-selected");
 
-      allTargets.addClass('hidden');
-      target.removeClass('hidden');
+      allTargets.addClass("hidden");
+      target.removeClass("hidden");
 
-      this.tabEvents.emit('afterSwitch', { oldTab, newTab: tabName });
-    }
+      this.tabEvents.emit("afterSwitch", { oldTab, newTab: tabName });
+    };
 
     // We don't do a beforeSwitch event for the very first tab switch
-    if (this._currentTab != '') {
-      const event = this.tabEvents.emit('beforeSwitch', { oldTab: this._currentTab, newTab: tabName });
+    if (this._currentTab != "") {
+      const event = this.tabEvents.emit("beforeSwitch", {
+        oldTab: this._currentTab,
+        newTab: tabName,
+      });
       event.then(doSwitch);
     } else {
       doSwitch();
@@ -107,13 +112,18 @@ export class Tabs {
     return this._currentTab;
   }
 
-  public on(key: Parameters<typeof this.tabEvents.on>[0], handler: Parameters<typeof this.tabEvents.on>[1]) {
+  public on(
+    key: Parameters<typeof this.tabEvents.on>[0],
+    handler: Parameters<typeof this.tabEvents.on>[1],
+  ) {
     const ret = this.tabEvents.on(key, handler);
     // Immediately invoke afterSwitch when it's being registered
-    if (key === 'afterSwitch') {
-      this.tabEvents.emit('afterSwitch', { oldTab: '', newTab: this._currentTab });
+    if (key === "afterSwitch") {
+      this.tabEvents.emit("afterSwitch", {
+        oldTab: "",
+        newTab: this._currentTab,
+      });
     }
     return ret;
   }
 }
-

@@ -20,7 +20,11 @@ export function addClass(elt: Element, clazz: string, delay?: number): void;
  * @param path the URL path to make the AJAX
  * @param element the element to target (defaults to the **body**)
  */
-export function ajax(verb: string, path: string, element: Element): Promise<void>;
+export function ajax(
+  verb: string,
+  path: string,
+  element: Element,
+): Promise<void>;
 
 /**
  * Issues an htmx-style AJAX request
@@ -31,7 +35,11 @@ export function ajax(verb: string, path: string, element: Element): Promise<void
  * @param path the URL path to make the AJAX
  * @param selector a selector for the target
  */
-export function ajax(verb: string, path: string, selector: string): Promise<void>;
+export function ajax(
+  verb: string,
+  path: string,
+  selector: string,
+): Promise<void>;
 
 /**
  * Issues an htmx-style AJAX request
@@ -43,9 +51,16 @@ export function ajax(verb: string, path: string, selector: string): Promise<void
  * @param context a context object that contains any of the following
  */
 export function ajax(
-    verb: string,
-    path: string,
-    context: Partial<{ source: any; event: any; handler: any; target: any; values: any; headers: any }>
+  verb: string,
+  path: string,
+  context: Partial<{
+    source: any;
+    event: any;
+    handler: any;
+    target: any;
+    values: any;
+    headers: any;
+  }>,
 ): Promise<void>;
 
 /**
@@ -141,7 +156,11 @@ export function logAll(): void;
  *
  * https://htmx.org/api/#logger
  */
-export var logger: (elt: Element, eventName: string, detail: any) => void | null;
+export var logger: (
+  elt: Element,
+  eventName: string,
+  detail: any,
+) => void | null;
 
 /**
  * Removes an event listener from an element
@@ -151,7 +170,10 @@ export var logger: (elt: Element, eventName: string, detail: any) => void | null
  * @param eventName the event name to remove the listener from
  * @param listener the listener to remove
  */
-export function off(eventName: string, listener: (evt: Event) => void): (evt: Event) => void;
+export function off(
+  eventName: string,
+  listener: (evt: Event) => void,
+): (evt: Event) => void;
 
 /**
  * Removes an event listener from an element
@@ -162,7 +184,11 @@ export function off(eventName: string, listener: (evt: Event) => void): (evt: Ev
  * @param eventName the event name to remove the listener from
  * @param listener the listener to remove
  */
-export function off(target: string, eventName: string, listener: (evt: Event) => void): (evt: Event) => void;
+export function off(
+  target: string,
+  eventName: string,
+  listener: (evt: Event) => void,
+): (evt: Event) => void;
 
 /**
  * Adds an event listener to an element
@@ -172,7 +198,10 @@ export function off(target: string, eventName: string, listener: (evt: Event) =>
  * @param eventName the event name to add the listener for
  * @param listener the listener to add
  */
-export function on(eventName: string, listener: (evt: Event) => void): (evt: Event) => void;
+export function on(
+  eventName: string,
+  listener: (evt: Event) => void,
+): (evt: Event) => void;
 
 /**
  * Adds an event listener to an element
@@ -183,7 +212,11 @@ export function on(eventName: string, listener: (evt: Event) => void): (evt: Eve
  * @param eventName the event name to add the listener for
  * @param listener the listener to add
  */
-export function on(target: string, eventName: string, listener: (evt: Event) => void): (evt: Event) => void;
+export function on(
+  target: string,
+  eventName: string,
+  listener: (evt: Event) => void,
+): (evt: Event) => void;
 
 /**
  * Adds a callback for the **htmx:load** event. This can be used to process new content, for example initializing the content with a javascript library
@@ -288,52 +321,57 @@ export function values(elt: Element, requestType?: string): any;
 export const version: string;
 
 export interface HtmxConfig {
-    /** array of strings: the attributes to settle during the settling phase */
-    attributesToSettle?: ["class", "style", "width", "height"] | string[];
-    /** the default delay between completing the content swap and settling attributes */
-    defaultSettleDelay?: number;
-    /** the default delay between receiving a response from the server and doing the swap */
-    defaultSwapDelay?: number;
-    /** the default swap style to use if **[hx-swap](https://htmx.org/attributes/hx-swap)** is omitted */
-    defaultSwapStyle?: "innerHTML" | string;
-    /** the number of pages to keep in **localStorage** for history support */
-    historyCacheSize?: number;
-    /** whether or not to use history */
-    historyEnabled?: boolean;
-    /** if true, htmx will inject a small amount of CSS into the page to make indicators invisible unless the **htmx-indicator** class is present */
-    includeIndicatorStyles?: boolean;
-    /** the class to place on indicators when a request is in flight */
-    indicatorClass?: "htmx-indicator" | string;
-    /** the class to place on triggering elements when a request is in flight */
-    requestClass?: "htmx-request" | string;
-    /** the class to temporarily place on elements that htmx has added to the DOM */
-    addedClass?: "htmx-added" | string;
-    /** the class to place on target elements when htmx is in the settling phase */
-    settlingClass?: "htmx-settling" | string;
-    /** the class to place on target elements when htmx is in the swapping phase */
-    swappingClass?: "htmx-swapping" | string;
-    /** allows the use of eval-like functionality in htmx, to enable **hx-vars**, trigger conditions & script tag evaluation. Can be set to **false** for CSP compatibility */
-    allowEval?: boolean;
-    /** use HTML template tags for parsing content from the server. This allows you to use Out of Band content when returning things like table rows, but it is *not* IE11 compatible. */
-    useTemplateFragments?: boolean;
-    /** allow cross-site Access-Control requests using credentials such as cookies, authorization headers or TLS client certificates */
-    withCredentials?: boolean;
-    /** the default implementation of **getWebSocketReconnectDelay** for reconnecting after unexpected connection loss by the event code **Abnormal Closure**, **Service Restart** or **Try Again Later** */
-    wsReconnectDelay?: "full-jitter" | string | ((retryCount: number) => number);
-    // following don't appear in the docs
-    refreshOnHistoryMiss?: boolean;
-    timeout?: number;
-    disableSelector?: "[hx-disable], [data-hx-disable]" | string;
-    scrollBehavior?: "smooth";
+  /** array of strings: the attributes to settle during the settling phase */
+  attributesToSettle?: ["class", "style", "width", "height"] | string[];
+  /** the default delay between completing the content swap and settling attributes */
+  defaultSettleDelay?: number;
+  /** the default delay between receiving a response from the server and doing the swap */
+  defaultSwapDelay?: number;
+  /** the default swap style to use if **[hx-swap](https://htmx.org/attributes/hx-swap)** is omitted */
+  defaultSwapStyle?: "innerHTML" | string;
+  /** the number of pages to keep in **localStorage** for history support */
+  historyCacheSize?: number;
+  /** whether or not to use history */
+  historyEnabled?: boolean;
+  /** if true, htmx will inject a small amount of CSS into the page to make indicators invisible unless the **htmx-indicator** class is present */
+  includeIndicatorStyles?: boolean;
+  /** the class to place on indicators when a request is in flight */
+  indicatorClass?: "htmx-indicator" | string;
+  /** the class to place on triggering elements when a request is in flight */
+  requestClass?: "htmx-request" | string;
+  /** the class to temporarily place on elements that htmx has added to the DOM */
+  addedClass?: "htmx-added" | string;
+  /** the class to place on target elements when htmx is in the settling phase */
+  settlingClass?: "htmx-settling" | string;
+  /** the class to place on target elements when htmx is in the swapping phase */
+  swappingClass?: "htmx-swapping" | string;
+  /** allows the use of eval-like functionality in htmx, to enable **hx-vars**, trigger conditions & script tag evaluation. Can be set to **false** for CSP compatibility */
+  allowEval?: boolean;
+  /** use HTML template tags for parsing content from the server. This allows you to use Out of Band content when returning things like table rows, but it is *not* IE11 compatible. */
+  useTemplateFragments?: boolean;
+  /** allow cross-site Access-Control requests using credentials such as cookies, authorization headers or TLS client certificates */
+  withCredentials?: boolean;
+  /** the default implementation of **getWebSocketReconnectDelay** for reconnecting after unexpected connection loss by the event code **Abnormal Closure**, **Service Restart** or **Try Again Later** */
+  wsReconnectDelay?: "full-jitter" | string | ((retryCount: number) => number);
+  // following don't appear in the docs
+  refreshOnHistoryMiss?: boolean;
+  timeout?: number;
+  disableSelector?: "[hx-disable], [data-hx-disable]" | string;
+  scrollBehavior?: "smooth";
 }
 
 /**
  * https://htmx.org/extensions/#defining
  */
 export interface HtmxExtension {
-    onEvent?: (name: string, evt: CustomEvent) => any;
-    transformResponse?: (text: any, xhr: XMLHttpRequest, elt: any) => any;
-    isInlineSwap?: (swapStyle: any) => any;
-    handleSwap?: (swapStyle: any, target: any, fragment: any, settleInfo: any) => any;
-    encodeParameters?: (xhr: XMLHttpRequest, parameters: any, elt: any) => any;
+  onEvent?: (name: string, evt: CustomEvent) => any;
+  transformResponse?: (text: any, xhr: XMLHttpRequest, elt: any) => any;
+  isInlineSwap?: (swapStyle: any) => any;
+  handleSwap?: (
+    swapStyle: any,
+    target: any,
+    fragment: any,
+    settleInfo: any,
+  ) => any;
+  encodeParameters?: (xhr: XMLHttpRequest, parameters: any, elt: any) => any;
 }

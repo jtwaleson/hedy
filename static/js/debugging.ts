@@ -24,21 +24,19 @@ interface GutterMouseDownEvent {
   stop(): void;
 }
 
-
-function hide_if_no_variables(){
-  if($('#variables #variable-list li').length == 0){
-    $('#variable_button').hide();
-  }
-  else{
-    $('#variable_button').show();
+function hide_if_no_variables() {
+  if ($("#variables #variable-list li").length == 0) {
+    $("#variable_button").hide();
+  } else {
+    $("#variable_button").show();
   }
 }
 
 export function show_variables() {
   if (variable_view === true) {
-    const variableList = $('#variable-list');
-    if (variableList.hasClass('hidden')) {
-      variableList.removeClass('hidden');
+    const variableList = $("#variable-list");
+    if (variableList.hasClass("hidden")) {
+      variableList.removeClass("hidden");
     }
   }
 }
@@ -46,12 +44,14 @@ export function show_variables() {
 export function load_variables(variables: any) {
   if (variable_view === true) {
     variables = clean_variables(variables);
-    const variableList = $('#variable-list');
+    const variableList = $("#variable-list");
     variableList.empty();
     for (const i in variables) {
       // Only append if the variable contains any data (and is not undefined)
       if (variables[i][1]) {
-        variableList.append(`<li style=color:${variables[i][2]}>${variables[i][0]}: ${variables[i][1]}</li>`);
+        variableList.append(
+          `<li style=color:${variables[i][2]}>${variables[i][0]}: ${variables[i][1]}</li>`,
+        );
       }
     }
     hide_if_no_variables();
@@ -62,29 +62,36 @@ export function load_variables(variables: any) {
 // This will be cool to use in the future!
 // Just change the colors to use it
 function special_style_for_variable(variable: Variable) {
-  let result = '';
+  let result = "";
   let parsedVariable = parseInt(variable.v as string);
-  if (typeof parsedVariable == 'number' && !isNaN(parsedVariable)){
-     result =  "#ffffff";
-   }
-   if(typeof variable.v == 'string' && isNaN(parsedVariable)){
-     result = "#ffffff";
-   }
-   if(typeof variable.v == 'boolean'){
-     result = "#ffffff";
-   }
-   if (variable.tp$name == 'list'){
-    result =  "#ffffff";
-   }
-   return result;
+  if (typeof parsedVariable == "number" && !isNaN(parsedVariable)) {
+    result = "#ffffff";
+  }
+  if (typeof variable.v == "string" && isNaN(parsedVariable)) {
+    result = "#ffffff";
+  }
+  if (typeof variable.v == "boolean") {
+    result = "#ffffff";
+  }
+  if (variable.tp$name == "list") {
+    result = "#ffffff";
+  }
+  return result;
 }
 
 //hiding certain variables from the list unwanted for users
 function clean_variables(variables: Record<string, Variable>) {
   const new_variables = [];
-  const unwanted_variables = ["random", "time", "int_saver", "int_$rw$", "turtle", "t"];
+  const unwanted_variables = [
+    "random",
+    "time",
+    "int_saver",
+    "int_$rw$",
+    "turtle",
+    "t",
+  ];
   for (const variable in variables) {
-    if (!variable.includes('__') && !unwanted_variables.includes(variable)) {
+    if (!variable.includes("__") && !unwanted_variables.includes(variable)) {
       let extraStyle = special_style_for_variable(variables[variable]);
       let name = unfixReserved(variable);
       let newTuple = [name, variables[variable].v, extraStyle];
@@ -98,11 +105,10 @@ function unfixReserved(name: string) {
   return name.replace(/_\$rw\$$/, "");
 }
 
-
 /**
  * The 'ace_breakpoint' style has been overridden to show a sleeping emoji in the gutter
  */
-const BP_DISABLED_LINE = 'ace_breakpoint';
+const BP_DISABLED_LINE = "ace_breakpoint";
 
 export interface InitializeDebuggerOptions {
   readonly level: number;
@@ -119,8 +125,8 @@ export function initializeDebugger(options: InitializeDebuggerOptions) {
 
   //Hides the HTML DIV for variables if feature flag is false
   if (!variable_view) {
-    $('#variables').hide();
-    $('#variable_button').hide();
+    $("#variables").hide();
+    $("#variable_button").hide();
   }
 
   //Feature flag for step by step debugger. Becomes true automatically for level 7 and below.
@@ -131,10 +137,10 @@ export function initializeDebugger(options: InitializeDebuggerOptions) {
 
   //Hides the debug button if feature flag is false
   if (!step_debugger) {
-    $('#debug_button').hide();
+    $("#debug_button").hide();
   }
 
-  if(options.level != 0){
+  if (options.level != 0) {
     let level = options.level;
     variable_view = level >= 2;
     hide_if_no_variables();
@@ -144,22 +150,22 @@ export function initializeDebugger(options: InitializeDebuggerOptions) {
 }
 
 function initializeBreakpoints(editor: AceAjax.Editor) {
-
   var editor: AceAjax.Editor = ace.edit("editor");
   editor.on("guttermousedown", function (e: GutterMouseDownEvent) {
     const target = e.domEvent.target as HTMLElement;
 
     // Not actually the gutter
-    if (target.className.indexOf("ace_gutter-cell") == -1)
-      return;
+    if (target.className.indexOf("ace_gutter-cell") == -1) return;
 
-    if (e.clientX > 25 + target.getBoundingClientRect().left)
-      return;
+    if (e.clientX > 25 + target.getBoundingClientRect().left) return;
 
     const breakpoints = getBreakpoints(e.editor);
 
     let row = e.getDocumentPosition().row;
-    if (breakpoints[row] === undefined && row !== e.editor.getLastVisibleRow() + 1) {
+    if (
+      breakpoints[row] === undefined &&
+      row !== e.editor.getLastVisibleRow() + 1
+    ) {
       // If the shift key is pressed mark all rows between the current one and the first one above that is a debug line
       if (get_shift_key(event)) {
         let highest_key = row;
@@ -181,14 +187,15 @@ function initializeBreakpoints(editor: AceAjax.Editor) {
     e.stop();
   });
 
-  editor.session.on('changeBreakpoint', () => updateBreakpointVisuals(editor));
+  editor.session.on("changeBreakpoint", () => updateBreakpointVisuals(editor));
 }
 
 function get_shift_key(event: Event | undefined) {
   // @ts-ignore
   if (event.shiftKey) {
     return true;
-  } return false;
+  }
+  return false;
 }
 
 /**
@@ -202,7 +209,7 @@ function updateBreakpointVisuals(editor: AceAjax.Editor) {
   const disabledLines = Object.entries(breakpoints)
     .filter(([_, bpClass]) => bpClass === BP_DISABLED_LINE)
     .map(([line, _]) => line)
-    .map(x => parseInt(x, 10));
+    .map((x) => parseInt(x, 10));
 
   theMarkers.strikethroughLines(disabledLines);
 }
@@ -210,7 +217,7 @@ function updateBreakpointVisuals(editor: AceAjax.Editor) {
 function debugRun() {
   if (theLevel && theLanguage) {
     runit(theLevel, theLanguage, "", function () {
-      $('#output').focus();
+      $("#output").focus();
     });
   }
 }
@@ -270,7 +277,7 @@ export function stopDebug() {
 
 function clearDebugVariables() {
   var storage = window.localStorage;
-  var keysToRemove = {...localStorage};
+  var keysToRemove = { ...localStorage };
 
   for (var key in keysToRemove) {
     if (key.includes("prompt-")) {
@@ -283,14 +290,15 @@ export function incrementDebugLine() {
   var storage = window.localStorage;
   var debugLine = storage.getItem("debugLine");
 
-  const nextDebugLine = debugLine == null
-    ? 0
-    : parseInt(debugLine, 10) + 1;
+  const nextDebugLine = debugLine == null ? 0 : parseInt(debugLine, 10) + 1;
 
   storage.setItem("debugLine", nextDebugLine.toString());
   markCurrentDebuggerLine();
 
-  var lengthOfEntireEditor = theGlobalEditor.getValue().split("\n").filter(e => e).length;
+  var lengthOfEntireEditor = theGlobalEditor
+    .getValue()
+    .split("\n")
+    .filter((e) => e).length;
   if (nextDebugLine < lengthOfEntireEditor) {
     debugRun();
   } else {
@@ -299,7 +307,9 @@ export function incrementDebugLine() {
 }
 
 function markCurrentDebuggerLine() {
-  if (!step_debugger) { return; }
+  if (!step_debugger) {
+    return;
+  }
 
   const storage = window.localStorage;
   var debugLine = storage?.getItem("debugLine");
@@ -313,24 +323,23 @@ function markCurrentDebuggerLine() {
 }
 
 export function returnLinesWithoutBreakpoints(editor: HedyEditor) {
-
   // ignore the lines with a breakpoint in it.
   let code = editor.getValue();
   const breakpoints = editor.getBreakpoints();
   const storage = window.localStorage;
-  const debugLines = storage.getItem('debugLine');
+  const debugLines = storage.getItem("debugLine");
 
   if (code) {
-    let lines = code.split('\n');
-    if(debugLines != null){
+    let lines = code.split("\n");
+    if (debugLines != null) {
       lines = lines.slice(0, parseInt(debugLines) + 1);
     }
     for (let i = 0; i < lines.length; i++) {
       if (breakpoints[i] == BP_DISABLED_LINE) {
-        lines[i] = '';
+        lines[i] = "";
       }
     }
-    code = lines.join('\n');
+    code = lines.join("\n");
   }
 
   return code;

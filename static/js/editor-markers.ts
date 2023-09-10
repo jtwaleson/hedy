@@ -1,7 +1,5 @@
 /**
- * 
+ *
  */
 
-export interface HedyEditorMarker {
-
-}
+export interface HedyEditorMarker {}

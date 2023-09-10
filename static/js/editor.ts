@@ -2,7 +2,6 @@ import { Markers } from "./markers";
 
 export type Breakpoints = Record<number, string>;
 
-
 export interface HedyEditorCreator {
   // TODO: Not sure yet if it should return a HedyEditor or change local variable names
   /**
@@ -12,12 +11,16 @@ export interface HedyEditorCreator {
    */
   initializeMainEditor: ($editor: JQuery) => HedyEditor | undefined;
   /**
-   * 
+   *
    * @param element the element that will contain this editor
    * @param isReadOnly to decide weather to remove the cursor
    * @param isMainEditor should we show the line numbers
    */
-  turnIntoEditor: (element: HTMLElement, isReadOnly: boolean, isMainEditor: boolean) => HedyEditor;
+  turnIntoEditor: (
+    element: HTMLElement,
+    isReadOnly: boolean,
+    isMainEditor: boolean,
+  ) => HedyEditor;
 
   /**
    * Ininitialize an editor that appears in a modal
@@ -28,12 +31,12 @@ export interface HedyEditorCreator {
 
 export interface HedyEditor {
   /**
- * Represents whether there's an open 'ask' prompt
- */
+   * Represents whether there's an open 'ask' prompt
+   */
   askPromptOpen: boolean;
   /**
    * Set the highlither rules for a particular level
-   * @param level      
+   * @param level
    */
   setHighliterForLevel: (level: number) => void;
 
@@ -42,7 +45,7 @@ export interface HedyEditor {
    */
   getValue: () => string;
 
-  /**     
+  /**
    * @returns if the editor is set to read-only mode
    */
   isReadOnly: () => boolean;
@@ -56,7 +59,7 @@ export interface HedyEditor {
   /**
    * Trim trailing whitespaces
    */
-  trimTrailingSpace: () => void
+  trimTrailingSpace: () => void;
 
   /**
    * Resizes the editor after changing its size programatically
@@ -73,7 +76,7 @@ export interface HedyEditor {
    */
   clearErrors: () => void;
 
-  /**     
+  /**
    * Moves to the cursor to the end of the current file
    */
   moveCursorToEndOfFile: () => void;
@@ -84,9 +87,9 @@ export interface HedyEditor {
   clearSelection: () => void;
 
   /**
-  * Removes all breakpoints on the rows.
-  **/
-  clearBreakpoints: ()  => void;
+   * Removes all breakpoints on the rows.
+   **/
+  clearBreakpoints: () => void;
 
   /**
    * Sets the main editor and also its options
@@ -104,6 +107,6 @@ export interface HedyEditor {
    * @param isReadMode whether the editor will be set to read only mode or not
    */
   setEditorMode: (isReadMode: boolean) => void;
-  
+
   markers: Markers;
 }

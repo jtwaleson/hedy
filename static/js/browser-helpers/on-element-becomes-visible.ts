@@ -4,7 +4,7 @@ function isInView(elem: HTMLElement) {
   var docViewTop = $(window).scrollTop()!;
   var docViewBottom = docViewTop + $(window).height()!;
   var elemTop = $(elem).offset()!.top;
-  return ((elemTop <= docViewBottom) && (elemTop >= docViewTop));
+  return elemTop <= docViewBottom && elemTop >= docViewTop;
 }
 
 export function checkNow() {
@@ -19,9 +19,12 @@ export function checkNow() {
   }
 }
 
-$(window).on('scroll', checkNow);
+$(window).on("scroll", checkNow);
 
-export function onElementBecomesVisible(element: HTMLElement, handler: () => void) {
+export function onElementBecomesVisible(
+  element: HTMLElement,
+  handler: () => void,
+) {
   if (isInView(element)) {
     handler();
   } else {

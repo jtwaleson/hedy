@@ -9,16 +9,18 @@ export function postJson(url: string, data?: any): Promise<any> {
 
   return new Promise((ok, ko) => {
     $.ajax({
-      type: 'POST',
+      type: "POST",
       url,
       ...(data ? { data: JSON.stringify(data) } : {}),
-      contentType: 'application/json; charset=utf-8',
-      dataType: 'json',
-    }).done((response: any) => {
-      ok(response);
-    }).fail((err) => {
-      ko(ajaxError(err));
-    });
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+    })
+      .done((response: any) => {
+        ok(response);
+      })
+      .fail((err) => {
+        ko(ajaxError(err));
+      });
   });
 }
 
@@ -33,13 +35,13 @@ async function postJsonUsingFetch(url: string, data?: any): Promise<any> {
   let response;
   try {
     response = await fetch(url, {
-      method: 'POST',
-      credentials: 'include',
+      method: "POST",
+      credentials: "include",
       keepalive: true,
       ...(data ? { body: JSON.stringify(data) } : {}),
       headers: {
-        'Content-Type': 'application/json; charset=utf-8',
-        'Accept': 'application/json',
+        "Content-Type": "application/json; charset=utf-8",
+        Accept: "application/json",
       },
     });
   } catch (err: any) {
@@ -79,16 +81,18 @@ async function postJsonUsingFetch(url: string, data?: any): Promise<any> {
 
 export function postNoResponse(url: string, data?: any): Promise<void> {
   return new Promise<void>((ok, ko) => {
-    $.ajax ({
-      type: 'POST',
+    $.ajax({
+      type: "POST",
       url,
-      contentType: 'application/json; charset=utf-8',
+      contentType: "application/json; charset=utf-8",
       ...(data ? { data: JSON.stringify(data) } : {}),
-    }).done (() => {
-      ok();
-    }).fail((err) => {
-      ko(ajaxError(err));
-    });
+    })
+      .done(() => {
+        ok();
+      })
+      .fail((err) => {
+        ko(ajaxError(err));
+      });
   });
 }
 

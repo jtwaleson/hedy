@@ -1,8 +1,8 @@
-import { ClientMessages } from '../client-messages';
+import { ClientMessages } from "../client-messages";
 
 function unloadHandler(event: BeforeUnloadEvent) {
   event.preventDefault();
-  return event.returnValue = ClientMessages['Unsaved_Changes'];
+  return (event.returnValue = ClientMessages["Unsaved_Changes"]);
 }
 
 let unsavedChanges = false;
@@ -16,7 +16,7 @@ export function hasUnsavedChanges() {
  */
 export function markUnsavedChanges() {
   unsavedChanges = true;
-  window.addEventListener('beforeunload', unloadHandler, { capture: true });
+  window.addEventListener("beforeunload", unloadHandler, { capture: true });
 }
 
 /**
@@ -25,5 +25,5 @@ export function markUnsavedChanges() {
 export function clearUnsavedChanges() {
   unsavedChanges = false;
   // MDN tells me to add and remove this listener as necessary: https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event
-  window.removeEventListener('beforeunload', unloadHandler, { capture: true });
+  window.removeEventListener("beforeunload", unloadHandler, { capture: true });
 }

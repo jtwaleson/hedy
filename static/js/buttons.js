@@ -6,32 +6,32 @@
 // the member functions and classes of that module.
 
 var $builtinmodule = function (name) {
-    var mod = {};
+  var mod = {};
 
-    mod.add = new Sk.builtin.func(buttons_add);
+  mod.add = new Sk.builtin.func(buttons_add);
 
-    return mod;
+  return mod;
 };
 
 function buttons_add(name) {
-    let button = document.createElement("button");
-    var name_js = Sk.ffi.remapToJs(name);
-    button.classList.add("blue-btn");
-    button.innerText = name;
-    button.onclick = function () {
-        button_click(name);
-    };
-    document.getElementById("dynamic-buttons").appendChild(button);
+  let button = document.createElement("button");
+  var name_js = Sk.ffi.remapToJs(name);
+  button.classList.add("blue-btn");
+  button.innerText = name;
+  button.onclick = function () {
+    button_click(name);
+  };
+  document.getElementById("dynamic-buttons").appendChild(button);
 
-    document.getElementById("dynamic-buttons").style.display = "";
+  document.getElementById("dynamic-buttons").style.display = "";
 }
 
 var button_click = function (name) {
-    var name_js = Sk.ffi.remapToJs(name);
+  var name_js = Sk.ffi.remapToJs(name);
 
-    // For this to work the first element of e needs to be a constant indicating
-    // this event is from a button, to make sure it is unique we use USEREVENT
-    // the dictionary can then be filled with whatever data we need.
-    var e = [PygameLib.constants.USEREVENT, { key: name }];
-    PygameLib.eventQueue.unshift(e);
-}
+  // For this to work the first element of e needs to be a constant indicating
+  // this event is from a button, to make sure it is unique we use USEREVENT
+  // the dictionary can then be filled with whatever data we need.
+  var e = [PygameLib.constants.USEREVENT, { key: name }];
+  PygameLib.eventQueue.unshift(e);
+};

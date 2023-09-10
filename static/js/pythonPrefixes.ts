@@ -1,17 +1,16 @@
 /*******************************************************************************
-*
-* !!! THIS FILE HAS BEEN GENERATED. DO NOT EDIT !!!
-*
-* Make desired changes to prefixes/{normal,pygame,turtle}.py
-*
-* Add/edit tests for those changes in tests/test_python_prefixes.py
-*
-* Run build-tools/heroku/generate-prefixes-ts to regenerate.
-*
-*******************************************************************************/
+ *
+ * !!! THIS FILE HAS BEEN GENERATED. DO NOT EDIT !!!
+ *
+ * Make desired changes to prefixes/{normal,pygame,turtle}.py
+ *
+ * Add/edit tests for those changes in tests/test_python_prefixes.py
+ *
+ * Run build-tools/heroku/generate-prefixes-ts to regenerate.
+ *
+ *******************************************************************************/
 
-export const turtle_prefix = 
-`# coding=utf8
+export const turtle_prefix = `# coding=utf8
 
 import random  # noqa F401
 import time  # noqa F401
@@ -27,8 +26,7 @@ t.speed(3)
 t.showturtle()
 `;
 
-export const pygame_prefix = 
-`# coding=utf8
+export const pygame_prefix = `# coding=utf8
 
 import pygame  # noqa F401
 import buttons  # noqa F401
@@ -47,8 +45,7 @@ def create_button(name):
         buttons.add(name)
 `;
 
-export const normal_prefix = 
-`# coding=utf8
+export const normal_prefix = `# coding=utf8
 
 import random  # noqa F401
 import time  # noqa F401

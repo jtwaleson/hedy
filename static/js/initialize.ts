@@ -1,11 +1,31 @@
-import { initializeAdminUserPage, InitializeAdminUsersPageOptions } from './admin';
-import { initializeApp, initializeCodePage, InitializeCodePageOptions, initializeViewProgramPage, InitializeViewProgramPageOptions } from './app';
-import { initializeFormSubmits } from './auth';
-import { setClientMessageLanguage } from './client-messages';
-import { logs } from './logs';
-import { InitializeAdminStatsOptions, InitializeClassStatsPageOptions, stats } from './statistics';
-import { initializeClassOverviewPage, InitializeClassOverviewPageOptions, initializeCustomizeClassPage, InitializeCustomizeClassPageOptions, initializeTeacherPage, InitializeTeacherPageOptions } from './teachers';
-import { initializeTutorial } from './tutorials/tutorial';
+import {
+  initializeAdminUserPage,
+  InitializeAdminUsersPageOptions,
+} from "./admin";
+import {
+  initializeApp,
+  initializeCodePage,
+  InitializeCodePageOptions,
+  initializeViewProgramPage,
+  InitializeViewProgramPageOptions,
+} from "./app";
+import { initializeFormSubmits } from "./auth";
+import { setClientMessageLanguage } from "./client-messages";
+import { logs } from "./logs";
+import {
+  InitializeAdminStatsOptions,
+  InitializeClassStatsPageOptions,
+  stats,
+} from "./statistics";
+import {
+  initializeClassOverviewPage,
+  InitializeClassOverviewPageOptions,
+  initializeCustomizeClassPage,
+  InitializeCustomizeClassPageOptions,
+  initializeTeacherPage,
+  InitializeTeacherPageOptions,
+} from "./teachers";
+import { initializeTutorial } from "./tutorials/tutorial";
 
 export interface InitializeOptions {
   /**
@@ -50,9 +70,7 @@ type InitializePageOptions =
   | InitializeClassOverviewPageOptions
   | InitializeAdminStatsOptions
   | InitializeAdminUsersPageOptions
-  | InitializeClassStatsPageOptions
-  ;
-
+  | InitializeClassStatsPageOptions;
 
 /**
  * This function gets called by the HTML when the page is being initialized.
@@ -69,35 +87,35 @@ export function initialize(options: InitializeOptions) {
 
   // The above initializations are often also page-specific
   switch (options.javascriptPageOptions?.page) {
-    case 'code':
+    case "code":
       initializeCodePage(options.javascriptPageOptions);
       break;
 
-    case 'customize-class':
+    case "customize-class":
       initializeCustomizeClassPage(options.javascriptPageOptions);
       break;
 
-    case 'for-teachers':
+    case "for-teachers":
       initializeTeacherPage(options.javascriptPageOptions);
       break;
 
-    case 'class-overview':
+    case "class-overview":
       initializeClassOverviewPage(options.javascriptPageOptions);
       break;
 
-    case 'view-program':
+    case "view-program":
       initializeViewProgramPage(options.javascriptPageOptions);
       break;
 
-    case 'admin-stats':
+    case "admin-stats":
       stats.initializeAdminStats();
       break;
 
-    case 'class-stats':
+    case "class-stats":
       stats.initializeClassStats();
       break;
 
-    case 'admin-users':
+    case "admin-users":
       initializeAdminUserPage(options.javascriptPageOptions);
       break;
   }

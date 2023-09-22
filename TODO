@@ -1,6 +1,6 @@
 - find out why static babel content is giving a difference locally!!
-- remove failing tests
-- fix admin loader
+x remove failing tests
+x fix admin loading something
 - remove more code from "classes" admin page
 - write dependency checker
 - clean up commits

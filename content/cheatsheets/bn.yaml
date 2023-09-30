@@ -7,7 +7,7 @@
     demo_code: ask আপনার প্রিয় রং কি ?
 -   name: echo
     explanation: কিছু পুনরাবৃত্তি করার থাকলে `echo` ব্যবহার করুন
-    demo_code: |
+    demo_code: |-
         ask আপনার প্রিয় রং কি ?
         echo তো আপনার প্রিয় রং হচ্ছে "
 -   name: '{print} emojis'
@@ -29,7 +29,7 @@
     demo_code: "নাম is  হেডি \nprint স্বাগত হেডি"
 -   name: is
     explanation: কিছু ask করার থাকলে `ask` ব্যবহার করুন`. সাবধান! উত্তর দিতে হবে নামের সাথে `is` ব্যবহার করে.
-    demo_code: |
+    demo_code: |-
         রং is ask আপনার প্রিয় রং কি?
         print রং is আপনার প্রিয়!
 -   name: '{sleep}'
@@ -49,7 +49,7 @@
 3:
 -   name: লক্ষ্যহীন ভাবে পছন্দ কর
     explanation: Choose a random word from a group with `at` and `random`
-    demo_code: |
+    demo_code: |-
         প্রাণী is হল, কুকুর, বিড়াল, ক্যাঙ্গারু
         print প্রাণী at random
 -   name: '{add}'
@@ -64,14 +64,14 @@
         {remove} dog {from} animals
 4:
 -   name: print
-    explanation: 'হুবহু print করুন কোটেশন চিহ্ন ব্যবহার  করে '
+    explanation: হুবহু print করুন কোটেশন চিহ্ন ব্যবহার  করে
     demo_code: print 'হ্যালো হেডিতে আপনার স্বাগত'
 -   name: is
     explanation: কিছু পাঠকে নাম দিন এবং কোটেশন চিহ্ন ছাড়া print করুন
-    demo_code: "নাম is  হেডি \nprint 'আমার নাম is ' নাম "
+    demo_code: "নাম is  হেডি \nprint 'আমার নাম is ' নাম"
 -   name: ask
     explanation: কিছু ask করার থাকলে `ask` ব্যবহার করুন
-    demo_code: |
+    demo_code: |-
         রং is ask 'আপনার প্রিয় রং কি?'
         print রং 'is আপনার প্রিয়!'
 5:
@@ -80,12 +80,12 @@
     demo_code: print 'হ্যালো হেডিতে আপনার স্বাগত'
 -   name: ask
     explanation: কিছু ask করার থাকলে ` `ask` ব্যবহার করুন`.
-    demo_code: |
+    demo_code: |-
         রং is ask 'আপনার প্রিয় রং কি?'
         print রং ' is আপনার প্রিয়!'
 -   name: if
-    explanation: '`if`ব্যবহার করে পছন্দ করুন '
-    demo_code: |
+    explanation: '`if`ব্যবহার করে পছন্দ করুন'
+    demo_code: |-
         রং is ask 'আপনার প্রিয় রং কি?'
         if রং is হয় print 'সুন্দর!' else print 'মন্দ'
 -   name: '{if} with turtle'
@@ -106,9 +106,9 @@
 -   name: print
     explanation: হুবহু print করুন কোটেশন চিহ্ন ব্যবহার  করে
     demo_code: print  '5 বার 5 is ' 5 * 5
--   name: ' ask` এবং `if` গণনা সহ'
+-   name: ask` এবং `if` গণনা সহ
     explanation: একটি গণনা ask করুন এবং ত্রটি সঠিক কিনা তা পরীক্ষা করুন.
-    demo_code: |
+    demo_code: |-
         উত্তর = ask 'করুন 10 প্লাস 10 কি?'
         if উত্তর is 20 print 'সঠিক!' else print 'ভুল'
 -   name: '`ask` and `if` turtle'
@@ -123,17 +123,17 @@
     demo_code: print 'হ্যালো হেডিতে আপনার স্বাগত'
 -   name: ask
     explanation: কিছু ask করার থাকলে  `ask` ব্যবহার করুন`.
-    demo_code: |
+    demo_code: |-
         রং = ask 'আপনার প্রিয় রং কি?'
         print রং 'is আপনার প্রিয়!'
 -   name: if
-    explanation: '`if`ব্যবহার করে পছন্দ করুন '
-    demo_code: |
+    explanation: '`if`ব্যবহার করে পছন্দ করুন'
+    demo_code: |-
         রং = ask 'আপনার প্রিয় রং কি?'
         if রং is হয print 'সুন্দর!' else print 'মন্দ'
 -   name: repeat
     explanation: '`repeat` এবং `if` সম্মিলিত'
-    demo_code: |
+    demo_code: |-
         রং = ask 'আপনার প্রিয় রং কি?'
         if রং is হয় repeat 3 times print 'সুন্দর' else repeat 5 times print 'মন্দ'
 8:
@@ -185,7 +185,7 @@
     explanation: print something. Remember to use a quotation mark for literal printing.
     demo_code: '{print} ''5 times 5 is '' 5 * 5'
 -   name: '{for} with a list'
-    explanation: 'print all things in a list '
+    explanation: print all things in a list
     demo_code: |-
         animals {is} dog, cat, blobfish
         {for} animal {in} animals
@@ -209,24 +209,24 @@
 12:
 -   name: float directly
     explanation: Decimal numbers
-    demo_code: |
+    demo_code: |-
         {print} 'Calculate away!'
         {print} 'Two and a half plus two and a half is...'
         {print} 2.5 + 2.5
 -   name: assign text
     explanation: Text with quotation marks after =
-    demo_code: |
+    demo_code: |-
         name = 'Hedy the Robot'
         {print} 'Hello ' name
 -   name: quotes after {if} comparison
     explanation: Text with quotation marks after {if}
-    demo_code: |
+    demo_code: |-
         name = {ask} 'Who are you?'
         {if} name = 'Hedy'
             {print} 'Hi there!'
 -   name: quotes in list
     explanation: A list with quotation marks
-    demo_code: |
+    demo_code: |-
         superheroes = 'Iron Man', 'Batman', 'Superman'
         {print} superheroes {at} {random}
 13:
@@ -268,7 +268,7 @@
         {if} answer == 25
             {print} 'That {is} correct!'
 -   name: Not equal
-    explanation: 'We use the `!=` to check if two things are not the same. '
+    explanation: We use the `!=` to check if two things are not the same.
     demo_code: |-
         answer = {ask} 'What is 5 * 5?'
         {if} answer != 25
@@ -294,7 +294,7 @@
             answer = {ask} 'What is 5 times 5?'
         {print} 'A correct answer has been given'
 -   name: Smaller {while}
-    explanation: 'We can also use the `{while}` loop with `<` and `>`. '
+    explanation: We can also use the `{while}` loop with `<` and `>`.
     demo_code: |-
         count = 1
         {while} count < 3

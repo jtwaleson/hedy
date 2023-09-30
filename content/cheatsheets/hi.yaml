@@ -217,12 +217,12 @@
         {print} 2.5 + 2.5
 -   name: टेक्स्ट असाइन करें
     explanation: = के बाद उद्धरण चिह्नों वाला पाठ
-    demo_code: |
+    demo_code: |-
         नाम = 'हेडी द रोबोट'
         {print} 'हैलो' नाम
 -   name: '{if} तुलना के बाद उद्धरण'
     explanation: '{if} के बाद उद्धरण चिह्नों वाला टेक्स्ट'
-    demo_code: |
+    demo_code: |-
         name = ask 'Who are you?'
         if name = 'Hedy'
             print 'Hi there!'

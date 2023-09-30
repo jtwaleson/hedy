@@ -211,24 +211,24 @@
 12:
 -   name: decimala nombro rekte
     explanation: Decimalaj nombroj.
-    demo_code: |
+    demo_code: |-
         {print} 'Ni ekkalkulu!'
         {print} 'Du kaj duono plus du kaj duono estas...'
         {print} 2.5 + 2.5
 -   name: asigni tekston
     explanation: Teksto kun citiloj post `=`
-    demo_code: |
+    demo_code: |-
         nomo = 'Hedy la Roboto'
         {print} 'Saluton ' nomo
 -   name: citiloj post komparo en `{if}`
     explanation: Teksto kun citiloj post `{if}`.
-    demo_code: |
+    demo_code: |-
         nomo = {ask} 'Kiu vi estas?'
         {if} nomo = 'Hedy'
             {print} 'Saluton!'
 -   name: citiloj en listo
     explanation: Listo per citiloj.
-    demo_code: |
+    demo_code: |-
         superherooj = 'Ferviro', 'Vespertviro', 'Superviro'
         {print} superherooj {at} {random}
 13:

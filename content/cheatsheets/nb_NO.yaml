@@ -187,7 +187,7 @@
     explanation: skriv ut noe. Husk å bruke fnutter når du skal skrive tekst.
     demo_code: '{print} ''5 {times} 5 {is} '' 5 * 5'
 -   name: '{for} med en liste'
-    explanation: 'skriv ut alle tingene i en liste '
+    explanation: skriv ut alle tingene i en liste
     demo_code: |-
         dyrene {is} hunder, katter, flyndre
         {for} dyr {in} dyrene
@@ -211,24 +211,24 @@
 12:
 -   name: flyt direkte
     explanation: Desimaltall
-    demo_code: |
+    demo_code: |-
         {print} 'Kjør på med kalkulasjoner!'
         {print} 'To og en halv pluss to og en halv er lik...'
         {print} 2.5 + 2.5
 -   name: tildel tekst
     explanation: Tekst med fnutter etter `=`
-    demo_code: |
+    demo_code: |-
         navn = 'Roboten Hedy'
         {print} 'Hello ' navn
 -   name: apostrof etter {if}sammenligning
     explanation: Tekst med fnutter etter {if}
-    demo_code: |
+    demo_code: |-
         navn = {ask} 'Hvem er du?'
         {if} navn = 'Hedy'
             {print} 'Hei hei!'
 -   name: hermetegn i liste
     explanation: En liste med fnutter
-    demo_code: |
+    demo_code: |-
         superhelter = 'Iron Man', 'Batman', 'Superman'
         {print} superhelter {at} {random}
 13:
@@ -270,7 +270,7 @@
         {if} svar == 25
             {print} 'Det {is} korrekt!'
 -   name: Ikke lik
-    explanation: 'Vi bruker`!=` å sjekke om ting er ''ikke lik''. '
+    explanation: Vi bruker`!=` å sjekke om ting er 'ikke lik'.
     demo_code: |-
         svar = {ask} 'Hva er 5 * 5?'
         {if} svar != 25
@@ -296,7 +296,7 @@
             svar = {ask} 'Hva er 5 ganger 5?'
         {print} 'Svaret er korrekt!'
 -   name: Mindre {while}
-    explanation: 'Vi kan også bruke `{while}` løkken med `<` og `>`. '
+    explanation: Vi kan også bruke `{while}` løkken med `<` og `>`.
     demo_code: |-
         telling = 1
         {while} telling < 3

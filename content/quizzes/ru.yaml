@@ -15,27 +15,26 @@ levels:
             correct_answer: A
             question_score: '10'
         2:
-            code: |
-                _ Привет!
+            code: _ Привет!
             question_text: Что нужно заполнить на пустых местах, чтобы появился текст "Привет!"?
             mp_choice_options:
             -   feedback: '`{echo}` повторяет заданный ответ.'
-                option: |
+                option: |-
                     ```
                     {echo}
                     ```
             -   feedback: Правильно!
-                option: |
+                option: |-
                     ```
                     {print}
                     ```
             -   feedback: Привет - это не команда.
-                option: |
+                option: |-
                     ```
                     привет
                     ```
             -   feedback: На сайте `{ask}` вы можете задать вопрос.
-                option: |
+                option: |-
                     ```
                     {ask}
                     ```
@@ -46,22 +45,22 @@ levels:
             question_text: Как спросить, какой у кого-то любимый цвет?
             mp_choice_options:
             -   feedback: '`{print}` печатает текст, но не задает вопросов.'
-                option: |
+                option: |-
                     ```
                     {print} Какой ваш любимый цвет?
                     ```
             -   feedback: Вам нужна только одна команда, а не две.
-                option: |
+                option: |-
                     ```
                     {ask} {print} Какой ваш любимый цвет?
                     ```
             -   feedback: Great!
-                option: |
+                option: |-
                     ```
                     {ask} Какой ваш любимый цвет?
                     ```
             -   feedback: '`{echo}` повторяет ваш ответ за вами.'
-                option: |
+                option: |-
                     ```
                     {echo} Какой ваш любимый цвет?
                     ```
@@ -93,22 +92,22 @@ levels:
             question_text: Какая команда отсутствует в строке 2?
             mp_choice_options:
             -   feedback: Нет, вы хотите, чтобы ответ был повторен вам.
-                option: |
+                option: |-
                     ```
                     {print}
                     ```
             -   feedback: Hedy не команда.
-                option: |
+                option: |-
                     ```
                     Hedy
                     ```
             -   feedback: С `{ask}` вы можете задать вопрос.
-                option: |
+                option: |-
                     ```
                     {ask}
                     ```
             -   feedback: Right on!
-                option: |
+                option: |-
                     ```
                     {echo}
                     ```
@@ -186,24 +185,22 @@ levels:
             correct_answer: B
             question_score: '10'
         10:
-            code: |
+            code: |-
                 {ask} Are you ready to go to level 2?
                 {echo}
                 {echo}
             question_text: Which output will be in your outputscreen after you've run this code?
             mp_choice_options:
             -   feedback: There are two echo commands
-                option: |
-                    Are you ready to go to level 2?
+                option: Are you ready to go to level 2?
             -   feedback: Great job!
-                option: |
+                option: |-
                     Yes!
                     Yes!
             -   feedback: There are two echo commands
-                option: |
-                    Yes!
+                option: Yes!
             -   feedback: There are two echo commands
-                option: |
+                option: |-
                     Are you ready to go to level 2?
                     Yes!
             hint: Let's go!
@@ -228,22 +225,22 @@ levels:
             question_text: Which code is correct?
             mp_choice_options:
             -   feedback: Супер!
-                option: |
+                option: |-
                     ```
                     name {is} {ask} What is your name?
                     ```
             -   feedback: The words are right, the order is not!
-                option: |
+                option: |-
                     ```
                     {ask} {is} name What is your name
                     ```
             -   feedback: This worked in level 1, but in level 2 and up it works differently.
-                option: |
+                option: |-
                     ```
                     {ask} What is your name?
                     ```
             -   feedback: The words are right, the order isn't!
-                option: |
+                option: |-
                     ```
                     {ask} What is your name? {is} name
                     ```
@@ -306,22 +303,22 @@ levels:
             question_text: What should be on the lines?
             mp_choice_options:
             -   feedback: Идеально!
-                option: |
+                option: |-
                     ```
                     {sleep}
                     ```
             -   feedback: There is nothing to repeat back here
-                option: |
+                option: |-
                     ```
                     {echo}
                     ```
             -   feedback: There is no text there to `{print}` there
-                option: |
+                option: |-
                     ```
                     {print}
                     ```
             -   feedback: There is no question there to be asked
-                option: |
+                option: |-
                     ```
                     {ask}
                     ```
@@ -336,22 +333,22 @@ levels:
             question_text: What command should be used on line 2?
             mp_choice_options:
             -   feedback: You don't need to `{print}`
-                option: |
+                option: |-
                     ```
                     {print} 3
                     ```
             -   feedback: Идеально!
-                option: |
+                option: |-
                     ```
                     {sleep} 3
                     ```
             -   feedback: This way the bomb will explode in 1 second
-                option: |
+                option: |-
                     ```
                     {sleep}
                     ```
             -   feedback: Make it easier on yourself by using the number 3
-                option: |
+                option: |-
                     ```
                     {sleep} {sleep} {sleep}
                     ```
@@ -365,22 +362,22 @@ levels:
             question_text: How would you correct the first line of code?
             mp_choice_options:
             -   feedback: That is the wrong order
-                option: |
+                option: |-
                     ```
                     age {ask} {is} How old are you?
                     ```
             -   feedback: That is the wrong order
-                option: |
+                option: |-
                     ```
                     {ask} {is} age How old are you?
                     ```
             -   feedback: You get it!
-                option: |
+                option: |-
                     ```
                     age {is} {ask} How old are you?
                     ```
             -   feedback: Where is the `{ask}` command?
-                option: |
+                option: |-
                     ```
                     age {is} How old are you?
                     ```
@@ -413,22 +410,22 @@ levels:
             question_text: What command should be used on the line 1?
             mp_choice_options:
             -   feedback: You want to know the favorite flavor!
-                option: |
+                option: |-
                     ```
                     {sleep} 3
                     ```
             -   feedback: You do not want a `{print}` command at the middle of the line...
-                option: |
+                option: |-
                     ```
                     {print} strawberries
                     ```
             -   feedback: This way you are making a list. You don't want that now.
-                option: |
+                option: |-
                     ```
                     strawberries, chocolate, vanilla
                     ```
             -   feedback: That's right!
-                option: |
+                option: |-
                     ```
                     {ask} What flavor icecream do you like?
                     ```
@@ -440,22 +437,22 @@ levels:
             question_text: What command do you use to let Hedy pick something arbitrarily?
             mp_choice_options:
             -   feedback: '`{print}` is used to print text'
-                option: |
+                option: |-
                     ```
                     {print}
                     ```
             -   feedback: '`{ask}` is used to ask a question'
-                option: |
+                option: |-
                     ```
                     {ask}
                     ```
             -   feedback: '`{is}` is used to make a list'
-                option: |
+                option: |-
                     ```
                     {is}
                     ```
             -   feedback: Правильно!
-                option: |
+                option: |-
                     ```
                     {at} {random}
                     ```
@@ -486,17 +483,17 @@ levels:
             question_text: How do you fix the mistake in line 2 of this code?
             mp_choice_options:
             -   feedback: You're almost there. The order of the words isn't right yet.
-                option: |
+                option: |-
                     ```
                     {at} {random} {print} options
                     ```
             -   feedback: you don't always want the Hedy to {print} rock, sometimes you want scissors or paper.
-                option: |
+                option: |-
                     ```
                     {print} rock {at} {random}
                     ```
             -   feedback: Very good!
-                option: |
+                option: |-
                     ```
                     {print} options {at} {random}
                     ```
@@ -512,17 +509,17 @@ levels:
             question_text: What should change in line 2 to print a random price?
             mp_choice_options:
             -   feedback: You don't want to `{print}` the word price, but you want to `{print}` one price out of your list `{at} {random}`
-                option: |
+                option: |-
                     ```
                     {print} price
                     ```
             -   feedback: Great! You've really paid attention.
-                option: |
+                option: |-
                     ```
                     {print} prices {at} {random}
                     ```
             -   feedback: '`{at} {random}` is placed behind the variable.'
-                option: |
+                option: |-
                     ```
                     {print} {at} {random} price
                     ```
@@ -635,22 +632,22 @@ levels:
             question_text: What should be on the _?_?
             mp_choice_options:
             -   feedback: Супер!
-                option: |
+                option: |-
                     ```
                     {remove} walked_yesterday {from} walkers
                     ```
             -   feedback: '`{remove} {from}` or `{add} {to}`, not `{remove} {to}`'
-                option: |
+                option: |-
                     ```
                     {remove} walked yesterday {to} walkers
                     ```
             -   feedback: yesterday is not a variable
-                option: |
+                option: |-
                     ```
                     {remove} walkers {from} yesterday
                     ```
             -   feedback: This increased the change that the person who walked yesterday now has to do it again. That's mean.
-                option: |
+                option: |-
                     ```
                     {add} walked_yesterday {to} walkers
                     ```
@@ -662,22 +659,22 @@ levels:
             question_text: Which of these is true?
             mp_choice_options:
             -   feedback: That's right
-                option: |
+                option: |-
                     ```
                     {print} 'Я очень хочу принять участие в этой викторине!'
                     ```
             -   feedback: '`{ask}` needs quotation marks too!'
-                option: |
+                option: |-
                     ```
                     {print} Я очень хочу принять участие в этой викторине!
                     ```
             -   feedback: '`{at} {random}` still works'
-                option: |
+                option: |-
                     ```
                     {print} 'Я очень хочу принять участие в этой викторине!'
                     ```
             -   feedback: No, but 2 other commands do.
-                option: |
+                option: |-
                     ```
                     {print} 'Я очень хочу принять участие в этой викторине!
                     ```
@@ -688,22 +685,22 @@ levels:
             question_text: Which code uses the proper quotation marks?
             mp_choice_options:
             -   feedback: This quotation mark is skewed, you need a straight one.
-                option: |
+                option: |-
                     ```
                     {print} `hello`
                     ```
             -   feedback: Правильно
-                option: |
+                option: |-
                     ```
                     {print} 'hello'
                     ```
             -   feedback: There are no quotation marks here!.
-                option: |
+                option: |-
                     ```
                     {print} hello
                     ```
             -   feedback: This is a comma, you need quotation marks.
-                option: |
+                option: |-
                     ```
                     {print} ,hello,
                     ```
@@ -714,22 +711,22 @@ levels:
             question_text: Where are the quotation marks used correctly?
             mp_choice_options:
             -   feedback: Add quotation marks please!
-                option: |
+                option: |-
                     ```
                     {print} Hi Im Hedy
                     ```
             -   feedback: Both before and after the words you want to print should be a quotation mark.
-                option: |
+                option: |-
                     ```
                     {print} 'Hi Im Hedy
                     ```
             -   feedback: Первая кавычка должна стоять после слова `{print}`
-                option: |
+                option: |-
                     ```
                     '{print} Hi Im Hedy'
                     ```
             -   feedback: Идеально!
-                option: |
+                option: |-
                     ```
                     {print} 'Hi Im Hedy'
                     ```
@@ -757,17 +754,17 @@ levels:
             question_text: What has to be changed in order for the game to work?
             mp_choice_options:
             -   feedback: Никогда не ставьте кавычки перед командой `{print}`.
-                option: |
+                option: |-
                     ```
                     '{print} options {at} {random}'
                     ```
             -   feedback: options is a variable. You don't literally want to print 'options {at} {random}'.
-                option: |
+                option: |-
                     ```
                     {print} 'options' {at} {random}
                     ```
             -   feedback: That's right
-                option: |
+                option: |-
                     ```
                     {print} options {at} {random}
                     ```
@@ -781,22 +778,22 @@ levels:
             question_text: What would be a good next line in this code?
             mp_choice_options:
             -   feedback: Great! You get it!
-                option: |
+                option: |-
                     ```
                     {print} 'You win...' prices {at} {random}
                     ```
             -   feedback: Hedy will literally print 'prices {at} {random}'
-                option: |
+                option: |-
                     ```
                     {print} You win... 'prices {at} {random}'
                     ```
             -   feedback: You need some quotation marks!
-                option: |
+                option: |-
                     ```
                     {print} You win... prices {at} {random}
                     ```
             -   feedback: Hedy will literally print 'prices {at} {random}''
-                option: |
+                option: |-
                     ```
                     {print} 'You win... prices {at} {random}'
                     ```
@@ -829,22 +826,22 @@ levels:
             question_text: What would be a good next line for this code?
             mp_choice_options:
             -   feedback: We need quotation marks
-                option: |
+                option: |-
                     ```
                     {print} So you pick door door
                     ```
             -   feedback: If the player chooses door 3, Hedy will say 'So you pick 3 3
-                option: |
+                option: |-
                     ```
                     {print} 'So you pick ' door door
                     ```
             -   feedback: Супер!
-                option: |
+                option: |-
                     ```
                     {print} 'So you pick door ' door
                     ```
             -   feedback: Hedy will literally print 'So you pick door door
-                option: |
+                option: |-
                     ```
                     {print} 'So you pick door door'
                     ```
@@ -895,22 +892,22 @@ levels:
             question_text: What is true?
             mp_choice_options:
             -   feedback: '`{print}` is still the same'
-                option: |
+                option: |-
                     ```
                     {print}
                     ```
             -   feedback: В строке выше используется команда `{if}`.
-                option: |
+                option: |-
                     ```
                     {if}
                     ```
             -   feedback: '`No these commands remain the same'
-                option: |
+                option: |-
                     ```
                     {sleep}
                     ```
             -   feedback: Correct!
-                option: |
+                option: |-
                     ```
                     {else}
                     ```
@@ -998,22 +995,22 @@ levels:
             question_text: Which word should be on the place of the question mark in the last line?
             mp_choice_options:
             -   feedback: '`{if}` is already in the line above'
-                option: |
+                option: |-
                     ```
                     {if}
                     ```
             -   feedback: No, you need `{else}`.
-                option: |
+                option: |-
                     ```
                     {at} {random}
                     ```
             -   feedback: Great!
-                option: |
+                option: |-
                     ```
                     {else}
                     ```
             -   feedback: '`{print}` is already there, we need a word before it!'
-                option: |
+                option: |-
                     ```
                     {print}
                     ```
@@ -1029,22 +1026,22 @@ levels:
             question_text: Which word should be in the place of the question mark?
             mp_choice_options:
             -   feedback: '`{if}` is in the line above.'
-                option: |
+                option: |-
                     ```
                     {if}
                     ```
             -   feedback: No, you don't need `{at} {random}`.
-                option: |
+                option: |-
                     ```
                     {at} {random}
                     ```
             -   feedback: There already is an `{else}` command
-                option: |
+                option: |-
                     ```
                     {else}
                     ```
             -   feedback: Потрясающе!
-                option: |
+                option: |-
                     ```
                     {print}
                     ```
@@ -1059,22 +1056,22 @@ levels:
             question_text: Which word should be on the place of the question mark?
             mp_choice_options:
             -   feedback: That's not the variable name.
-                option: |
+                option: |-
                     ```
                     favorite animal
                     ```
             -   feedback: Great job!
-                option: |
+                option: |-
                     ```
                     animal
                     ```
             -   feedback: '`{if}` is already there'
-                option: |
+                option: |-
                     ```
                     {if}
                     ```
             -   feedback: No, that's not it.
-                option: |
+                option: |-
                     ```
                     {print}
                     ```
@@ -1328,22 +1325,22 @@ levels:
             question_text: Which code is right?
             mp_choice_options:
             -   feedback: '`{repeat}` 100 `{times}` `{print}` ''hello'''
-                option: |
+                option: |-
                     ```
                     {print} 100 {times} 'hello'
                     ```
             -   feedback: '{repeat} 100 {times} {print} ''hello'''
-                option: |
+                option: |-
                     ```
                     {print} {repeat} 100 {times} 'hello'
                     ```
             -   feedback: '{repeat} 100 {times} {print} ''hello'''
-                option: |
+                option: |-
                     ```
                     {repeat} 'hello' 100 {times}
                     ```
             -   feedback: That's right!
-                option: |
+                option: |-
                     ```
                     {repeat} 100 {times} {print} 'hello'
                     ```
@@ -1372,22 +1369,22 @@ levels:
             question_text: Which word is wrong in the code?
             mp_choice_options:
             -   feedback: That's right!
-                option: |
+                option: |-
                     ```
                     I'm
                     ```
             -   feedback: '`{print}` is spelled correctly'
-                option: |
+                option: |-
                     ```
                     {print}
                     ```
             -   feedback: '`{repeat}` is spelled correctly'
-                option: |
+                option: |-
                     ```
                     {repeat}
                     ```
             -   feedback: '`{times}` is spelled correctly'
-                option: |
+                option: |-
                     ```
                     {times}
                     ```
@@ -1476,7 +1473,7 @@ levels:
             question_text: Welke Hedy code hoort bij dit resultaat
             mp_choice_options:
             -   feedback: Perfect, je kan het `{repeat}` commando hier niet gebruiken.
-                option: |
+                option: |-
                     ```
                     {print} 'Here comes the sun'
                     {print} 'Do do do do'
@@ -1485,13 +1482,13 @@ levels:
                     {print} 'Its alright'
                     ```
             -   feedback: Waar is de 'Do do do do' gebleven?
-                option: |
+                option: |-
                     ```
                     {repeat} 2 {times} {print} 'Here comes the sun'
                     {print} 'And I say'
                     {print} 'Its alright'"
             -   feedback: Dit is niet de juiste volgorde..
-                option: |
+                option: |-
                     ```
                     {repeat} 2 {times} {print} 'Here comes the sun'
                     {print} 'Do do do do'
@@ -1499,7 +1496,7 @@ levels:
                     {print} 'Its alright'
                     ```
             -   feedback: Dit is niet de juiste volgorde..
-                option: |
+                option: |-
                     ```
                     {repeat} 2 {times} {print} 'Here comes the sun'
                     {repeat} 2 {times} {print} 'Do do'
@@ -1520,7 +1517,7 @@ levels:
             question_text: Welke Hedy code hoort bij dit resultaat ?
             mp_choice_options:
             -   feedback: Je herhaalt de verkeerde regel
-                option: |
+                option: |-
                     ```
                     {print} 'Batman was flying through Gotham. '
                     {print} 'When suddenly he heard someone screaming...'
@@ -1528,7 +1525,7 @@ levels:
                     {repeat} 3 {times} {print} 'Please help me !'
                     ```
             -   feedback: Het commando `{print}` mist op regel 3
-                option: |
+                option: |-
                     ```
                     {print} 'Batman was flying through Gotham.'
                     {print} 'When suddenly he heard someone screaming...'
@@ -1536,7 +1533,7 @@ levels:
                     {print} 'Please help me !'
                     ```
             -   feedback: Je vergeet de aanhalingstekens
-                option: |
+                option: |-
                     ```
                     {print} Batman was flying through Gotham.
                     {print} When suddenly he heard someone screaming...
@@ -1544,7 +1541,7 @@ levels:
                     {print} Please help me !
                     ```
             -   feedback: Perfect
-                option: |
+                option: |-
                     ```
                     {print} 'Batman was flying through Gotham.'
                     {print} 'When suddenly he heard someone screaming...'
@@ -1563,27 +1560,27 @@ levels:
             question_text: What Hedy code belongs to this output?
             mp_choice_options:
             -   feedback: Almost! the first line needs an extra word
-                option: |
+                option: |-
                     ```
                     {repeat} 2 {times} 'if youre happy and you know it clap your hands'
                     {print} 'если вы счастливы и знаете это, и вы действительно хотите показать это'
                     {print} 'если вы счастливы и знаете это, хлопайте в ладоши'
                     ```
             -   feedback: Great!
-                option: |
+                option: |-
                     ```
                     {repeat} 2 {times} {print} 'if youre happy and you know it clap your hands'
                     {print} 'если вы счастливы и знаете это, и вы действительно хотите показать это'
                     {print} 'если вы счастливы и знаете это, хлопайте в ладоши'
                     ```
             -   feedback: This is not in the right order.
-                option: |
+                option: |-
                     ```
                     {repeat} 3 {times} {print} 'if youre happy and you know it clap your hands'
                     {print} 'если вы счастливы и знаете это, и вы действительно хотите показать это'
                     ```
             -   feedback: This is not in the right order.
-                option: |
+                option: |-
                     ```
                     {repeat} 4 {times} 'if youre happy and you know it'
                     {repeat} 2 раза "хлопайте в ладоши
@@ -1739,24 +1736,24 @@ levels:
             question_text: What will be the output of this code when we enter pancakes?
             mp_choice_options:
             -   feedback: There is no repetition in this answer.
-                option: |
+                option: |-
                     Welcome to restaurant Hedy
                     Pancakes
             -   feedback: This answer also repeats the welcome message
-                option: |
+                option: |-
                     Welcome to restaurant Hedy
                     Welcome to restaurant Hedy
                     Pancakes
                     Pancakes
             -   feedback: Almost! But look at the question, it is not repeated.
-                option: |
+                option: |-
                     Welcome to restaurant Hedy
                     What do you want to eat?
                     What do you want to eat?
                     Pancakes
                     Pancakes
             -   feedback: Well done!
-                option: |
+                option: |-
                     Welcome to restaurant Hedy
                     Pancakes
                     Pancakes
@@ -1790,7 +1787,7 @@ levels:
             question_text: In which of the codes is the indentation done right?
             mp_choice_options:
             -   feedback: You are wrong!
-                option: |
+                option: |-
                     ```
                     {if} ответ {is} 32
                        {print} 'Вы...'
@@ -1800,7 +1797,7 @@ levels:
                               {print} 'Вы ошибаетесь!'
                     ```
             -   feedback: You are wrong!
-                option: |
+                option: |-
                     ```
                     {if} ответ {is} 32
                     {print} 'Вы...'
@@ -1810,7 +1807,7 @@ levels:
                     {print} 'Вы ошибаетесь!'
                     ```
             -   feedback: You are... right!
-                option: |
+                option: |-
                     ```
                     {if} ответ {is} 32
                         {print} 'Вы...'
@@ -1820,7 +1817,7 @@ levels:
                         {print} 'Вы ошибаетесь!'
                     ```
             -   feedback: You are wrong!
-                option: |
+                option: |-
                     ```
                     {if} ответ {is} 32
                         {print} 'Вы...'
@@ -1988,7 +1985,7 @@ levels:
                 Icecream is the best!
             mp_choice_options:
             -   feedback: Don't forget the indentation after `{repeat}` commands.
-                option: |
+                option: |-
                     ```
                     desert = {ask} 'What is your favorite type of desert?'
                     {if} desert {is} icecream
@@ -1996,7 +1993,7 @@ levels:
                         {print} 'Icecream is the best!'
                     ```
             -   feedback: Use indentation after an `{if}` command
-                option: |
+                option: |-
                     ```
                     desert = {ask} 'What is your favorite type of desert?'
                     {if} desert {is} icecream
@@ -2004,7 +2001,7 @@ levels:
                         {print} 'Icecream is the best!'
                     ```
             -   feedback: Perfect
-                option: |
+                option: |-
                     ```
                     desert = {ask} 'What is your favorite type of desert?'
                     {if} desert {is} icecream
@@ -2012,7 +2009,7 @@ levels:
                             {print} 'Icecream is the best!'
                     ```
             -   feedback: There are 2 `{repeat}` commands in this code.
-                option: |
+                option: |-
                     ```
                     {repeat} 3 {times}
                         desert = {ask} 'What is your favorite type of desert?'
@@ -2046,7 +2043,7 @@ levels:
             question_text: "В этом коде от пиццерии. \nВы получите скидку в 5 долларов, если закажете среднюю пиццу с колой.\n Что вы должны сделать, чтобы отладить этот код?"
             mp_choice_options:
             -   feedback: Amazing!
-                option: |
+                option: |-
                     ```
                     {if} food {is} pizza
                         {if} size {is} medium
@@ -2054,7 +2051,7 @@ levels:
                                 price = price - 2
                     ```
             -   feedback: Второй `{if}` пропускает код!
-                option: |
+                option: |-
                     ```
                     {if} food {is} pizza
                         {if} size {is} medium
@@ -2062,7 +2059,7 @@ levels:
                         price = price - 2
                     ```
             -   feedback: Два последовательных `{if}`s никогда не являются правильными.
-                option: |
+                option: |-
                     ```
                     {if} food {is} pizza
                     {if} size {is} medium
@@ -2070,7 +2067,7 @@ levels:
                             price = price - 2
                     ```
             -   feedback: Try again
-                option: |
+                option: |-
                     ```
                     {if} food {is} pizza
                         {if} size {is} medium
@@ -2141,22 +2138,22 @@ levels:
             question_text: What do we need to fill in on the `_?_` if we want to print each compliment?
             mp_choice_options:
             -   feedback: That's not it
-                option: |
+                option: |-
                     ```
                     {for} each compliment
                     ```
             -   feedback: You deserve all those compliments!
-                option: |
+                option: |-
                     ```
                     {for} compliment {in} compliments
                     ```
             -   feedback: That's not it
-                option: |
+                option: |-
                     ```
                     {if} compliment {in} compliments
                     ```
             -   feedback: Almost there!
-                option: |
+                option: |-
                     ```
                     {for} compliments {in} compliment
                     ```
@@ -2276,22 +2273,22 @@ levels:
             question_text: What line should be on the _?_ in this code that decides what these people will have for dinner?
             mp_choice_options:
             -   feedback: You are on fire!
-                option: |
+                option: |-
                     ```
                     {for} name {in} names
                     ```
             -   feedback: No it should be for each name in the list nameS, so the other way around
-                option: |
+                option: |-
                     ```
                     {for} names {in} name
                     ```
             -   feedback: Each name should be told what they will have for dinner.
-                option: |
+                option: |-
                     ```
                     {for} food {in} food
                     ```
             -   feedback: Each name should be told what they will have for dinner.
-                option: |
+                option: |-
                     ```
                     {for} name {in} food
                     ```
@@ -2307,22 +2304,22 @@ levels:
             question_text: What should be on the _?_ in this code that decides which color shirt you get?
             mp_choice_options:
             -   feedback: That's not it!
-                option: |
+                option: |-
                     ```
                     'name gets a color shirt'
                     ```
             -   feedback: Great job! This was a hard one!
-                option: |
+                option: |-
                     ```
                     name 'gets a ' colors {at} {random} ' shirt'
                     ```
             -   feedback: You want each name printed. So the first word should not be names but...
-                option: |
+                option: |-
                     ```
                     names 'gets a ' color {at} {random} ' shirt'
                     ```
             -   feedback: There is no variable named people..
-                option: |
+                option: |-
                     ```
                     'people gets a colors shirt'
                     ```
@@ -2377,22 +2374,22 @@ levels:
             question_text: What word should be at the place of the question mark?
             mp_choice_options:
             -   feedback: 'No'
-                option: |
+                option: |-
                     ```
                     counter
                     ```
             -   feedback: Correct
-                option: |
+                option: |-
                     ```
                     {range}
                     ```
             -   feedback: 'No'
-                option: |
+                option: |-
                     ```
                     {if}
                     ```
             -   feedback: 'No'
-                option: |
+                option: |-
                     ```
                     {for}
                     ```
@@ -2430,28 +2427,28 @@ levels:
                 Once I caught a fish alive!
             mp_choice_options:
             -   feedback: Perfect
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 1 {to} 5
                         {print} i
                     {print} 'Once I caught a fish alive!'
                     ```
             -   feedback: This code won't work. You need an indent after {for}.
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 1 {to} 5
                     {print} i
                     {print} 'Once I caught a fish alive!'
                     ```
             -   feedback: Now Hedy will count '1 Once I caught a fish alive!, 2 Once I caught a fish alive! etc.
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 1 {to} 5
                         {print} i
                         {print} 'Once I caught a fish alive!'
                     ```
             -   feedback: i is a variable and shouldn't have quotation marks
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 1 {to} 5
                         {print} 'i'
@@ -2476,25 +2473,25 @@ levels:
                 0
             mp_choice_options:
             -   feedback: Now Hedy prints the numbers from 0 to 10 instead of 10 to 0.
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 0 {to} 10
                         {print} i
                     ```
             -   feedback: Hedy would print negative numbers in this case.
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 0 to 10
                         {print} - i
                     ```
             -   feedback: Unfortunately this does not exist.
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 10 to 0
                         {print} 10 9 8 7 6 5 4 3 2 1 0
                     ```
             -   feedback: That's right!
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 0 {to} 10
                         {print} 10 - i
@@ -2546,22 +2543,22 @@ levels:
             question_text: What should be on the place of the question mark?
             mp_choice_options:
             -   feedback: There's not always 3 people
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 0 {to} 3
                     ```
             -   feedback: The variable is not named guests
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 1 {to} guests
                     ```
             -   feedback: Great!
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 1 {to} people
                     ```
             -   feedback: That's one order too many!
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 0 {to} people
                     ```
@@ -2618,28 +2615,28 @@ levels:
                 Baby shark
             mp_choice_options:
             -   feedback: Mind the indention
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 1 {to} 3
                         {print} Baby shark tututudutudu
                         {print} Baby shark
                     ```
             -   feedback: That's right!
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 1 {to} 3
                         {print} Baby shark tututudutudu
                     {print} Baby shark
                     ```
             -   feedback: '`{range}` 0 `{to}` 3 is 4 times.'
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 0 {to} 3
                         {print} Baby shark tututudutudu
                     {print} Baby shark
                     ```
             -   feedback: '`{range}` 0 `{to}` 3 is 4 times.'
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 0 {to} 3
                         {print} Baby shark tututudutudu
@@ -2656,17 +2653,15 @@ levels:
             question_text: Which output is correct?
             mp_choice_options:
             -   feedback: Don't forget the first line of code!
-                option: |
-                    5
+                option: '5'
             -   feedback: This is not the one!
-                option: |
-                    3.5 + 1.5
+                option: 3.5 + 1.5
             -   feedback: Take a close look at the second line...
-                option: |
+                option: |-
                     thee and a half plus one and a half is...
                     five
             -   feedback: Great job!
-                option: |
+                option: |-
                     three and a half plus one and a half is...
                     5
             hint: Both lines are printed!
@@ -2694,8 +2689,7 @@ levels:
                     print 'I would like a ' flavors at random ' cake.'
                     ```
             -   feedback: All the different values of flavors should be in quotation marks.
-                option: |4
-
+                option: |-
                     ```
                     flavors = 'vanilla, strawberry, chocolate'
                     print 'I would like a ' flavors at random ' cake.'
@@ -2710,17 +2704,13 @@ levels:
             question_text: Что не так с этим кодом?
             mp_choice_options:
             -   feedback: Правильно!
-                option: |
-                    The name of the variable is different in line 1 than in line 2.
+                option: The name of the variable is different in line 1 than in line 2.
             -   feedback: That's not true
-                option: |
-                    The quotation marks aren't used correctly in line 2
+                option: The quotation marks aren't used correctly in line 2
             -   feedback: That's not true
-                option: |
-                    You can't use the = sign when using an ask command
+                option: You can't use the = sign when using an ask command
             -   feedback: That's not true
-                option: |
-                    Nothing is wrong.
+                option: Nothing is wrong.
             hint: The quotation marks are used correctly
             correct_answer: A
             question_score: '10'
@@ -2733,17 +2723,13 @@ levels:
             question_text: In which lines are quotation marks needed to get the code to work?
             mp_choice_options:
             -   feedback: 'No'
-                option: |
-                    Line 1 and 2
+                option: Line 1 and 2
             -   feedback: 'No'
-                option: |
-                    Line 1, 2 and 3
+                option: Line 1, 2 and 3
             -   feedback: 'No'
-                option: |
-                    Line 1, 2 and 4
+                option: Line 1, 2 and 4
             -   feedback: Perfect!
-                option: |
-                    All of the lines
+                option: All of the lines
             hint: Does line 3 need quotation marks too?
             correct_answer: D
             question_score: '10'
@@ -2764,11 +2750,11 @@ levels:
             question_score: '10'
         6:
             code: "{print} 'Добро пожаловать в МакХеди!'\norder = {ask} 'Вы хотите гамбургер или картофель фри?'\n{if} заказ = 'гамбургер'\n\tцена = 12\n{if} заказ = 'картофель фри'\n\tцена = 4\nнапитки = {ask} 'Хотите ли вы напиток с этим за 2 доллара?'\n{if} напитки = 'да'\n\t???\n{print} 'Это будет\
-                \ ' цена ' доллар, пожалуйста'\n"
+                \ ' цена ' доллар, пожалуйста'"
             question_text: Which line should be filled in at the ???
             mp_choice_options:
             -   feedback: What if you only order fries and a drink?
-                option: |
+                option: |-
                     ```
                     price = 14
                     ```
@@ -2942,7 +2928,7 @@ levels:
             -   feedback: Great thinking!
                 option: or
             -   feedback: 'No'
-                option: ' + '
+                option: +
             -   feedback: 'No'
                 option: print
             hint: Neither vegans nor muslims can eat sausage rolls.
@@ -3108,25 +3094,25 @@ levels:
             question_text: Что не так с этим кодом?
             mp_choice_options:
             -   feedback: Правильно!
-                option: |
+                option: |-
                     Line 3 should be:
                     ```
                     {if} chocolate = 'yes' {and} sprinkles = 'yes'
                     ```
             -   feedback: This is not what I ordered!
-                option: |
+                option: |-
                     Line 3 should be:
                     ```
                     {if} chocolate = 'no' {and} sprinkles = 'no'
                     ```
             -   feedback: This is not what I ordered!
-                option: |
+                option: |-
                     Line 5 should be:
                     ```
                     {if} chocolate = 'yes' {and} sprinkles = 'yes'
                     ```
             -   feedback: This is not what I ordered!
-                option: |
+                option: |-
                     Line 7 should be:
                     ```
                     {if} chocolate = 'yes' {and} sprinkles = 'no'
@@ -3164,7 +3150,7 @@ levels:
             question_score: '10'
     14:
         1:
-            code: |
+            code: |-
                 name _ {ask} 'Who are you?'
                 {if} name == 'Hedy'
                     {print} 'Me too!'
@@ -3196,7 +3182,7 @@ levels:
             correct_answer: C
             question_score: '10'
         3:
-            code: |
+            code: |-
                 guests = {ask} 'How many people are at the party?'
                 {if} guests _ 130
                     {print} 'You can come in!'
@@ -3211,13 +3197,13 @@ levels:
                 option: '`=` and `>=`'
             -   feedback: You are right
                 option: '`<` and `>=`'
-            -   option: ' `+` and `==`'
+            -   option: '`+` and `==`'
             hint: There are 130 people allowed in the club
             correct_answer: C
             question_score: '10'
             feedback: That's not it
         4:
-            code: |
+            code: |-
                 price = 10
                 money = {ask} How much money do you have?
                 buy = {ask} 'Would you like to buy this teddy bear?'
@@ -3239,14 +3225,14 @@ levels:
             correct_answer: B
             question_score: '10'
         5:
-            code: |
+            code: |-
                 age = {ask} 'How old are you?'
                 ticket = {ask} 'Do you have a ticket?'
                 {if} age _ and ticket == 'yes'
                     {print} 'You can enter the movie theater.'
                 {else}
                     {print} 'You are not allowed to come in!'
-            question_text: 'Which symbol should be filled in on the blanks if the movie is suitable for kids for the age of 12 and up? '
+            question_text: Which symbol should be filled in on the blanks if the movie is suitable for kids for the age of 12 and up?
             mp_choice_options:
             -   feedback: 12 year olds are allowed too
                 option: '`> 12`'
@@ -3260,7 +3246,7 @@ levels:
             correct_answer: B
             question_score: '10'
         6:
-            code: |
+            code: |-
                 lives = 2
                 {repeat} 10 times
                     {if} lives != 0
@@ -3281,7 +3267,7 @@ levels:
             correct_answer: D
             question_score: '10'
         7:
-            code: |
+            code: |-
                 {print} 'Guess which number'
                 numbers = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
                 number = numbers {at} {random}
@@ -3310,7 +3296,7 @@ levels:
             correct_answer: B
             question_score: '10'
         8:
-            code: |
+            code: |-
                 length = {ask} 'Please fill in your length in cm'
                 {if} length < 120
                     {print} 'Sorry, you cannot go on this roller coaster.'
@@ -3330,7 +3316,7 @@ levels:
             correct_answer: A
             question_score: '10'
         9:
-            code: |
+            code: |-
                 chocolate = {ask} 'How many pieces of chocolate have you eaten?'
                   {if} chocolate <= 2
                       {print} 'That is a healthy amount'
@@ -3352,7 +3338,7 @@ levels:
             correct_answer: D
             question_score: '10'
         10:
-            code: |
+            code: |-
                 {print} 'Whoever gets the most points wins!'
                 {if} points_player_1 < points_player_2
                     {print} _
@@ -3371,7 +3357,7 @@ levels:
             question_score: '10'
     15:
         1:
-            code: |
+            code: |-
                 answer = 0
                 while answer _ 'Amsterdam'
                     answer = ask 'What is the capital city of the Netherlands?'
@@ -3393,22 +3379,22 @@ levels:
             question_text: Which of these codes has used the correct symbol(s)?
             mp_choice_options:
             -   feedback: 'No'
-                option: |
+                option: |-
                     ```
                     {while} name = Hedy
                     ```
             -   feedback: 'No'
-                option: |
+                option: |-
                     ```
                     {while} age = 24
                     ```
             -   feedback: Yes!
-                option: |
+                option: |-
                     ```
                     {while} time > 0
                     ```
             -   feedback: A quotation mark is missing
-                option: |
+                option: |-
                     ```
                     {while} answer == yes'
                     ```
@@ -3416,7 +3402,7 @@ levels:
             correct_answer: C
             question_score: '10'
         3:
-            code: |
+            code: |-
                 _ age >= 18
                   print 'you are not allowed in this bar'
             question_text: Which command should be filled in on the two blanks?
@@ -3433,7 +3419,7 @@ levels:
             correct_answer: B
             question_score: '10'
         4:
-            code: |
+            code: |-
                 options = 1, 2, 3, 4, 5, 6
                 print 'Throw 6 as fast as you can!'
                 thrown = 0
@@ -3457,7 +3443,7 @@ levels:
             correct_answer: D
             question_score: '10'
         5:
-            code: |
+            code: |-
                 wetness = 10
                 while wetness != 0
                     print 'Your hair is still wet, hair dryer on!'
@@ -3480,7 +3466,7 @@ levels:
             correct_answer: C
             question_score: '10'
         6:
-            code: |
+            code: |-
                 lives = 100
                     {while} lives != 0
                     answer = {ask} 'Are you annoyed yet?'
@@ -3500,7 +3486,7 @@ levels:
             correct_answer: D
             question_score: '10'
         7:
-            code: |
+            code: |-
                 {print} 'Guess which number'
                 numbers = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
                 number = numbers {at} {random}
@@ -3528,7 +3514,7 @@ levels:
             correct_answer: A
             question_score: '10'
         8:
-            code: |
+            code: |-
                 while toilet == 'occupied'
                     lights = 'on'
                     air_freshener_sprays = 'yes'
@@ -3549,7 +3535,7 @@ levels:
             correct_answer: B
             question_score: '10'
         9:
-            code: |
+            code: |-
                 chocolate = {ask} 'How many calories have you eaten today?'
                   {while} calories <= 1000
                       {print} 'You could eat some more'
@@ -3571,7 +3557,7 @@ levels:
             correct_answer: C
             question_score: '10'
         10:
-            code: |
+            code: |-
                 name_player_1 = {ask} 'Name player 1:'
                 name_player_2 = {ask} 'Name player 2:'
                 {while} points_player_1 > points_player_2

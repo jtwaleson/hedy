@@ -187,7 +187,7 @@
     explanation: print something. Remember to use a quotation mark for literal printing.
     demo_code: '{print} ''5 times 5 is '' 5 * 5'
 -   name: '{for} with a list'
-    explanation: 'print all things in a list '
+    explanation: print all things in a list
     demo_code: |-
         animals {is} dog, cat, blobfish
         {for} animal {in} animals
@@ -211,24 +211,24 @@
 12:
 -   name: float directly
     explanation: Calculation with decimals
-    demo_code: |
+    demo_code: |-
         print 'Calculate away!'
         print 'Two and a half plus two and a half is...'
         print 2.5 + 2.5
 -   name: float in var
     explanation: Storing a calculation with decimals
-    demo_code: |
+    demo_code: |-
         name = 'Hedy τοΡομπότ'
         {print} 'Γεια ' name
 -   name: εισαγωγικά μετά μια σύγκριση {if}
     explanation: Κείμενο σε εισαγωγικά μετά το {if}
-    demo_code: |
+    demo_code: |-
         name = {ask} 'Ποιος είσαι;'
         {if} name = 'Hedy'
             {print} 'Γεια σου!'
 -   name: εισαγωγικά σε λίστα
     explanation: Μια λίστα με εισαγωγικά
-    demo_code: |
+    demo_code: |-
         superheroes = 'Iron Man', 'Batman', 'Superman'
         {print} superheroes {at} {random}
 13:
@@ -270,7 +270,7 @@
         {if} answer == 25
             {print} 'Πολύ σωστά!'
 -   name: Ανισότητα
-    explanation: 'Χρησιμοποιούμε το σύμβολο  `!=` για να ελέγξουμε αν δυο πράγματα δεν είναι ίδια. '
+    explanation: Χρησιμοποιούμε το σύμβολο  `!=` για να ελέγξουμε αν δυο πράγματα δεν είναι ίδια.
     demo_code: |-
         answer = {ask} 'Πόσο κάνει 5 x 5;'
         {if} answer != 25

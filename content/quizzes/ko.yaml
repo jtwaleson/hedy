@@ -15,22 +15,17 @@ levels:
             correct_answer: A
             question_score: '10'
         2:
-            code: |
-                ___ 안녕하세요!
+            code: ___ 안녕하세요!
             question_text: 안녕하세요!라는 글자가 출력되려면 빈칸에 어느 것을 채워야 하나요?
             mp_choice_options:
             -   feedback: '`{echo}`는 주어진 답을 반복한다.'
-                option: |
-                    `{echo}`
+                option: '`{echo}`'
             -   feedback: 맞아요!
-                option: |
-                    `{print}`
+                option: '`{print}`'
             -   feedback: 안녕하세요 는 명령어가 아니에요.
-                option: |
-                    `hello`
+                option: '`hello`'
             -   feedback: '`{ask}`를 사용하면, 질문을 할 수 있습니다.'
-                option: |
-                    `{ask}`
+                option: '`{ask}`'
             hint: _?_ 안녕하세요!
             correct_answer: B
             question_score: '10'
@@ -38,22 +33,22 @@ levels:
             question_text: 좋아하는 색이 무엇인지 물어보고 싶어요?
             mp_choice_options:
             -   feedback: '`{print}` 텍스트는 출력 하지만 질문이 없습니다.'
-                option: |
+                option: |-
                     ```
                     {print} 무슨 색깔을 좋아하세요?
                     ```
             -   feedback: 명령어는 1개만 입력하셔야 합니다, 2개는 사용할수 없어요.
-                option: |
+                option: |-
                     ```
                     {ask} {print} 무슨 색깔을 좋아하세요?
                     ```
             -   feedback: 좋았어!
-                option: |
+                option: |-
                     ```
                     {ask} 무슨 색깔을 좋아하세요?
                     ```
             -   feedback: '`{echo}` 당신의 답변 뒤에 반복 됩니다.'
-                option: |
+                option: |-
                     ```
                     {echo} 무슨 색깔을 좋아하세요?
                     ```
@@ -85,17 +80,13 @@ levels:
             question_text: 2 라인에 어떤 명령이 누락되었습니까?
             mp_choice_options:
             -   feedback: 아니요, 당신의 답변이 출력되어야 해요.
-                option: |
-                    `{print}`
+                option: '`{print}`'
             -   feedback: Hedy는 명령어가 아니에요.
-                option: |
-                    `Hedy`
+                option: '`Hedy`'
             -   feedback: '`{ask}`를 사용하면 질문을 할 수 있습니다.'
-                option: |
-                    `{ask}`
+                option: '`{ask}`'
             -   feedback: 잘했어요!
-                option: |
-                    `{echo}`
+                option: '`{echo}`'
             hint: 2번 줄 다음에 정답을 보고 싶으시군요...
             correct_answer: D
             question_score: '10'
@@ -170,24 +161,22 @@ levels:
             correct_answer: B
             question_score: '10'
         10:
-            code: |
+            code: |-
                 {ask} 너 레벨 2로 갈 준비가 되었니?
                 {echo}
                 {echo}
             question_text: 이 코드를 실행하면 출력 화면에 어떤 내용이 출력 되나요?
             mp_choice_options:
             -   feedback: 두 개의 echo 명령어가 있습니다
-                option: |
-                    너 레벨 2로 갈 준비가 되었니?
+                option: 너 레벨 2로 갈 준비가 되었니?
             -   feedback: 정말 잘했어요!
-                option: |
+                option: |-
                     네!
                     네!
             -   feedback: 두 개의 echo 명령어가 있습니다
-                option: |
-                    네!
+                option: 네!
             -   feedback: 두 개의 echo 명령어가 있습니다
-                option: |
+                option: |-
                     너 레벨 2로 갈 준비가 되었니?
                     네!
             hint: 가자!
@@ -212,22 +201,22 @@ levels:
             question_text: 어떤 코드가 맞습니까?
             mp_choice_options:
             -   feedback: 굉장해요!
-                option: |
+                option: |-
                     ```
                     name {is} {ask} 너는 이름이 뭐니?
                     ```
             -   feedback: 단어는 맞았지만 순서는 달라요!
-                option: |
+                option: |-
                     ```
                     {ask} {is} name 너는 이름이 뭐니
                     ```
             -   feedback: 이것은 레벨 1에서는 맞게 작동했지만, 레벨 2 이상에서는 다르게 작동합니다.
-                option: |
+                option: |-
                     ```
                     {ask} 너는 이름이 뭐니?
                     ```
             -   feedback: 단어는 맞았지만 순서는 달라요!
-                option: |
+                option: |-
                     ```
                     {ask} 너는 이름이 뭐니? {is} name
                     ```
@@ -290,17 +279,13 @@ levels:
             question_text: 이 공백에 어떤게 있어야 할까요?
             mp_choice_options:
             -   feedback: 완벽해!
-                option: |
-                    `{sleep}`
+                option: '`{sleep}`'
             -   feedback: 여기서 다시 반복할 것은 없다
-                option: |
-                    `{echo}`
+                option: '`{echo}`'
             -   feedback: '`{print}`에 대한 텍스트가 없습니다'
-                option: |
-                    `{print}`
+                option: '`{print}`'
             -   feedback: 의심할 여지가 없다
-                option: |
-                    `{ask}`
+                option: '`{ask}`'
             hint: 드라마틱한 효과를 위해 일시 중지...
             correct_answer: A
             question_score: '10'
@@ -312,22 +297,22 @@ levels:
             question_text: 2번 라인에서는 어떤 명령을 사용해야 합니까?
             mp_choice_options:
             -   feedback: '`{print}`할 필요가 없습니다'
-                option: |
+                option: |-
                     ```
                     {print} 3
                     ```
             -   feedback: 완벽해!
-                option: |
+                option: |-
                     ```
                     {sleep} 3
                     ```
             -   feedback: 이렇게 하면 폭탄이 1초 안에 터진다
-                option: |
+                option: |-
                     ```
                     {sleep}
                     ```
             -   feedback: 3 이라는 숫자를 사용함으로써 자신을 조금 더 천천히 실행되게 해보자
-                option: |
+                option: |-
                     ```
                     {sleep} {sleep} {sleep}
                     ```
@@ -341,22 +326,22 @@ levels:
             question_text: 코드의 첫번째 줄을 어떻게 수정하겠습니까?
             mp_choice_options:
             -   feedback: 그것은 순서가 틀렸다
-                option: |
+                option: |-
                     ```
                     age {ask} {is} 너는 몇살이니?
                     ```
             -   feedback: 그것은 순서가 틀렸다
-                option: |
+                option: |-
                     ```
                     {ask} {is} age 너는 몇살이니?
                     ```
             -   feedback: 알겠어요!
-                option: |
+                option: |-
                     ```
                     age {is} {ask} 너는 몇살이니?
                     ```
             -   feedback: '`{ask}` 명령은 어디에 있습니까?'
-                option: |
+                option: |-
                     ```
                     age {is} 너는 몇살이니?
                     ```
@@ -389,22 +374,22 @@ levels:
             question_text: 1번 라인에서는 어떤 명령을 사용해야 합니까?
             mp_choice_options:
             -   feedback: 가장 좋아하는 아이스크림을 알고 싶겠지!
-                option: |
+                option: |-
                     ```
                     {sleep} 3
                     ```
             -   feedback: 줄 가운데에 `{print}`명령을 원하지 않으십니다...
-                option: |
+                option: |-
                     ```
                     {print} 딸기
                     ```
             -   feedback: 이런 식으로 목록을 만드는 거야 하지만 지금은 이건 아니에요.
-                option: |
+                option: |-
                     ```
                     딸기, 초콜렛, 바닐라
                     ```
             -   feedback: 그렇구나!
-                option: |
+                option: |-
                     ```
                     {ask} 어떤 아이스크림을 좋아하니?
                     ```
@@ -416,17 +401,13 @@ levels:
             question_text: Hedy가 무작위로 선택하도록 하기 위해 어떤 명령어를 써야할까요?
             mp_choice_options:
             -   feedback: '`{print}`는 텍스트를 출력 하는 데 사용됩니다'
-                option: |
-                    `{print}`
+                option: '`{print}`'
             -   feedback: '`{ask}`는 질문을 할 때 사용된다'
-                option: |
-                    `{ask}`
+                option: '`{ask}`'
             -   feedback: '`{is}`는 목록을 만드는 데 사용된다'
-                option: |
-                    `{is}`
+                option: '`{is}`'
             -   feedback: 맞아요!
-                option: |
-                    `{at}` `{random}`
+                option: '`{at}` `{random}`'
             hint: 무작위 뜻은 랜덤으로 선택한다는 뜻이에요.
             correct_answer: D
             question_score: '10'
@@ -454,17 +435,17 @@ levels:
             question_text: 이 코드 2번 줄에 뭐가 문제일까요?
             mp_choice_options:
             -   feedback: 거의 다 왔어요. 단어 순서가 아직 안 맞아요.
-                option: |
+                option: |-
                     ```
                     {at} {random} {print} options
                     ```
             -   feedback: 당신은 Hedy가 항상 같은 것만 출력 하기를 원하지는 않는다. 가위나 보를 {print} 하고 싶을거다.
-                option: |
+                option: |-
                     ```
                     {print} 바위 {at} {random}
                     ```
             -   feedback: 아주 좋아요!
-                option: |
+                option: |-
                     ```
                     {print} options {at} {random}
                     ```
@@ -480,17 +461,17 @@ levels:
             question_text: 랜덤 가격을 출력 하려면 2 라인에서 무엇을 변경해야 합니까?
             mp_choice_options:
             -   feedback: 당신은 가격이라는 단어를 `{print}` 하는 것이 아니라, 당신의 리스트 `{at} {random}`에서 하나의 가격을 `{print}` 하는 것이다
-                option: |
+                option: |-
                     ```
                     {print} price
                     ```
             -   feedback: 잘했어요! 정말 집중 하셨네요.
-                option: |
+                option: |-
                     ```
                     {print} prices {at} {random}
                     ```
             -   feedback: '`{at} {random}`는 변수 뒤에 위치한다.'
-                option: |
+                option: |-
                     ```
                     {print} {at} {random} price
                     ```
@@ -603,22 +584,22 @@ levels:
             question_text: __에 무엇이 표시되어야 할까요?
             mp_choice_options:
             -   feedback: 굉장하네요!
-                option: |
+                option: |-
                     ```
                     {remove} walked_yesterday {from} walkers
                     ```
             -   feedback: '`{remove} {from}` or `{add} {to}`, not `{remove} {to}`'
-                option: |
+                option: |-
                     ```
                     {remove} walked yesterday {to} walkers
                     ```
             -   feedback: 어제는 변수가 아니다
-                option: |
+                option: |-
                     ```
                     {remove} walkers {from} yesterday
                     ```
             -   feedback: 어제 산책시켰던 사람이 오늘 또 해야 하는 상황이에요. 이건 아닌거 같아요.
-                option: |
+                option: |-
                     ```
                     {add} walked_yesterday {to} walkers
                     ```
@@ -630,22 +611,22 @@ levels:
             question_text: 이 중 맞는 코드는?
             mp_choice_options:
             -   feedback: 맞아요
-                option: |
+                option: |-
                     ```
                     {print} 'Im very excited to take this quiz!'
                     ```
             -   feedback: '`{ask}`에도 따옴표가 필요합니다!'
-                option: |
+                option: |-
                     ```
                     {print} Im very excited to take this quiz!
                     ```
             -   feedback: '`{at} {random}`이(가) 여전히 작동합니다'
-                option: |
+                option: |-
                     ```
                     {print} 'I'm very excited to take this quiz!'
                     ```
             -   feedback: 아니오, 따옴표의 위치를 잘 확인해보자.
-                option: |
+                option: |-
                     ```
                     {print} 'I'm very excited to take this quiz!
                     ```
@@ -656,22 +637,22 @@ levels:
             question_text: 적절한 따옴표를 사용하는 코드는?
             mp_choice_options:
             -   feedback: 이 따옴표가 치우쳐 있습니다. 작은 따옴표가 필요합니다.
-                option: |
+                option: |-
                     ```
                     {print} `hello`
                     ```
             -   feedback: 맞아요
-                option: |
+                option: |-
                     ```
                     {print} '안녕하세요'
                     ```
             -   feedback: 따옴표가 없습니다!
-                option: |
+                option: |-
                     ```
                     {print} 안녕하세요
                     ```
             -   feedback: 이건 쉼표,에요. 따옴표가 필요합니다.
-                option: |
+                option: |-
                     ```
                     {print} ,안녕하세요,
                     ```
@@ -682,22 +663,22 @@ levels:
             question_text: 따옴표는 어디에 정확하게 사용됩니까?
             mp_choice_options:
             -   feedback: 따옴표 추가해주세요!
-                option: |
+                option: |-
                     ```
                     {print} 안녕 나는 Hedy 야
                     ```
             -   feedback: print하고 싶은 단어의 앞뒤는 모두 따옴표로 표시해야 합니다.
-                option: |
+                option: |-
                     ```
                     {print} '안녕 나는 Hedy 야
                     ```
             -   feedback: 첫 번째 따옴표는 `{print}`단어 뒤에 있어야 합니다
-                option: |
+                option: |-
                     ```
                     '{print} 안녕 나는 Hedy 야'
                     ```
             -   feedback: 완벽해!
-                option: |
+                option: |-
                     ```
                     {print} '안녕 나는 Hedy 야'
                     ```
@@ -725,17 +706,17 @@ levels:
             question_text: 이 코드가 작동하기 위해서는 무엇이 바뀌어야 합니까?
             mp_choice_options:
             -   feedback: '`{print}`명령 앞에 따옴표를 붙이지 마십시오.'
-                option: |
+                option: |-
                     ```
                     '{print} options {at} {random}'
                     ```
             -   feedback: options가 변수입니다. 'options {at} {random}'을(를) 출력하고 싶지는 않습니다.
-                option: |
+                option: |-
                     ```
                     {print} 'options' {at} {random}
                     ```
             -   feedback: 맞아요
-                option: |
+                option: |-
                     ```
                     {print} options {at} {random}
                     ```
@@ -749,22 +730,22 @@ levels:
             question_text: 이 코드의 다음 행은 나와야 할까요?
             mp_choice_options:
             -   feedback: 좋아요! 알겠어요!
-                option: |
+                option: |-
                     ```
                     {print} '당신이 이겼어요...' prices {at} {random}
                     ```
             -   feedback: Hedy는 문자 그대로 '가격 {at} {random}'을 print합니다
-                option: |
+                option: |-
                     ```
                     {print} 당신이 이겼어요... 'prices {at} {random}'
                     ```
             -   feedback: 따옴표가 필요해요!
-                option: |
+                option: |-
                     ```
                     {print} 당신이 이겼어요... prices {at} {random}
                     ```
             -   feedback: Hedy는 말 그대로 '가격 {at} {random}'을 print할 것이다
-                option: |
+                option: |-
                     ```
                     {print} '당신이 이겼어요... prices {at} {random}'
                     ```
@@ -797,22 +778,22 @@ levels:
             question_text: 이 코드의 다음 행은 무엇이 좋을까요?
             mp_choice_options:
             -   feedback: 우리는 따옴표가 필요해요
-                option: |
+                option: |-
                     ```
                     {print} So you pick door door
                     ```
             -   feedback: If the player chooses door 3, Hedy will say 'So you pick 3 3
-                option: |
+                option: |-
                     ```
                     {print} 'So you pick ' door door
                     ```
             -   feedback: 굉장하네요!
-                option: |
+                option: |-
                     ```
                     {print} 'So you pick door ' door
                     ```
             -   feedback: Hedy는 말 그대로 '문을 선택하라'고 출력할 것이다
-                option: |
+                option: |-
                     ```
                     {print} 'So you pick door door'
                     ```
@@ -863,17 +844,13 @@ levels:
             question_text: 공백은 어떤 명령어로 채워야 할까요?
             mp_choice_options:
             -   feedback: '`{print}`는 여전히 동일합니다.'
-                option: |
-                    `{print}`
+                option: '`{print}`'
             -   feedback: 위 줄에서 `{if}`명령을 사용합니다.
-                option: |
-                    `{if}`
+                option: '`{if}`'
             -   feedback: 그게 아니야!
-                option: |
-                    `{sleep}`
+                option: '`{sleep}`'
             -   feedback: 맞아요!
-                option: |
-                    `{else}`
+                option: '`{else}`'
             hint: '`{if}` 명령어와 함께 사용되는 것은 무엇입니까?'
             correct_answer: D
             question_score: '10'
@@ -958,22 +935,22 @@ levels:
             question_text: 마지막 줄의 물음표 자리에 어떤 단어가 있어야 하나요?
             mp_choice_options:
             -   feedback: '`{if}`이(가) 이미 위의 행에 있습니다'
-                option: |
+                option: |-
                     ```
                     {if}
                     ```
             -   feedback: 아니오, 당신은 `{else}` 가 필요해요.
-                option: |
+                option: |-
                     ```
                     {at} {random}
                     ```
             -   feedback: 좋았어!
-                option: |
+                option: |-
                     ```
                     {else}
                     ```
             -   feedback: '`{print}` 는 이미 있어요, 우리는 그전에 필요한 단어가 있어요!'
-                option: |
+                option: |-
                     ```
                     {print}
                     ```
@@ -989,17 +966,13 @@ levels:
             question_text: 물음표 대신에 어떤 단어가 있어야 할까요?
             mp_choice_options:
             -   feedback: '`{if}`는 위쪽 라인에 있다.'
-                option: |
-                    `{if}`
+                option: '`{if}`'
             -   feedback: 아니오, 당신은 `{at} {random}` 가 필요없어요.
-                option: |
-                    `{at}` `{random}`
+                option: '`{at}` `{random}`'
             -   feedback: '`{else}` 명령이 이미 있습니다'
-                option: |
-                    `{else}`
+                option: '`{else}`'
             -   feedback: 아주 좋아요!
-                option: |
-                    `{print}`
+                option: '`{print}`'
             hint: 음 `{else}` 뒤에 `{print}` 명령어가 따라와요
             correct_answer: D
             question_score: '10'
@@ -1011,21 +984,19 @@ levels:
             question_text: 물음표의 자리에 어떤 단어가 있어야 할까요?
             mp_choice_options:
             -   feedback: 그건 변수명이 아니야.
-                option: |
+                option: |-
                     ```
                     favorite animal
                     ```
             -   feedback: 정말 잘했어!
-                option: |
+                option: |-
                     ```
                     animal
                     ```
             -   feedback: '`{if}`이(가) 이미 있습니다'
-                option: |
-                    `{if}`
+                option: '`{if}`'
             -   feedback: 아니오, 이건 아니에요.
-                option: |
-                    `{print}`
+                option: '`{print}`'
             hint: 변수명은 무엇일까요?
             correct_answer: B
             question_score: '10'
@@ -1276,22 +1247,22 @@ levels:
             question_text: 어떤 코드가 맞습니까?
             mp_choice_options:
             -   feedback: '`{repeat}` 100 `{times}` `{print}` ''hello'''
-                option: |
+                option: |-
                     ```
                     {print} 100 {times} 'hello'
                     ```
             -   feedback: '{repeat} 100 {times} {print} ''hello'''
-                option: |
+                option: |-
                     ```
                     {print} {repeat} 100 {times} 'hello'
                     ```
             -   feedback: '{repeat} 100 {times} {print} ''hello'''
-                option: |
+                option: |-
                     ```
                     {repeat} 'hello' 100 {times}
                     ```
             -   feedback: 그렇구나!
-                option: |
+                option: |-
                     ```
                     {repeat} 100 {times} {print} 'hello'
                     ```
@@ -1320,19 +1291,16 @@ levels:
             question_text: 코드에서 틀린 단어는?
             mp_choice_options:
             -   feedback: 그렇구나!
-                option: |
+                option: |-
                     ```
                     I'm
                     ```
             -   feedback: '`{print}`의 철자가 정확합니다'
-                option: |
-                    `{print}`
+                option: '`{print}`'
             -   feedback: '`{repeat}`의 철자가 정확합니다'
-                option: |
-                    `{repeat}`
+                option: '`{repeat}`'
             -   feedback: '`{times}`의 철자가 정확합니다'
-                option: |
-                    `{times}`
+                option: '`{times}`'
             hint: I'm is wrong, you can't use apostrophes
             correct_answer: A
             question_score: '10'
@@ -1418,7 +1386,7 @@ levels:
             question_text: Hedy 코드가 이 출력물에 속하나요?
             mp_choice_options:
             -   feedback: Awesome, you can't use the `{repeat}` command here.
-                option: |
+                option: |-
                     ```
                     {print} 'Here comes the sun'
                     {print} 'Do do do do'
@@ -1427,13 +1395,13 @@ levels:
                     {print} 'Its alright'
                     ```
             -   feedback: Do do do do'를 어디에 두셨나요?
-                option: |
+                option: |-
                     ```
                     {repeat} 2 {times} {print} 'Here comes the sun'
                     {print} 'And I say'
                     {print} 'Its alright'"
             -   feedback: 이것은 정확한 순서가 아닙니다..
-                option: |
+                option: |-
                     ```
                     {repeat} 2 {times} {print} 'Here comes the sun'
                     {print} 'Do do do do'
@@ -1441,7 +1409,7 @@ levels:
                     {print} 'Its alright'
                     ```
             -   feedback: 이것은 정확한 순서가 아닙니다..
-                option: |
+                option: |-
                     ```
                     {repeat} 2 {times} {print} 'Here comes the sun'
                     {repeat} 2 {times} {print} 'Do do'
@@ -1462,7 +1430,7 @@ levels:
             question_text: Hedy 코드가 이 출력물에 속하나요?
             mp_choice_options:
             -   feedback: 반복되는 대사가 올바르지 않습니다.
-                option: |
+                option: |-
                     ```
                     {print} 'Batman was flying through Gotham. '
                     {print} 'When suddenly he heard someone screaming...'
@@ -1470,7 +1438,7 @@ levels:
                     {repeat} 3 {times} {print} 'Please help me!'
                     ```
             -   feedback: 3행에 `{print}` 명령이 없습니다.
-                option: |
+                option: |-
                     ```
                     {print} 'Batman was flying through Gotham.'
                     {print} 'When suddenly he heard someone screaming...'
@@ -1478,7 +1446,7 @@ levels:
                     {print} 'Please help me!'
                     ```
             -   feedback: 따옴표를 놓쳤군요
-                option: |
+                option: |-
                     ```
                     {print} Batman was flying through Gotham.
                     {print} When suddenly he heard someone screaming...
@@ -1486,7 +1454,7 @@ levels:
                     {print} Please help me!
                     ```
             -   feedback: 완벽하네요
-                option: |
+                option: |-
                     ```
                     {print} 'Batman was flying through Gotham.'
                     {print} 'When suddenly he heard someone screaming...'
@@ -1505,27 +1473,27 @@ levels:
             question_text: 어떤 코드가 이 출력물에 속하나요?
             mp_choice_options:
             -   feedback: 거의! 첫번째 줄은 추가 단어가 필요해
-                option: |
+                option: |-
                     ```
                     {repeat} 2 {times} 'if youre happy and you know it clap your hands'
                     {print} 'if youre happy and you know it and you really want to show it'
                     {print} 'if youre happy and you know it clap your hands'
                     ```
             -   feedback: 좋았어!
-                option: |
+                option: |-
                     ```
                     {repeat} 2 {times} {print} 'if youre happy and you know it clap your hands'
                     {print} 'if youre happy and you know it and you really want to show it'
                     {print} 'if youre happy and you know it clap your hands'
                     ```
             -   feedback: 이것은 순서가 맞지 않습니다.
-                option: |
+                option: |-
                     ```
                     {repeat} 3 {times} {print} 'if youre happy and you know it clap your hands'
                     {print} 'if youre happy and you know it and you really want to show it'
                     ```
             -   feedback: 이것은 순서가 맞지 않습니다.
-                option: |
+                option: |-
                     ```
                     {repeat} 4 {times} 'if youre happy and you know it'
                     {repeat} 2 times 'clap your hands'
@@ -1544,22 +1512,22 @@ levels:
             question_text: 이 코드에 의해 어떤 출력이 생산됩니까?
             mp_choice_options:
             -   feedback: 모든 것이 두 번 print된다.
-                option: |
+                option: |-
                     Hello
                     Im Hedy!
             -   feedback: 두 번째 줄도 두 번 반복된다.
-                option: |
+                option: |-
                     Hello
                     Hello
                     Im Hedy
             -   feedback: 굉장하네요!
-                option: |
+                option: |-
                     Hello
                     Im Hedy!
                     Hello
                     Im Hedy!
             -   feedback: 모든 것이 두 번 print된다
-                option: |
+                option: |-
                     Hello
                     Hello
                     Im Hedy!
@@ -1592,11 +1560,11 @@ levels:
             question_text: 이 프로그램을 실행하면 어떤 결과물이 나올까요?
             mp_choice_options:
             -   feedback: '`{repeat}` 명령을 조심하세요!'
-                option: |
+                option: |-
                     Baby shark tututudutudu
                     Baby shark
             -   feedback: The last line has no indentation, so it's not repeated.
-                option: |
+                option: |-
                     Baby shark tututudutudu
                     Baby shark
                     Baby shark tututudutudu
@@ -1604,13 +1572,13 @@ levels:
                     Baby shark tututudutudu
                     Baby shark
             -   feedback: 좋아!
-                option: |
+                option: |-
                     Baby shark tututudutudu
                     Baby shark tututudutudu
                     Baby shark tututudutudu
                     Baby shark
             -   feedback: 반복되는 것과 그렇지 않은 것.
-                option: |
+                option: |-
                     Baby shark tututudutudu
                     Baby shark
                     Baby shark
@@ -1627,26 +1595,26 @@ levels:
             question_text: 어떤 출력이 정확합니까?
             mp_choice_options:
             -   feedback: '`{repeat}` 명령을 조심하세요!'
-                option: |
+                option: |-
                     The children went:
                     Yay!
                     Were going on holiday!
             -   feedback: 맞아요!
-                option: |
+                option: |-
                     The children went:
                     Yay!
                     Were going on holiday!
                     Yay!
                     Were going on holiday!
             -   feedback: 이 주문은 올바르지 않습니다.
-                option: |
+                option: |-
                     The children went:
                     Yay!
                     Yay!
                     Were going on holiday!
                     Were going on holiday!
             -   feedback: 마지막 대사도 반복해서 나온다.
-                option: |
+                option: |-
                     The children went:
                     Yay!
                     Yay!
@@ -1681,24 +1649,24 @@ levels:
             question_text: 팬케이크에 들어가면 이 코드의 출력은 어떻게 되나요?
             mp_choice_options:
             -   feedback: 이 대답에는 반복이 없다.
-                option: |
+                option: |-
                     Welcome to restaurant Hedy
                     Pancakes
             -   feedback: 이 답변은 또한 환영 메시지를 반복합니다
-                option: |
+                option: |-
                     Welcome to restaurant Hedy
                     Welcome to restaurant Hedy
                     Pancakes
                     Pancakes
             -   feedback: Almost! But look at the question, it is not repeated.
-                option: |
+                option: |-
                     Welcome to restaurant Hedy
                     What do you want to eat?
                     What do you want to eat?
                     Pancakes
                     Pancakes
             -   feedback: 정말 잘하셨어요!
-                option: |
+                option: |-
                     Welcome to restaurant Hedy
                     Pancakes
                     Pancakes
@@ -1732,7 +1700,7 @@ levels:
             question_text: 그 코드들 중 어떤 것이 압입이 제대로 되어 있습니까?
             mp_choice_options:
             -   feedback: 당신이 틀렸어요!
-                option: |
+                option: |-
                     ```
                     {if} answer {is} 32
                        {print} 'You are...'
@@ -1742,7 +1710,7 @@ levels:
                               {print} 'You are wrong!'
                     ```
             -   feedback: 당신이 틀렸어요!
-                option: |
+                option: |-
                     ```
                     {if} answer {is} 32
                     {print} 'You are...'
@@ -1752,7 +1720,7 @@ levels:
                     {print} 'You are wrong!'
                     ```
             -   feedback: 당신 말이 맞아요!
-                option: |
+                option: |-
                     ```
                     {if} answer {is} 32
                         {print} 'You are...'
@@ -1762,7 +1730,7 @@ levels:
                         {print} 'You are wrong!'
                     ```
             -   feedback: 당신이 틀렸어요!
-                option: |
+                option: |-
                     ```
                     {if} answer {is} 32
                         {print} 'You are...'
@@ -1939,7 +1907,7 @@ levels:
                 Icecream is the best!
             mp_choice_options:
             -   feedback: '`{repeat}` 명령 뒤에 들여쓰기를 잊지 마십시오.'
-                option: |
+                option: |-
                     ```
                     desert = {ask} 'What is your favorite type of desert?'
                     {if} desert {is} icecream
@@ -1947,7 +1915,7 @@ levels:
                         {print} 'Icecream is the best!'
                     ```
             -   feedback: '`{if}`명령 뒤에 들여쓰기 사용'
-                option: |
+                option: |-
                     ```
                     desert = {ask} 'What is your favorite type of desert?'
                     {if} desert {is} icecream
@@ -1955,7 +1923,7 @@ levels:
                         {print} 'Icecream is the best!'
                     ```
             -   feedback: 완벽하네요
-                option: |
+                option: |-
                     ```
                     desert = {ask} 'What is your favorite type of desert?'
                     {if} desert {is} icecream
@@ -1963,7 +1931,7 @@ levels:
                             {print} 'Icecream is the best!'
                     ```
             -   feedback: 이 코드에는 2개의 `{repeat}`명령이 있습니다.
-                option: |
+                option: |-
                     ```
                     {repeat} 3 {times}
                         desert = {ask} 'What is your favorite type of desert?'
@@ -1997,7 +1965,7 @@ levels:
             question_text: 피자집에 있는 이 코드에서. 콜라와 함께 중간 크기의 피자를 주문하면 5달러를 할인해 준다. 이 코드를 디버깅하려면 어떻게 해야 하는가?
             mp_choice_options:
             -   feedback: 최고야!
-                option: |
+                option: |-
                     ```
                     {if} food {is} pizza
                         {if} size {is} medium
@@ -2005,7 +1973,7 @@ levels:
                                 price = price - 2
                     ```
             -   feedback: 두번째 `{if}` 잃어버린 코드!
-                option: |
+                option: |-
                     ```
                     {if} food {is} pizza
                         {if} size {is} medium
@@ -2013,7 +1981,7 @@ levels:
                         price = price - 2
                     ```
             -   feedback: 두 번 연속해서 `{if}`이라고 하는 것은 결코 옳지 않다.
-                option: |
+                option: |-
                     ```
                     {if} food {is} pizza
                     {if} size {is} medium
@@ -2021,7 +1989,7 @@ levels:
                             price = price - 2
                     ```
             -   feedback: 다시 해보세요
-                option: |
+                option: |-
                     ```
                     {if} food {is} pizza
                         {if} size {is} medium
@@ -2092,22 +2060,22 @@ levels:
             question_text: 각각의 칭찬을 print하려면 `_`에 무엇을 기입해야 할까요?
             mp_choice_options:
             -   feedback: 그게 아니야
-                option: |
+                option: |-
                     ```
                     {for} each compliment
                     ```
             -   feedback: 당신은 그 많은 칭찬을 받을 자격이 있어요!
-                option: |
+                option: |-
                     ```
                     {for} compliment {in} compliments
                     ```
             -   feedback: 그게 아니야
-                option: |
+                option: |-
                     ```
                     {if} compliment {in} compliments
                     ```
             -   feedback: 거의 다 왔어요!
-                option: |
+                option: |-
                     ```
                     {for} compliments {in} compliment
                     ```
@@ -2227,22 +2195,22 @@ levels:
             question_text: 이 사람들이 저녁 식사로 무엇을 먹을지를 결정하는 이 법전에서 _?_에는 어떤 줄이 있어야 할까요?
             mp_choice_options:
             -   feedback: 불났어!
-                option: |
+                option: |-
                     ```
                     {for} name {in} names
                     ```
             -   feedback: No it should be for each name in the list nameS, so the other way around
-                option: |
+                option: |-
                     ```
                     {for} names {in} name
                     ```
             -   feedback: 각각의 이름은 그들이 저녁으로 무엇을 먹을지 알려주어야 한다.
-                option: |
+                option: |-
                     ```
                     {for} food {in} food
                     ```
             -   feedback: 각각의 이름은 그들이 저녁으로 무엇을 먹을지 알려주어야 한다.
-                option: |
+                option: |-
                     ```
                     {for} name {in} food
                     ```
@@ -2258,22 +2226,22 @@ levels:
             question_text: 어떤 색 셔츠를 입을지를 결정하는 이 코드의 _?_에 무엇이 있어야 할까요?
             mp_choice_options:
             -   feedback: 그게 아니야!
-                option: |
+                option: |-
                     ```
                     'name gets a color shirt'
                     ```
             -   feedback: 수고했어요! 힘든 일이었어요!
-                option: |
+                option: |-
                     ```
                     name 'gets a ' colors {at} {random} ' shirt'
                     ```
             -   feedback: 각각의 이름을 print하고 싶으시군요. 그래서 첫번째 단어는 이름이 아니라...
-                option: |
+                option: |-
                     ```
                     names 'gets a ' color {at} {random} ' shirt'
                     ```
             -   feedback: people이라는 변수가 없습니다..
-                option: |
+                option: |-
                     ```
                     'people gets a colors shirt'
                     ```
@@ -2328,19 +2296,16 @@ levels:
             question_text: 물음표의 자리에는 어떤 단어가 있어야 할까요?
             mp_choice_options:
             -   feedback: 아니오
-                option: |
+                option: |-
                     ```
                     counter
                     ```
             -   feedback: 맞아요
-                option: |
-                    `{range}`
+                option: '`{range}`'
             -   feedback: 아니오
-                option: |
-                    `{if}`
+                option: '`{if}`'
             -   feedback: 아니오
-                option: |
-                    `{for}`
+                option: '`{for}`'
             hint: What did you learn in this level?
             correct_answer: B
             question_score: '10'
@@ -2375,28 +2340,28 @@ levels:
                 Once I caught a fish alive!
             mp_choice_options:
             -   feedback: 완벽하네요
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 1 {to} 5
                         {print} i
                     {print} 'Once I caught a fish alive!'
                     ```
             -   feedback: 이 코드는 작동하지 않습니다. {for} 다음에 들여쓰기가 필요합니다.
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 1 {to} 5
                     {print} i
                     {print} 'Once I caught a fish alive!'
                     ```
             -   feedback: Now Hedy will count '1 Once I caught a fish alive!, 2 Once I caught a fish alive! etc.
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 1 {to} 5
                         {print} i
                         {print} 'Once I caught a fish alive!'
                     ```
             -   feedback: i는 변수이므로 따옴표를 가져서는 안됩니다
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 1 {to} 5
                         {print} 'i'
@@ -2421,25 +2386,25 @@ levels:
                 0
             mp_choice_options:
             -   feedback: 이제 Hedy는 10에서 0이 아닌 0에서 10까지의 숫자를 print한다.
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 0 {to} 10
                         {print} i
                     ```
             -   feedback: Hedy는 이런 경우에 음수를 찍어낼 겁니다.
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 0 to 10
                         {print} - i
                     ```
             -   feedback: 불행하게도 이것은 존재하지 않는다.
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 10 to 0
                         {print} 10 9 8 7 6 5 4 3 2 1 0
                     ```
             -   feedback: 그렇구나!
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 0 {to} 10
                         {print} 10 - i
@@ -2491,22 +2456,22 @@ levels:
             question_text: 물음표의 자리에 무엇이 있어야 하는가?
             mp_choice_options:
             -   feedback: 항상 3명이 있는 것은 아니다
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 0 {to} 3
                     ```
             -   feedback: 변수에 명명된 게스트가 없습니다
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 1 {to} guests
                     ```
             -   feedback: 좋았어!
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 1 {to} people
                     ```
             -   feedback: 한 번 주문하면 너무 많아요!
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 0 {to} people
                     ```
@@ -2563,28 +2528,28 @@ levels:
                 Baby shark
             mp_choice_options:
             -   feedback: 의도에 유의하라
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 1 {to} 3
                         {print} Baby shark tututudutudu
                         {print} Baby shark
                     ```
             -   feedback: 그렇구나!
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 1 {to} 3
                         {print} Baby shark tututudutudu
                     {print} Baby shark
                     ```
             -   feedback: '`{range}` 0 `{to}` 3은 4배이다.'
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 0 {to} 3
                         {print} Baby shark tututudutudu
                     {print} Baby shark
                     ```
             -   feedback: '`{range}` 0 `{to}` 3은 4배이다.'
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 0 {to} 3
                         {print} Baby shark tututudutudu
@@ -2601,17 +2566,15 @@ levels:
             question_text: 어떤 출력이 정확합니까?
             mp_choice_options:
             -   feedback: 코드 첫 줄 잊지 마세요!
-                option: |
-                    5
+                option: '5'
             -   feedback: 이거 아니야!
-                option: |
-                    3.5 + 1.5
+                option: 3.5 + 1.5
             -   feedback: 두번째 줄을 자세히 보세요...
-                option: |
+                option: |-
                     thee and a half plus one and a half is...
                     five
             -   feedback: 정말 잘했어!
-                option: |
+                option: |-
                     three and a half plus one and a half is...
                     5
             hint: Both lines are printed!
@@ -2639,8 +2602,7 @@ levels:
                     {print} 'I would like a ' flavors {at} {random} ' cake.'
                     ```
             -   feedback: 맛의 모든 다른 값들은 따옴표로 표시되어야 한다.
-                option: |4
-
+                option: |-
                     ```
                     flavors = 'vanilla, strawberry, chocolate'
                     {print} 'I would like a ' flavors {at} {random} ' cake.'
@@ -2655,17 +2617,13 @@ levels:
             question_text: 이 코드에 무슨 문제가 있는 거죠?
             mp_choice_options:
             -   feedback: 맞아요!
-                option: |
-                    The name of the variable is different in line 1 than in line 2.
+                option: The name of the variable is different in line 1 than in line 2.
             -   feedback: 그렇지 않아요
-                option: |
-                    The quotation marks aren't used correctly in line 2
+                option: The quotation marks aren't used correctly in line 2
             -   feedback: 그렇지 않아요
-                option: |
-                    You can't use the = sign when using an {ask} command
+                option: You can't use the = sign when using an {ask} command
             -   feedback: 그렇지 않아요
-                option: |
-                    Nothing is wrong.
+                option: Nothing is wrong.
             hint: The quotation marks are used correctly
             correct_answer: A
             question_score: '10'
@@ -2678,17 +2636,13 @@ levels:
             question_text: 코드를 작동시키기 위해 따옴표가 필요한 줄은 어디입니까?
             mp_choice_options:
             -   feedback: 아니오
-                option: |
-                    Line 1 and 2
+                option: Line 1 and 2
             -   feedback: 아니오
-                option: |
-                    Line 1, 2 and 3
+                option: Line 1, 2 and 3
             -   feedback: 아니오
-                option: |
-                    Line 1, 2 and 4
+                option: Line 1, 2 and 4
             -   feedback: 완벽해!
-                option: |
-                    All of the lines
+                option: All of the lines
             hint: Does line 3 need quotation marks too?
             correct_answer: D
             question_score: '10'
@@ -2719,7 +2673,7 @@ levels:
             correct_answer: B
             question_score: '10'
         6:
-            code: |
+            code: |-
                 {print} 'Welcome to McHedy!'
                 order = {ask} 'Would you like a hamburger or fries?'
                 {if} order = 'hamburger'
@@ -2733,7 +2687,7 @@ levels:
             question_text: 어느 선을 채워야 할까요???
             mp_choice_options:
             -   feedback: 만약 감자튀김과 음료만 주문하면 어떨까요?
-                option: |
+                option: |-
                     ```
                     price = 14
                     ```
@@ -2935,7 +2889,7 @@ levels:
             -   feedback: 좋은 생각이다!
                 option: '`{or}`'
             -   feedback: 아니오
-                option: ' `+` '
+                option: '`+`'
             -   feedback: 아니오
                 option: '`{print}`'
             hint: Neither vegans nor muslims can eat sausage rolls.
@@ -3113,25 +3067,25 @@ levels:
             question_text: 이 코드에 무슨 문제가 있나요?
             mp_choice_options:
             -   feedback: 맞아요!
-                option: |
+                option: |-
                     Line 3 should be:
                     ```
                     {if} chocolate = 'yes' {and} sprinkles = 'yes'
                     ```
             -   feedback: 이건 제가 시킨 게 아니에요!
-                option: |
+                option: |-
                     Line 3 should be:
                     ```
                     {if} chocolate = 'no' {and} sprinkles = 'no'
                     ```
             -   feedback: 이건 제가 시킨 게 아니에요!
-                option: |
+                option: |-
                     Line 5 should be:
                     ```
                     {if} chocolate = 'yes' {and} sprinkles = 'yes'
                     ```
             -   feedback: 이건 제가 시킨 게 아니에요!
-                option: |
+                option: |-
                     Line 7 should be:
                     ```
                     {if} chocolate = 'yes' {and} sprinkles = 'no'
@@ -3169,7 +3123,7 @@ levels:
             question_score: '10'
     14:
         1:
-            code: |
+            code: |-
                 name _ {ask} 'Who are you?'
                 {if} name == 'Hedy'
                     {print} 'Me too!'
@@ -3201,7 +3155,7 @@ levels:
             correct_answer: C
             question_score: '10'
         3:
-            code: |
+            code: |-
                 guests = {ask} 'How many people are at the party?'
                 {if} guests _ 130
                     {print} 'You can come in!'
@@ -3216,13 +3170,13 @@ levels:
                 option: '`=` and `>=`'
             -   feedback: 맞아요
                 option: '`<` and `>=`'
-            -   option: ' `+` 와 `==`'
+            -   option: '`+` 와 `==`'
             hint: There are 130 people allowed in the club
             correct_answer: C
             question_score: '10'
             feedback: 그게 아니야
         4:
-            code: |
+            code: |-
                 price = 10
                 money = {ask} How much money do you have?
                 buy = {ask} 'Would you like to buy this teddy bear?'
@@ -3244,14 +3198,14 @@ levels:
             correct_answer: B
             question_score: '10'
         5:
-            code: |
+            code: |-
                 age = {ask} 'How old are you?'
                 ticket = {ask} 'Do you have a ticket?'
                 {if} age _ and ticket == 'yes'
                     {print} 'You can enter the movie theater.'
                 {else}
                     {print} 'You are not allowed to come in!'
-            question_text: '영화가 12세 이상의 아이들에게 적합하다면 빈칸에 어떤 기호를 써야 할까요? '
+            question_text: 영화가 12세 이상의 아이들에게 적합하다면 빈칸에 어떤 기호를 써야 할까요?
             mp_choice_options:
             -   feedback: 12살도 가능하다
                 option: '`> 12`'
@@ -3265,7 +3219,7 @@ levels:
             correct_answer: B
             question_score: '10'
         6:
-            code: |
+            code: |-
                 lives = 2
                 {repeat} 10 times
                     {if} lives != 0
@@ -3286,7 +3240,7 @@ levels:
             correct_answer: D
             question_score: '10'
         7:
-            code: |
+            code: |-
                 {print} 'Guess which number'
                 numbers = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
                 number = numbers {at} {random}
@@ -3315,7 +3269,7 @@ levels:
             correct_answer: B
             question_score: '10'
         8:
-            code: |
+            code: |-
                 length = {ask} 'Please fill in your length in cm'
                 {if} length < 120
                     {print} 'Sorry, you cannot go on this roller coaster.'
@@ -3335,7 +3289,7 @@ levels:
             correct_answer: A
             question_score: '10'
         9:
-            code: |
+            code: |-
                 chocolate = {ask} 'How many pieces of chocolate have you eaten?'
                   {if} chocolate <= 2
                       {print} 'That is a healthy amount'
@@ -3357,7 +3311,7 @@ levels:
             correct_answer: D
             question_score: '10'
         10:
-            code: |
+            code: |-
                 {print} 'Whoever gets the most points wins!'
                 {if} points_player_1 < points_player_2
                     {print} _
@@ -3376,7 +3330,7 @@ levels:
             question_score: '10'
     15:
         1:
-            code: |
+            code: |-
                 answer = 0
                 while answer _ 'Amsterdam'
                     answer = ask 'What is the capital city of the Netherlands?'
@@ -3398,22 +3352,22 @@ levels:
             question_text: 다음 중 올바른 기호를 사용한 코드는 무엇입니까?
             mp_choice_options:
             -   feedback: 아니오
-                option: |
+                option: |-
                     ```
                     {while} name = Hedy
                     ```
             -   feedback: 아니오
-                option: |
+                option: |-
                     ```
                     {while} age = 24
                     ```
             -   feedback: 네!
-                option: |
+                option: |-
                     ```
                     {while} time > 0
                     ```
             -   feedback: 따옴표가 없습니다
-                option: |
+                option: |-
                     ```
                     {while} answer == yes'
                     ```
@@ -3421,7 +3375,7 @@ levels:
             correct_answer: C
             question_score: '10'
         3:
-            code: |
+            code: |-
                 _ age >= 18
                   print 'you are not allowed in this bar'
             question_text: 빈칸 두 개에 어떤 명령어를 입력해야 합니까?
@@ -3438,7 +3392,7 @@ levels:
             correct_answer: B
             question_score: '10'
         4:
-            code: |
+            code: |-
                 options = 1, 2, 3, 4, 5, 6
                 print 'Throw 6 as fast as you can!'
                 thrown = 0
@@ -3462,7 +3416,7 @@ levels:
             correct_answer: D
             question_score: '10'
         5:
-            code: |
+            code: |-
                 wetness = 10
                 while wetness != 0
                     print 'Your hair is still wet, hair dryer on!'
@@ -3485,7 +3439,7 @@ levels:
             correct_answer: C
             question_score: '10'
         6:
-            code: |
+            code: |-
                 lives = 100
                     {while} lives != 0
                     answer = {ask} 'Are you annoyed yet?'
@@ -3505,7 +3459,7 @@ levels:
             correct_answer: D
             question_score: '10'
         7:
-            code: |
+            code: |-
                 {print} 'Guess which number'
                 numbers = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
                 number = numbers {at} {random}
@@ -3533,7 +3487,7 @@ levels:
             correct_answer: A
             question_score: '10'
         8:
-            code: |
+            code: |-
                 while toilet == 'occupied'
                     lights = 'on'
                     air_freshener_sprays = 'yes'
@@ -3554,7 +3508,7 @@ levels:
             correct_answer: B
             question_score: '10'
         9:
-            code: |
+            code: |-
                 chocolate = {ask} 'How many calories have you eaten today?'
                   {while} calories <= 1000
                       {print} 'You could eat some more'
@@ -3576,7 +3530,7 @@ levels:
             correct_answer: C
             question_score: '10'
         10:
-            code: |
+            code: |-
                 name_player_1 = {ask} 'Name player 1:'
                 name_player_2 = {ask} 'Name player 2:'
                 {while} points_player_1 > points_player_2

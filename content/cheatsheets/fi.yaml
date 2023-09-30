@@ -211,24 +211,24 @@
 12:
 -   name: float directly
     explanation: Desimaaliluvut.
-    demo_code: |
+    demo_code: |-
         {print} 'Laskehan!'
         {print} 'Kaksi ja puoli plus kaksi ja puoli on yhteensä...'
         {print} 2.5 + 2.5
 -   name: assign text
     explanation: Teksti lainausmerkeissä merkin `=` jälkeen
-    demo_code: |
+    demo_code: |-
         nimi = 'Hedy robotti'
         {print} 'Hei ' nimi
 -   name: heittomerkit {if} vertailun jälkeen
     explanation: Teksti lainausmerkeissä komennon `{if}` jälkeen.
-    demo_code: |
+    demo_code: |-
         nimi = {ask} 'Kuka olet?'
         {if} nimi = 'Hedy'
             {print} 'Moikka!'
 -   name: lainausmerkit listassa
     explanation: Lista käyttäen lainausmerkkejä.
-    demo_code: |
+    demo_code: |-
         supersankarit = 'Iron Man', 'Batman', 'Superman'
         {print} supersankarit {at} {random}
 13:

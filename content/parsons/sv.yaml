@@ -1,7 +1,7 @@
 levels:
     1:
         1:
-            story: |
+            story: |-
                 Du är kund hos bageriet Hedy.
                 Du går in på bageriet och välkomnas av bagaren.
                 Han frågar vilken sorts paj du vill beställa.
@@ -12,8 +12,7 @@ levels:
                 {echo} Så du vill ha
                 {print} Din beställning görs i ordning nu!
         2:
-            story: |
-                Du står vid DJ-båset och ber om en låt. Skapa ett program som frågar om du är redo att festa och sedan frågar vilken låt du vill höra.
+            story: Du står vid DJ-båset och ber om en låt. Skapa ett program som frågar om du är redo att festa och sedan frågar vilken låt du vill höra.
             code: |-
                 {print} Det här är DJ Hedy
                 {ask} Är du redo att festa?
@@ -21,7 +20,7 @@ levels:
                 {echo} Bra val! Jag älskar
     2:
         1:
-            story: |
+            story: |-
                 Du och dina vänner ska titta på Netflix.
                 Visa vilken film du ska titta på och önska tittarna mycket roligt!
             code: |-
@@ -30,8 +29,7 @@ levels:
                 {print} Vi ska se film
                 {print} Ha det så roligt!
         2:
-            story: |
-                Detta är webbshoppen för en leksaksbutik. Gör ett program där kunder kan lägga till en vara i sin kundvagn.
+            story: Detta är webbshoppen för en leksaksbutik. Gör ett program där kunder kan lägga till en vara i sin kundvagn.
             code: |-
                 {print} Välkommen till vår leksaksaffär
                 leksak {is} {ask} Vad vill du köpa?
@@ -39,7 +37,7 @@ levels:
                 {print} Tack för att du handlar hos oss!
     3:
         1:
-            story: "Det nya skolåret på Hogwarts har börjat! \nDet är sorteringshattens uppgift att sortera in dig i ett av husen.\nVilket hus kommer du att sorteras in i?\nÄr du en Gryffindor, Hufflepuf, Ravenclaw eller Slytherin.\nLåt programmet vänta en kort stund innan det avslöjar ditt hus.\n"
+            story: "Det nya skolåret på Hogwarts har börjat! \nDet är sorteringshattens uppgift att sortera in dig i ett av husen.\nVilket hus kommer du att sorteras in i?\nÄr du en Gryffindor, Hufflepuf, Ravenclaw eller Slytherin.\nLåt programmet vänta en kort stund innan det avslöjar ditt hus."
             code: |-
                 {print} Det nya skolåret på Hogwarts börjar!
                 {print} Sorteringshatten är redo att sortera.
@@ -47,8 +45,7 @@ levels:
                 {sleep} 2
                 {print} Och det blir elevhem {at} {random}
         2:
-            story: |
-                Gör ett program som väljer en slumpmässig måltid åt dig. Gör en lista med mat och en lista med tillbehör och låt programmet bestämma vad du ska äta!
+            story: Gör ett program som väljer en slumpmässig måltid åt dig. Gör en lista med mat och en lista med tillbehör och låt programmet bestämma vad du ska äta!
             code: |-
                 mat {is} pizza, glass, sallad, macka
                 tillbehör {is} choklad, ost, tonfisk, strössel
@@ -56,7 +53,7 @@ levels:
                 {sleep} 2
                 {print} mat {at} {random} med tillbehör {at} {random}
         3:
-            story: |
+            story: |-
                 In a chess tournament there are three players left.
                 Create a program that decides which two players have to play against each other first.
                 Start by printing the two players who play the first match, then print against which player the winner will play.
@@ -70,7 +67,7 @@ levels:
                 {print} 'The winner plays against ' players {at} {random}
     4:
         1:
-            story: |
+            story: |-
                 Du är den nyaste Pokémon-tränaren från Pallet Town!
                 Gör ett program som väljer din första Pokémon.
                 Låt programmet vänta en minut innan det avslöjar din första Pokémon.
@@ -80,8 +77,7 @@ levels:
                 {sleep}
                 {print} pokemon {at} {random}
         2:
-            story: |
-                Skapa ett lotteri där du kan välja ett pris som du kan vinna.
+            story: Skapa ett lotteri där du kan välja ett pris som du kan vinna.
             code: |-
                 priser {is} bil, hamster, miljon kronor
                 pris {is} {ask} 'Vad vill du vinna?'
@@ -89,7 +85,7 @@ levels:
                 {print} 'Du vann en ' priser {at} {random}
     5:
         1:
-            story: |
+            story: |-
                 Gör ett program som kollar om din favoritfilm redan är med i datorns lista.
                 Om så är fallet, skriv att du har god smak, annars lägg till filmen till i listan.
             code: |-
@@ -99,8 +95,7 @@ levels:
                 {else} {print} 'Synd att din favoritfilm inte finns i listan. Vi lägger till den direkt!'
                 {add} film {to_list} favoritfilmer
         2:
-            story: |
-                Gör ett mattespel.
+            story: Gör ett mattespel.
             code: |-
                 {print} 'Lös det här problemet'
                 svar {is} {ask} '88 - 16 = ?'
@@ -108,7 +103,7 @@ levels:
                 {else} {print} 'Fel! Svaret var 72'
     6:
         1:
-            story: |
+            story: |-
                 Gör ett program som räknar ut hur gammal du är i hund- och kattår.
                 Fråga först efter användarens ålder och börja beräkna.
                 Beräkna först hundår och sedan kattår.
@@ -120,8 +115,7 @@ levels:
                 {print} 'I hundår är du ' hundålder ' år gammal.'
                 {print} 'I kattår är du ' kattålder ' år gammal.'
         2:
-            story: |
-                Gör ett program som hjälper dig beräkna hur många tårtor du ska köpa till ditt födelsedagskalas.
+            story: Gör ett program som hjälper dig beräkna hur många tårtor du ska köpa till ditt födelsedagskalas.
             code: |-
                 {print} 'Det är din födelsedag!'
                 personer = {ask} 'Hur många personer vill du ge en tårtbit?'
@@ -129,7 +123,7 @@ levels:
                 {print} 'Då behöver du köpa' tårtmängd ' tårtor'
     7:
         1:
-            story: |
+            story: |-
                 I en schackturnering är det tre spelare kvar.
                 Gör ett program som bestämmer vilka två spelare som ska möta varann först.
                 Skriv först ut vilka två spelare som möts i den första matchen, skriv sedan ut vilken spelare vinnaren kommer att möta.
@@ -142,8 +136,7 @@ levels:
                 {remove} spelare2 {from} spelare
                 {print} 'Vinnaren spelar mot ' spelare {at} {random}
         2:
-            story: |
-                Skapa låten "Hjulen på bussen går runt runt runt"
+            story: Skapa låten "Hjulen på bussen går runt runt runt"
             code: |-
                 {print} 'hjulen på bussen snurrar'
                 {repeat} 3 {times} {print} 'runt, runt, runt'
@@ -151,7 +144,7 @@ levels:
                 {print} 'genom hela staden '
     8:
         1:
-            story: |
+            story: |-
                 Du och fyra andra vänner spelar Pokémon Go! Gör ett program som bestämmer vilket lag var och en av er ska spela i.
                 Antingen rött, gult eller blått! Gör en liten paus efter att du har meddelat ett lag.
             code: |-
@@ -162,8 +155,7 @@ levels:
                     {print} lag {at} {random}
                     sleep 2
         2:
-            story: |
-                Skriv ut nedräkningen för att leka kurragömma.
+            story: Skriv ut nedräkningen för att leka kurragömma.
             code: |-
                 räknare = 11
                 {repeat} 10 {times}
@@ -173,9 +165,8 @@ levels:
                 {print} 'Nu kommer jag!'
     9:
         1:
-            story: |
-                This game will give you three maths assignments. Each time the question is different. Can you figure out the order?
-            code: |
+            story: This game will give you three maths assignments. Each time the question is different. Can you figure out the order?
+            code: |-
                 numbers = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
                 {repeat} 3 {times}
                     number = numbers {at} {random}
@@ -186,10 +177,10 @@ levels:
                     {else}
                         {print} 'No! The correct answer is ' correct_answer
         2:
-            story: |
+            story: |-
                 This code asks the costumers in a restaurant if they would like to order dessert. If they do, it asks them what kind of dessert. If they order tiramisu they are told that the tiramisu is sold out.
                 Can you get the code to work?
-            code: |
+            code: |-
                 order = {ask} 'Would you like to order dessert?'
                 {if} order = yes
                     dessert = {ask} 'What kind of dessert would you like?'
@@ -201,10 +192,10 @@ levels:
                     {print} 'You dont want a dessert. No problem!'
     10:
         1:
-            story: |
+            story: |-
                 Help this family out by creating a schedule of who is cooking and what they should be making this week. The remove commands make sure nobody has to cook twice and they have a differnet dinner every day.
                 **Mind!** the variable order should be first days, then people, and lastly dinner_options. This goes for the lines with the remove commands too.
-            code: |
+            code: |-
                 days = Monday, Tuesday, Wednesday, Thursday, Friday
                 people = mom, dad, Martin, Abby, Jesse
                 dinner_options = pizza, tacos, pancakes, a salad, lasagne
@@ -215,10 +206,10 @@ levels:
                     {remove} chosen_person {from} people
                     {remove} chosen_dinner {from} dinner_options
         2:
-            story: |
+            story: |-
                 This make-over robot will decide your new hairstyle for you. If you do not agree with the first choice, you can try again.
                 **Mind** The variable people is defined in the first line. The variable hairstyles in the second.
-            code: |
+            code: |-
                 people = Betty, Amanda, Marc
                 hairstyles = a bald head, a mohawk, a ponytail, spikes
                 {for} person {in} people
@@ -230,19 +221,18 @@ levels:
                         {print} 'Lets try again... Then 'person ' will get ' hairstyles {at} {random}
     11:
         1:
-            story: |
-                Create the count down clock for New Year's eve! The program should show the numbers from 10 to 1 for a second and then wish you a happy new year.
-            code: |
+            story: Create the count down clock for New Year's eve! The program should show the numbers from 10 to 1 for a second and then wish you a happy new year.
+            code: |-
                 {for} number {in} {range} 10 {to} 1
                     {print} number
                     {sleep}
                     {clear}
                 {print} 'Happy New Year!'
         2:
-            story: |
+            story: |-
                 Create a program that tells us the final results of the science fair. Firstly define the variable contestants, then the variable place.
                 **Hint** Line 5 should be the sleep command, and you should end with saying congratulations.
-            code: |
+            code: |-
                 {print} 'And now we will reveal the results of the science fair'
                 contestants = Vivienne, Paul, Trixy, Bianca, Katya
                 place = 5
@@ -253,7 +243,7 @@ levels:
                 {print} 'Congratulations!'
     12:
         1:
-            story: |
+            story: |-
                 Sing the song 'What shall we do with the drunken sailor'. In case you don't know it, the song goed like this:
 
                 What will we do with the drunken sailor
@@ -264,16 +254,15 @@ levels:
                 Way hey and up she rises
                 Way hey and up she rises
                 Early in the morning
-            code: |
+            code: |-
                 verses = 'What will we do with the drunken sailor', 'Way hey and up she rises'
                 {for} verse {in} verses
                     {for} count {in} {range} 1 {to} 3
                         {print} verse
                     {print} 'Early in the morning'
         2:
-            story: |
-                Play a game of Twister with us! First define the variable people, then limbs, then colors.
-            code: |
+            story: Play a game of Twister with us! First define the variable people, then limbs, then colors.
+            code: |-
                 people = 'Jess', 'Nick', 'Winston'
                 limbs = 'left hand', 'left foot', 'right hand', 'right foot'
                 colors = 'red', 'blue', 'green', 'yellow'

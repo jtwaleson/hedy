@@ -187,7 +187,7 @@
     explanation: print something. Remember to use a quotation mark for literal printing.
     demo_code: '{print} ''5 times 5 is '' 5 * 5'
 -   name: '{for} with a list'
-    explanation: 'print all things in a list '
+    explanation: print all things in a list
     demo_code: |-
         animals {is} dog, cat, blobfish
         {for} animal {in} animals
@@ -211,24 +211,24 @@
 12:
 -   name: float directly
     explanation: Decimal numbers
-    demo_code: |
+    demo_code: |-
         {print} 'Calculate away!'
         {print} 'Two and a half plus two and a half is...'
         {print} 2.5 + 2.5
 -   name: assign text
     explanation: Text with quotation marks after =
-    demo_code: |
+    demo_code: |-
         name = 'Hedy the Robot'
         {print} 'Hello ' name
 -   name: quotes after {if} comparison
     explanation: Text with quotation marks after {if}
-    demo_code: |
+    demo_code: |-
         name = {ask} 'Who are you?'
         {if} name = 'Hedy'
             {print} 'Hi there!'
 -   name: quotes in list
     explanation: A list with quotation marks
-    demo_code: |
+    demo_code: |-
         superheroes = 'Iron Man', 'Batman', 'Superman'
         {print} superheroes {at} {random}
 13:
@@ -270,7 +270,7 @@
         {if} answer == 25
             {print} 'That {is} correct!'
 -   name: Not equal
-    explanation: 'We use the `!=` to check if two things are not the same. '
+    explanation: We use the `!=` to check if two things are not the same.
     demo_code: |-
         answer = {ask} 'What is 5 * 5?'
         {if} answer != 25
@@ -296,7 +296,7 @@
             answer = {ask} 'What is 5 times 5?'
         {print} 'A correct answer has been given'
 -   name: Smaller {while}
-    explanation: 'We can also use the `{while}` loop with `<` and `>`. '
+    explanation: We can also use the `{while}` loop with `<` and `>`.
     demo_code: |-
         count = 1
         {while} count < 3

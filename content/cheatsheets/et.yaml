@@ -211,24 +211,24 @@
 12:
 -   name: float directly
     explanation: Kümnendarvud.
-    demo_code: |
+    demo_code: |-
         {print} 'Calculate away!'
         {print} 'Two and a half plus two and a half is...'
         {print} 2.5 + 2.5
 -   name: assign text
     explanation: '`=`-le järgnev jutumärkidega tekst'
-    demo_code: |
+    demo_code: |-
         name = 'Hedy the Robot'
         {print} 'Hello ' name
 -   name: quotes after {if} comparison
     explanation: '`{if}`-le järgnev jutumärkidega tekst .'
-    demo_code: |
+    demo_code: |-
         name = {ask} 'Who are you?'
         {if} name = 'Hedy'
             {print} 'Hi there!'
 -   name: quotes in list
     explanation: Jutumärkidega nimistu.
-    demo_code: |
+    demo_code: |-
         superheroes = 'Iron Man', 'Batman', 'Superman'
         {print} superheroes {at} {random}
 13:

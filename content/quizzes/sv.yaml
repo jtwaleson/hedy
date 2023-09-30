@@ -15,22 +15,17 @@ levels:
             correct_answer: A
             question_score: '10'
         2:
-            code: |
-                _ Hej!
+            code: _ Hej!
             question_text: Vad behöver fyllas i för att visa texten Hej!?
             mp_choice_options:
             -   feedback: '`{echo}` repeterar ett givet svar.'
-                option: |
-                    `{echo}`
+                option: '`{echo}`'
             -   feedback: Korrekt!
-                option: |
-                    `{print}`
+                option: '`{print}`'
             -   feedback: Hej är inte ett kommando.
-                option: |
-                    `hello`
+                option: '`hello`'
             -   feedback: Med `{ask}` kan du ställa en fråga.
-                option: |
-                    `{ask}`
+                option: '`{ask}`'
             hint: _ Hej världen!
             correct_answer: B
             question_score: '10'
@@ -38,22 +33,22 @@ levels:
             question_text: Hur frågar man vad någons favoritfärg är?
             mp_choice_options:
             -   feedback: '`{print}` skriver ut text men ställer inga frågor.'
-                option: |
+                option: |-
                     ```
                     {print} Vilken är din favoritfärg?
                     ```
             -   feedback: Du behöver bara ett kommando, inte två.
-                option: |
+                option: |-
                     ```
                     {ask} {print} Vilken är din favoritfärg?
                     ```
             -   feedback: Jättebra!
-                option: |
+                option: |-
                     ```
                     {ask} Vilken är din favoritfärg?
                     ```
             -   feedback: '`{echo}` upprepar ditt svar tillbaka till dig.'
-                option: |
+                option: |-
                     ```
                     {echo} Vilken är din favoritfärg?
                     ```
@@ -85,17 +80,13 @@ levels:
             question_text: Vilket kommando saknas på rad 2?
             mp_choice_options:
             -   feedback: Nej, du vill att svaret ska upprepas tillbaka till dig.
-                option: |
-                    `{print}`
+                option: '`{print}`'
             -   feedback: Hedy är inte ett kommando.
-                option: |
-                    `Hedy`
+                option: '`Hedy`'
             -   feedback: Med `{ask}` kan du ställa en fråga.
-                option: |
-                    `{ask}`
+                option: '`{ask}`'
             -   feedback: Just det!
-                option: |
-                    `{echo}`
+                option: '`{echo}`'
             hint: Du vill ha svaret i slutet på rad 2 …
             correct_answer: D
             question_score: '10'
@@ -170,24 +161,22 @@ levels:
             correct_answer: B
             question_score: '10'
         10:
-            code: |
+            code: |-
                 {ask} Are you ready to go to level 2?
                 {echo}
                 {echo}
             question_text: Vad kommer att visas på utdataskärmen när du har kört den här koden?
             mp_choice_options:
             -   feedback: Det finns två kommandon för eko
-                option: |
-                    Är du redo att gå vidare till nivå 2?
+                option: Är du redo att gå vidare till nivå 2?
             -   feedback: Bra jobbat!
-                option: |
+                option: |-
                     Ja!
                     Ja!
             -   feedback: There are two echo commands
-                option: |
-                    Yes!
+                option: Yes!
             -   feedback: There are two echo commands
-                option: |
+                option: |-
                     Are you ready to go to level 2?
                     Yes!
             hint: Nu kör vi!
@@ -212,22 +201,22 @@ levels:
             question_text: Vilken kod är rätt?
             mp_choice_options:
             -   feedback: Superbra!
-                option: |
+                option: |-
                     ```
                     namn {is} {ask} Vad heter du?
                     ```
             -   feedback: Orden är rätt, men ordningen är fel!
-                option: |
+                option: |-
                     ```
                     {ask} {is} namn Vad heter du?
                     ```
             -   feedback: Detta fungerade på nivå 1, men på nivå 2 och uppåt fungerar det annorlunda.
-                option: |
+                option: |-
                     ```
                     {ask} Vad heter du?
                     ```
             -   feedback: Orden är rätt, men inte ordningen!
-                option: |
+                option: |-
                     ```
                     {ask} Vad heter du? {is} namn
                     ```
@@ -290,17 +279,13 @@ levels:
             question_text: Vad ska stå på raderna?
             mp_choice_options:
             -   feedback: Perfekt!
-                option: |
-                    `{sleep}`
+                option: '`{sleep}`'
             -   feedback: Det finns inget att upprepa här
-                option: |
-                    `{echo}`
+                option: '`{echo}`'
             -   feedback: Det finns ingen text att `{print}` där
-                option: |
-                    `{print}`
+                option: '`{print}`'
             -   feedback: Det finns ingen fråga att ställa
-                option: |
-                    `{ask}`
+                option: '`{ask}`'
             hint: Pausa för dramatisk effekt …
             correct_answer: A
             question_score: '10'
@@ -312,22 +297,22 @@ levels:
             question_text: Vilket kommando ska användas på rad 2?
             mp_choice_options:
             -   feedback: Du behöver inte använda `{print}`
-                option: |
+                option: |-
                     ```
                     {print} 3
                     ```
             -   feedback: Perfekt!
-                option: |
+                option: |-
                     ```
                     {sleep} 3
                     ```
             -   feedback: På så sätt kommer bomben att explodera inom 1 sekund
-                option: |
+                option: |-
                     ```
                     {sleep}
                     ```
             -   feedback: Gör det lättare för dig genom att använda talet 3
-                option: |
+                option: |-
                     ```
                     {sleep} {sleep} {sleep}
                     ```
@@ -341,22 +326,22 @@ levels:
             question_text: Hur skulle du rätta till den första kodraden?
             mp_choice_options:
             -   feedback: Det är fel ordning
-                option: |
+                option: |-
                     ```
                     ålder {ask} {is} Hur gammal är du?
                     ```
             -   feedback: Det är fel ordning
-                option: |
+                option: |-
                     ```
                     {ask} {is} ålder Hur gammal är du?
                     ```
             -   feedback: Du fattar!
-                option: |
+                option: |-
                     ```
                     ålder {is} {ask} Hur gammal är du?
                     ```
             -   feedback: Var är kommandot `{ask}`?
-                option: |
+                option: |-
                     ```
                     ålder {is} Hur gammal är du?
                     ```
@@ -389,22 +374,22 @@ levels:
             question_text: Vilket kommando ska användas på rad 1?
             mp_choice_options:
             -   feedback: Du vill veta favoritsmaken!
-                option: |
+                option: |-
                     ```
                     {sleep} 3
                     ```
             -   feedback: Du vill inte ha ett `{print}`-kommando mitt på raden …
-                option: |
+                option: |-
                     ```
                     {print} jordgubbar
                     ```
             -   feedback: På så sätt skapar du en lista. Det vill du inte ha nu.
-                option: |
+                option: |-
                     ```
                     jordgubbar, choklad, vanilj
                     ```
             -   feedback: Det stämmer!
-                option: |
+                option: |-
                     ```
                     {ask} Vilken smak på glass gillar du?
                     ```
@@ -416,17 +401,13 @@ levels:
             question_text: Vilka kommandon använder du för att låta Hedy välja något slumpmässigt?
             mp_choice_options:
             -   feedback: '`{print}` används för att skriva ut text'
-                option: |
-                    `{print}`
+                option: '`{print}`'
             -   feedback: '`{ask}` används för att ställa en fråga'
-                option: |
-                    `{ask}`
+                option: '`{ask}`'
             -   feedback: '`{is}` används för att göra en lista'
-                option: |
-                    `{is}`
+                option: '`{is}`'
             -   feedback: Rätt!
-                option: |
-                    `{at}` `{random}`
+                option: '`{at}` `{random}`'
             hint: Godtyckligt betyder utan plan eller slumpmässigt.
             correct_answer: D
             question_score: '10'
@@ -454,17 +435,17 @@ levels:
             question_text: Hur fixar man på rad 2?
             mp_choice_options:
             -   feedback: Du är nästan framme. Ordens ordning är inte rätt än.
-                option: |
+                option: |-
                     ```
                     {at} {random} {print} alternativ
                     ```
             -   feedback: du vill inte alltid att Hedy ska {print} sten alltid – ibland vill du ha sax eller påse.
-                option: |
+                option: |-
                     ```
                     {print} sten {at} {random}
                     ```
             -   feedback: Mycket bra!
-                option: |
+                option: |-
                     ```
                     {print} alternativ {at} {random}
                     ```
@@ -480,17 +461,17 @@ levels:
             question_text: Vad ska ändras på rad 2 för att skriva ut ett slumpmässigt pris?
             mp_choice_options:
             -   feedback: Du vill inte `{print}` ordet pris, utan du vill `{print}` ett pris ur din lista `{at} {random}`
-                option: |
+                option: |-
                     ```
                     {print} pris
                     ```
             -   feedback: Jättebra! Du har verkligen varit uppmärksam.
-                option: |
+                option: |-
                     ```
                     {print} priser {at} {random}
                     ```
             -   feedback: '`{at} {random}` står efter variabeln.'
-                option: |
+                option: |-
                     ```
                     {print} {at} {random} pris
                     ```
@@ -603,22 +584,22 @@ levels:
             question_text: Vad ska stå på _?
             mp_choice_options:
             -   feedback: Super!
-                option: |
+                option: |-
                     ```
                     {remove} rastade_igår {from} rastare
                     ```
             -   feedback: '`{remove} {from}` eller `{add} {to}`, inte `{remove} {to}`'
-                option: |
+                option: |-
                     ```
                     {remove} rastade igår {to} rastare
                     ```
             -   feedback: igår är inte en variabel
-                option: |
+                option: |-
                     ```
                     {remove} rastare {from} igår
                     ```
             -   feedback: Det ökade chansen att personen som gick igår nu måste göra det igen. Det är oschysst.
-                option: |
+                option: |-
                     ```
                     {add} rastade_igår {to} rastare
                     ```
@@ -630,22 +611,22 @@ levels:
             question_text: Vilken kod är rätt?
             mp_choice_options:
             -   feedback: Det stämmer
-                option: |
+                option: |-
                     ```
                     {print} 'Jag är jättepepp inför den här frågesporten!'
                     ```
             -   feedback: '`{ask}` behöver också citattecken!'
-                option: |
+                option: |-
                     ```
                     {print} Jag är jättepepp inför den här frågesporten!
                     ```
             -   feedback: '`{at} {random}` fungerar fortfarande'
-                option: |
+                option: |-
                     ```
                     {print} 'Jag är jättepepp på att göra den här frågesporten!'
                     ```
             -   feedback: Nej, men två andra kommandon fungerar.
-                option: |
+                option: |-
                     ```
                     {print} 'Jag är jättepepp på att göra den här frågesporten!'
                     ```
@@ -656,22 +637,22 @@ levels:
             question_text: Vilken kod använder rätt citattecken?
             mp_choice_options:
             -   feedback: Citattecknen är sneda (apostrofer) – det ska vara raka citattecken.
-                option: |
+                option: |-
                     ```
                     {print} `hej`
                     ```
             -   feedback: Rätt
-                option: |
+                option: |-
                     ```
                     {print} 'hej'
                     ```
             -   feedback: Det finns inga citattecken här!
-                option: |
+                option: |-
                     ```
                     {print} hej
                     ```
             -   feedback: Detta är kommatecken men du behöver citattecken.
-                option: |
+                option: |-
                     ```
                     {print} ,hej,
                     ```
@@ -682,22 +663,22 @@ levels:
             question_text: Var används citattecken rätt?
             mp_choice_options:
             -   feedback: Lägg till citattecken, tack!
-                option: |
+                option: |-
                     ```
                     {print} Hej jag heter Hedy
                     ```
             -   feedback: Både före och efter de ord du vill skriva ut ska det finnas citattecken.
-                option: |
+                option: |-
                     ```
                     {print} 'Hej jag heter Hedy
                     ```
             -   feedback: Det första citattecknet ska stå efter ordet `{print}`
-                option: |
+                option: |-
                     ```
                     '{print} Hej jag heter Hedy'
                     ```
             -   feedback: Perfekt!
-                option: |
+                option: |-
                     ```
                     {print} 'Hej jag heter Hedy'
                     ```
@@ -725,17 +706,17 @@ levels:
             question_text: Vad måste ändras för att spelet ska fungera?
             mp_choice_options:
             -   feedback: Sätt aldrig citattecken framför `{print}`-kommandot.
-                option: |
+                option: |-
                     ```
                     '{print} alternativ {at} {random}'
                     ```
             -   feedback: alternativ är en variabel. Du vill inte bokstavligen skriva ut texten 'alternativ {at} {random}'.
-                option: |
+                option: |-
                     ```
                     {print} 'alternativ' {at} {random}
                     ```
             -   feedback: Det stämmer
-                option: |
+                option: |-
                     ```
                     {print} alternativ {at} {random}
                     ```
@@ -749,22 +730,22 @@ levels:
             question_text: Vad skulle vara en bra nästa rad i den här koden?
             mp_choice_options:
             -   feedback: Bra! Du förstår!
-                option: |
+                option: |-
                     ```
                     {print} 'Du vann …' priser {at} {random}
                     ```
             -   feedback: Hedy kommer bokstavligen att skriva ut 'priser {at} {random}'
-                option: |
+                option: |-
                     ```
                     {print} Du vann … ' priser {at} {random}'
                     ```
             -   feedback: Det behövs citattecken!
-                option: |
+                option: |-
                     ```
                     {print} Du vann … prices {at} {random}
                     ```
             -   feedback: Hedy kommer bokstavligen att skriva ut 'priser {at} {random}''
-                option: |
+                option: |-
                     ```
                     {print} 'Du vann … priser {at} {random}'
                     ```
@@ -797,22 +778,22 @@ levels:
             question_text: Vad skulle vara en bra nästa rad för den här koden?
             mp_choice_options:
             -   feedback: Det behövs citattecken
-                option: |
+                option: |-
                     ```
                     {print} Så du väljer dörr dörr
                     ```
             -   feedback: Om spelaren väljer dörr 3, kommer Hedy att säga 'Så du väljer 3 3
-                option: |
+                option: |-
                     ```
                     {print} 'Så du väljer ' dörr dörr
                     ```
             -   feedback: Super!
-                option: |
+                option: |-
                     ```
                     {print} 'Så du väljer dörr ' dörr
                     ```
             -   feedback: Hedy kommer bokstavligen att skriva ut 'Så du väljer dörr dörr
-                option: |
+                option: |-
                     ```
                     {print} 'Så du väljer dörr dörr'
                     ```
@@ -863,17 +844,13 @@ levels:
             question_text: Vilket kommando ska fyllas i på _?
             mp_choice_options:
             -   feedback: Det finns redan ett kommando `{print}`.
-                option: |
-                    `{print}`
+                option: '`{print}`'
             -   feedback: Kommandot `{if}` används i raden ovan.
-                option: |
-                    `{if}`
+                option: '`{if}`'
             -   feedback: Det är inte rätt!
-                option: |
-                    `{sleep}`
+                option: '`{sleep}`'
             -   feedback: Det är rätt!
-                option: |
-                    `{else}`
+                option: '`{else}`'
             hint: Vilket hör ihop med kommandot `{if}`?
             correct_answer: D
             question_score: '10'
@@ -958,22 +935,22 @@ levels:
             question_text: Vilket ord ska stå på frågetecknets plats på sista raden?
             mp_choice_options:
             -   feedback: '`{if}` finns redan i raden ovanför'
-                option: |
+                option: |-
                     ```
                     {if}
                     ```
             -   feedback: Nej, du behöver `{else}`.
-                option: |
+                option: |-
                     ```
                     {at} {random}
                     ```
             -   feedback: Bra!
-                option: |
+                option: |-
                     ```
                     {else}
                     ```
             -   feedback: '`{print}` är redan där, vi behöver ett ord innan det!'
-                option: |
+                option: |-
                     ```
                     {print}
                     ```
@@ -989,17 +966,13 @@ levels:
             question_text: Vilket ord ska det vara istället för frågetecknet?
             mp_choice_options:
             -   feedback: '`{if}` finns på raden ovanför.'
-                option: |
-                    `{if}`
+                option: '`{if}`'
             -   feedback: Nej, du behöver inte `{at} {random}`.
-                option: |
-                    `{at}` `{random}`
+                option: '`{at}` `{random}`'
             -   feedback: Det finns redan ett `{else}` -kommando
-                option: |
-                    `{else}`
+                option: '`{else}`'
             -   feedback: Toppen!
-                option: |
-                    `{print}`
+                option: '`{print}`'
             hint: Efter `{else}` kommer ett `{print}` -kommando
             correct_answer: D
             question_score: '10'
@@ -1011,21 +984,19 @@ levels:
             question_text: Vilket ord ska stå på frågetecknets plats?
             mp_choice_options:
             -   feedback: Det är inte variabelnamnet.
-                option: |
+                option: |-
                     ```
                     favoritdjur
                     ```
             -   feedback: Great job!
-                option: |
+                option: |-
                     ```
                     djur
                     ```
             -   feedback: '`{if}` finns redan där'
-                option: |
-                    `{if}`
+                option: '`{if}`'
             -   feedback: Nej, det är inte det.
-                option: |
-                    `{print}`
+                option: '`{print}`'
             hint: Vad heter variabeln?
             correct_answer: B
             question_score: '10'
@@ -1276,22 +1247,22 @@ levels:
             question_text: Vilken kod är rätt?
             mp_choice_options:
             -   feedback: '`{repeat}` 100 `{times}` `{print}` ''hej'''
-                option: |
+                option: |-
                     ```
                     {print} 100 {times} 'hej'
                     ```
             -   feedback: '{repeat} 100 {times} {print} ''hej'''
-                option: |
+                option: |-
                     ```
                     {print} {repeat} 100 {times} 'hej'
                     ```
             -   feedback: '{repeat} 100 {times} {print} ''hej'''
-                option: |
+                option: |-
                     ```
                     {repeat} 'hej' 100 {times}
                     ```
             -   feedback: Det är rätt!
-                option: |
+                option: |-
                     ```
                     {repeat} 100 {times} {print} 'hej'
                     ```
@@ -1320,19 +1291,16 @@ levels:
             question_text: Vilket ord är fel i koden?
             mp_choice_options:
             -   feedback: Det stämmer!
-                option: |
+                option: |-
                     ```
                     I'm
                     ```
             -   feedback: '`{print}` är rättstavat'
-                option: |
-                    `{print}`
+                option: '`{print}`'
             -   feedback: '`{repeat}` är rättstavat'
-                option: |
-                    `{repeat}`
+                option: '`{repeat}`'
             -   feedback: '`{times}` är rättstavat'
-                option: |
-                    `{times}`
+                option: '`{times}`'
             hint: Jag har fel; du kan inte använda apostrofer
             correct_answer: A
             question_score: '10'
@@ -1418,7 +1386,7 @@ levels:
             question_text: Vilken Hedy-kod ger den här utskriften?
             mp_choice_options:
             -   feedback: Perfekt; du kan inte använda kommandot `{repeat}` här.
-                option: |
+                option: |-
                     ```
                     {print} 'Here comes the sun'
                     {print} 'Do do do do'
@@ -1427,13 +1395,13 @@ levels:
                     {print} 'Its alright'
                     ```
             -   feedback: Vart tog 'Do do do do' vägen?
-                option: |
+                option: |-
                     ```
                     {repeat} 2 {times} {print} 'Here comes the sun'
                     {print} 'And I say'
                     {print} 'Its alright'
             -   feedback: Detta är inte rätt ordning …
-                option: |
+                option: |-
                     ```
                     {repeat} 2 {times} {print} 'Here comes the sun'
                     {print} 'Do do do do'
@@ -1441,7 +1409,7 @@ levels:
                     {print} 'Its alright'
                     ```
             -   feedback: Detta är inte rätt ordning …
-                option: |
+                option: |-
                     ```
                     {repeat} 2 {times} {print} 'Here comes the sun'
                     {repeat} 2 {times} {print} 'Do do'
@@ -1462,7 +1430,7 @@ levels:
             question_text: Vilken Hedy-kod ger den här utskriften?
             mp_choice_options:
             -   feedback: Din upprepade rad är felaktig.
-                option: |
+                option: |-
                     ```
                     {print} 'Batman was flying through Gotham. '
                     {print} 'When suddenly he heard someone screaming!'
@@ -1470,7 +1438,7 @@ levels:
                     {repeat} 3 {times} {print} 'Please help me!'
                     ```
             -   feedback: Kommandot `{print}` saknas på rad 3.
-                option: |
+                option: |-
                     ```
                     {print} 'Batman was flying through Gotham.'
                     {print} 'When suddenly he heard someone screaming!'
@@ -1478,7 +1446,7 @@ levels:
                     {print} 'Please help me!'
                     ```
             -   feedback: Det saknas citattecken
-                option: |
+                option: |-
                     ```
                     {print} Batman was flying through Gotham.
                     {print} When suddenly he heard someone screaming!
@@ -1486,7 +1454,7 @@ levels:
                     {print} Please help me!
                     ```
             -   feedback: Perfekt
-                option: |
+                option: |-
                     ```
                     {print} 'Batman was flying through Gotham.'
                     {print} 'When suddenly he heard someone screaming!'
@@ -1505,27 +1473,27 @@ levels:
             question_text: Vilken Hedy-kod ger den här utskriften?
             mp_choice_options:
             -   feedback: Närapå! Den första raden behöver ett extra ord
-                option: |
+                option: |-
                     ```
                     {repeat} 2 {times} 'if youre happy and you know it clap your hands'
                     {print} 'if youre happy and you know it and you really want to show it'
                     {print} 'if youre happy and you know it clap your hands'
                     ```
             -   feedback: Bra!
-                option: |
+                option: |-
                     ```
                     {repeat} 2 {times} {print} 'if youre happy and you know it clap your hands'
                     {print} 'if youre happy and you know it and you really want to show it'
                     {print} 'if youre happy and you know it clap your hands'
                     ```
             -   feedback: Detta är inte i rätt ordning.
-                option: |
+                option: |-
                     ```
                     {repeat} 3 {times} {print} 'if youre happy and you know it clap your hands'
                     {print} 'if youre happy and you know it and you really want to show it'
                     ```
             -   feedback: Detta är inte i rätt ordning.
-                option: |
+                option: |-
                     ```
                     {repeat} 4 {times} 'if youre happy and you know it'
                     {repeat} 2 times 'clap your hands'
@@ -1544,22 +1512,22 @@ levels:
             question_text: Vad skriver den här koden ut?
             mp_choice_options:
             -   feedback: Allt skrivs ut två gånger.
-                option: |
+                option: |-
                     Hej
                     Jag heter Hedy!
             -   feedback: Den andra raden upprepas två gånger också.
-                option: |
+                option: |-
                     Hej
                     Hej
                     Jag heter Hedy
             -   feedback: Superbra!
-                option: |
+                option: |-
                     Hej
                     Jag heter Hedy!
                     Hej
                     Jag heter Hedy!
             -   feedback: Allt skrivs ut två gånger
-                option: |
+                option: |-
                     Hej
                     Hej
                     Jag heter Hedy!
@@ -1592,11 +1560,11 @@ levels:
             question_text: Vad skrivs ut när du kör det här programmet?
             mp_choice_options:
             -   feedback: Tänk på kommandot `{repeat}`!
-                option: |
+                option: |-
                     Baby shark tututudutudu
                     Baby shark
             -   feedback: Den sista raden har ingen indragning, så den upprepas inte.
-                option: |
+                option: |-
                     Baby shark tututudutudu
                     Baby shark
                     Baby shark tututudutudu
@@ -1604,13 +1572,13 @@ levels:
                     Baby shark tututudutudu
                     Baby shark
             -   feedback: Just det!
-                option: |
+                option: |-
                     Baby shark tututudutudu
                     Baby shark tututudutudu
                     Baby shark tututudutudu
                     Baby shark
             -   feedback: Vad som upprepas och vad som inte upprepas.
-                option: |
+                option: |-
                     Baby shark tututudutudu
                     Baby shark
                     Baby shark
@@ -1627,26 +1595,26 @@ levels:
             question_text: Vilken utskrift är korrekt?
             mp_choice_options:
             -   feedback: Tänk på kommandot `{repeat}`!
-                option: |
+                option: |-
                     Barnen sa:
                     Yay!
                     Vi ska åka på semester!
             -   feedback: Rätt!
-                option: |
+                option: |-
                     Barnen sa:
                     Yay!
                     Vi ska åka på semester!
                     Yay!
                     Vi ska åka på semester!
             -   feedback: Den här ordningen är fel.
-                option: |
+                option: |-
                     Barnen sa:
                     Yay!
                     Yay!
                     Vi ska åka på semester!
                     Vi ska åka på semester!
             -   feedback: Sista raden upprepas också.
-                option: |
+                option: |-
                     Barnen sa:
                     Yay!
                     Yay!
@@ -1681,24 +1649,24 @@ levels:
             question_text: Vad blir utskriften från koden när vi matar in pannkakor?
             mp_choice_options:
             -   feedback: Det finns ingen upprepning i detta svar.
-                option: |
+                option: |-
                     Välkommen till restaurang Hedy
                     Pannkakor
             -   feedback: Svaret upprepar också välkomstmeddelandet
-                option: |
+                option: |-
                     Välkommen till restaurang Hedy
                     Välkommen till restaurang Hedy
                     Pannkakor
                     Pannkakor
             -   feedback: Nära! Men titta på frågan – den upprepas inte.
-                option: |
+                option: |-
                     Välkommen till restaurang Hedy
                     Vad vill du äta?
                     Vad vill du äta?
                     Pannkakor
                     Pannkakor
             -   feedback: Bra jobbat!
-                option: |
+                option: |-
                     Välkommen till restaurang Hedy
                     Pannkakor
                     Pannkakor
@@ -1732,7 +1700,7 @@ levels:
             question_text: Vilken kod har rätt indragning?
             mp_choice_options:
             -   feedback: Du har fel!
-                option: |
+                option: |-
                     ```
                     {if} svar {is} 32
                        {print} 'Du har ...'
@@ -1742,7 +1710,7 @@ levels:
                               {print} 'Du har fel!'
                     ```
             -   feedback: Du har fel!
-                option: |
+                option: |-
                     ```
                     {if} svar {is} 32
                     {print} 'Du har ...'
@@ -1752,7 +1720,7 @@ levels:
                     {print} 'Du har fel!'
                     ```
             -   feedback: Du har … rätt!
-                option: |
+                option: |-
                     ```
                     {if} svar {is} 32
                         {print} 'Du har ...'
@@ -1762,7 +1730,7 @@ levels:
                         {print} 'Du har fel!'
                     ```
             -   feedback: Du har fel!
-                option: |
+                option: |-
                     ```
                     {if} svar {is} 32
                         {print} 'Du har ...'
@@ -1939,7 +1907,7 @@ levels:
                 Glass är bäst!
             mp_choice_options:
             -   feedback: Glöm inte indragningen efter `{repeat}`-kommandon.
-                option: |
+                option: |-
                     ```
                     dessert = {ask} 'Vilken är din favorittyp av efterrätt?'
                     {if} dessert {is} glass
@@ -1947,7 +1915,7 @@ levels:
                         {print} 'Glass är bäst!'
                     ```
             -   feedback: Använd indrag efter ett `{if}`-kommando
-                option: |
+                option: |-
                     ```
                     dessert = {ask} 'Vilken är din favorittyp av efterrätt?'
                     {if} dessert {is} glass
@@ -1955,7 +1923,7 @@ levels:
                         {print} 'Glass är bäst!'
                     ```
             -   feedback: Perfect
-                option: |
+                option: |-
                     ```
                     dessert = {ask} 'Vilken är din favorittyp av efterrätt?'
                     {if} dessert {is} glass
@@ -1963,7 +1931,7 @@ levels:
                             {print} 'Glass är bäst!'
                     ```
             -   feedback: Det finns två `{repeat}`-kommandon i den här koden.
-                option: |
+                option: |-
                     ```
                     {repeat} 3 {times}
                         dessert = {ask} 'Vilken är din favorittyp av efterrätt?'
@@ -1997,7 +1965,7 @@ levels:
             question_text: Du får 5 dollar i rabatt om du beställer en mediumpizza med cola.<br>Men koden har ett fel! Hur kan man felsöka den?
             mp_choice_options:
             -   feedback: Fantastiskt!
-                option: |
+                option: |-
                     ```
                     {if} mat {is} pizza
                         {if} storlek {is} medium
@@ -2005,7 +1973,7 @@ levels:
                                 pris = pris - 5
                     ```
             -   feedback: Den andra `{if}`-satsen saknar kod!
-                option: |
+                option: |-
                     ```
                     {if} mat {is} pizza
                         {if} storlek {is} medium
@@ -2013,7 +1981,7 @@ levels:
                         pris = pris - 5
                     ```
             -   feedback: Två `{if}` på rad är aldrig rätt.
-                option: |
+                option: |-
                     ```
                     {if} mat {is} pizza
                     {if} storlek {is} medium
@@ -2021,7 +1989,7 @@ levels:
                             pris = pris - 5
                     ```
             -   feedback: Nästan rätt, men titta på den sista raden.
-                option: |
+                option: |-
                     ```
                     {if} mat {is} pizza
                         {if} storlek {is} medium
@@ -2092,22 +2060,22 @@ levels:
             question_text: Vad måste vi fylla i på `_` om vi vill skriva ut varje komplimang?
             mp_choice_options:
             -   feedback: Det är fel
-                option: |
+                option: |-
                     ```
                     {for} varje komplimang
                     ```
             -   feedback: Du förtjänar alla dessa komplimanger!
-                option: |
+                option: |-
                     ```
                     {for} komplimang {in} komplimanger
                     ```
             -   feedback: Det är fel
-                option: |
+                option: |-
                     ```
                     {if} komplimang {in} komplimanger
                     ```
             -   feedback: Nästan framme!
-                option: |
+                option: |-
                     ```
                     {for} komplimanger {in} komplimang
                     ```
@@ -2227,22 +2195,22 @@ levels:
             question_text: Vilken rad skall finnas på _ i den här koden som bestämmer vad personerna skall äta till middag?
             mp_choice_options:
             -   feedback: Du äger!
-                option: |
+                option: |-
                     ```
                     {for} namn {in} namnen
                     ```
             -   feedback: Nej, det ska vara för varje namn i listan namnen, så tvärtom
-                option: |
+                option: |-
                     ```
                     {for} namnen {in} namn
                     ```
             -   feedback: Varje namn ska få veta vad de får till middag.
-                option: |
+                option: |-
                     ```
                     {for} mat {in} mat
                     ```
             -   feedback: Varje namn ska få veta vad de får till middag.
-                option: |
+                option: |-
                     ```
                     {for} namn {in} mat
                     ```
@@ -2258,22 +2226,22 @@ levels:
             question_text: Vad ska stå på _ i den här koden som avgör vilken tröjfärg du får?
             mp_choice_options:
             -   feedback: Det är fel!
-                option: |
+                option: |-
                     ```
                     'namn får en färg tröja'
                     ```
             -   feedback: Bra jobbat! Det här var en svår uppgift!
-                option: |
+                option: |-
                     ```
                     namn 'får en ' färger {at} {random} ' tröja'
                     ```
             -   feedback: Du vill att varje namn ska skrivas ut. Det första ordet ska alltså inte vara namnen utan …
-                option: |
+                option: |-
                     ```
                     namnen ' får en ' färg {at} {random} ' tröja'
                     ```
             -   feedback: Det finns ingen variabel som heter personer …
-                option: |
+                option: |-
                     ```
                     personer ' får en färger tröja'
                     ```
@@ -2328,19 +2296,16 @@ levels:
             question_text: Vilket ord ska stå i stället för frågetecknet?
             mp_choice_options:
             -   feedback: 'No'
-                option: |
+                option: |-
                     ```
                     räknare
                     ```
             -   feedback: Rätt
-                option: |
-                    `{range}`
+                option: '`{range}`'
             -   feedback: Nej
-                option: |
-                    `{if}`
+                option: '`{if}`'
             -   feedback: Nej
-                option: |
-                    `{for}`
+                option: '`{for}`'
             hint: Vad lärde du dig på den här nivån?
             correct_answer: B
             question_score: '10'
@@ -2375,28 +2340,28 @@ levels:
                 Once I caught a fish alive!
             mp_choice_options:
             -   feedback: Perfect
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 1 {to} 5
                         {print} i
                     {print} 'Once I caught a fish alive!'
                     ```
             -   feedback: This code won't work. You need an indent after {for}.
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 1 {to} 5
                     {print} i
                     {print} 'Once I caught a fish alive!'
                     ```
             -   feedback: Now Hedy will count '1 Once I caught a fish alive!, 2 Once I caught a fish alive! etc.
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 1 {to} 5
                         {print} i
                         {print} 'Once I caught a fish alive!'
                     ```
             -   feedback: i is a variable and shouldn't have quotation marks
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 1 {to} 5
                         {print} 'i'
@@ -2421,25 +2386,25 @@ levels:
                 0
             mp_choice_options:
             -   feedback: Now Hedy prints the numbers from 0 to 10 instead of 10 to 0.
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 0 {to} 10
                         {print} i
                     ```
             -   feedback: Hedy would print negative numbers in this case.
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 0 to 10
                         {print} - i
                     ```
             -   feedback: Unfortunately this does not exist.
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 10 to 0
                         {print} 10 9 8 7 6 5 4 3 2 1 0
                     ```
             -   feedback: That's right!
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 0 {to} 10
                         {print} 10 - i
@@ -2491,22 +2456,22 @@ levels:
             question_text: What should be on the place of the question mark?
             mp_choice_options:
             -   feedback: There's not always 3 people
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 0 {to} 3
                     ```
             -   feedback: The variable is not named guests
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 1 {to} guests
                     ```
             -   feedback: Great!
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 1 {to} people
                     ```
             -   feedback: That's one order too many!
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 0 {to} people
                     ```
@@ -2563,28 +2528,28 @@ levels:
                 Baby shark
             mp_choice_options:
             -   feedback: Tänk på indragningen
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 1 {to} 3
                         {print} Baby shark tututudutudu
                         {print} Baby shark
                     ```
             -   feedback: Det stämmer!
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 1 {to} 3
                         {print} Baby shark tututudutudu
                     {print} Baby shark
                     ```
             -   feedback: '`{range}` 0 `{to}` 3 är fyra gånger.'
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 0 {to} 3
                         {print} Baby shark tututudutudu
                     {print} Baby shark
                     ```
             -   feedback: '`{range}` 0 `{to}` 3 är fyra gånger.'
-                option: |
+                option: |-
                     ```
                     {for} i {in} {range} 0 {to} 3
                         {print} Baby shark tututudutudu
@@ -2601,17 +2566,15 @@ levels:
             question_text: Vilken utskrift är rätt?
             mp_choice_options:
             -   feedback: Glöm inte den första kodraden!
-                option: |
-                    5
+                option: '5'
             -   feedback: Nej, det var inte rätt!
-                option: |
-                    3.5 + 1.5
+                option: 3.5 + 1.5
             -   feedback: Ta en titt på andra raden …
-                option: |
+                option: |-
                     tre och en halv plus en och en halv är …
                     fem
             -   feedback: Bra jobbat!
-                option: |
+                option: |-
                     tre och en halv plus en och en halv är …
                     5
             hint: Båda raderna skrivs ut!
@@ -2639,8 +2602,7 @@ levels:
                     {print} 'Jag vill ha en ' smaker {at} {random} '-tårta.'
                     ```
             -   feedback: Alla olika värden på smaker ska skrivas inom citattecken.
-                option: |4
-
+                option: |-
                     ```
                     smaker = 'vanilj, jordgubbar, choklad'
                     {print} 'Jag vill ha en ' smaker {at} {random} '-tårta.'
@@ -2655,17 +2617,13 @@ levels:
             question_text: Vad är fel med den här koden?
             mp_choice_options:
             -   feedback: Rätt!
-                option: |
-                    Variabelns namn är olika på rad 1 och 2.
+                option: Variabelns namn är olika på rad 1 och 2.
             -   feedback: Det stämmer inte
-                option: |
-                    Citattecknen används inte rätt på rad 2
+                option: Citattecknen används inte rätt på rad 2
             -   feedback: Det stämmer inte
-                option: |
-                    Du kan inte använda =-tecknet när du använder {ask} -kommandot.
+                option: Du kan inte använda =-tecknet när du använder {ask} -kommandot.
             -   feedback: Det stämmer inte
-                option: |
-                    Inget är fel.
+                option: Inget är fel.
             hint: Citattecknen används korrekt
             correct_answer: A
             question_score: '10'
@@ -2678,17 +2636,13 @@ levels:
             question_text: På vilka rader behövs citattecken för att få koden att fungera?
             mp_choice_options:
             -   feedback: Nej
-                option: |
-                    Rad 1 och 2
+                option: Rad 1 och 2
             -   feedback: Nej
-                option: |
-                    Rad 1, 2 och 3
+                option: Rad 1, 2 och 3
             -   feedback: Nej
-                option: |
-                    Rad 1, 2 och 4
+                option: Rad 1, 2 och 4
             -   feedback: Perfekt!
-                option: |
-                    Alla rader
+                option: Alla rader
             hint: Behöver rad 3 också citattecken?
             correct_answer: D
             question_score: '10'
@@ -2719,7 +2673,7 @@ levels:
             correct_answer: B
             question_score: '10'
         6:
-            code: |
+            code: |-
                 {print} 'Välkommen till McHedy!'
                 order = {ask} 'Vill du ha en hamburgare eller pommes frites?'
                 {if} order = 'hamburgare'
@@ -2733,7 +2687,7 @@ levels:
             question_text: Vilken rad ska fyllas i vid ???
             mp_choice_options:
             -   feedback: Vad händer om du bara beställer pommes frites och en dricka?
-                option: |
+                option: |-
                     ```
                     pris = 14
                     ```
@@ -2935,7 +2889,7 @@ levels:
             -   feedback: Bra tänkt!
                 option: '`{or}`'
             -   feedback: Nej
-                option: ' `+` '
+                option: '`+`'
             -   feedback: Nej
                 option: '`{print}`'
             hint: Varken veganer eller muslimer kan äta korv.
@@ -3113,25 +3067,25 @@ levels:
             question_text: Vad är fel med den här koden?
             mp_choice_options:
             -   feedback: Rätt!
-                option: |
+                option: |-
                     Rad 3 ska vara
                     ```
                     {if} choklad = 'ja' {and} strössel = 'ja'
                     ```
             -   feedback: Detta är inte vad jag beställde!
-                option: |
+                option: |-
                     Rad 3 ska vara
                     ```
                     {if} choklad = 'nej' {and} strössel = 'nej'
                     ```
             -   feedback: Det här är inte vad jag beställde!
-                option: |
+                option: |-
                     Rad 5 ska vara
                     ```
                     {if} choklad = 'ja' {and} strössel = 'ja'
                     ```
             -   feedback: Det här är inte vad jag beställde!
-                option: |
+                option: |-
                     Rad 7 ska vara
                     ```
                     {if} choklad = 'ja' {and} strössel = 'nej'
@@ -3169,7 +3123,7 @@ levels:
             question_score: '10'
     14:
         1:
-            code: |
+            code: |-
                 namn _ {ask} 'Vem är du?'
                 {if} namn == 'Hedy'
                     {print} 'Jag också!'
@@ -3201,7 +3155,7 @@ levels:
             correct_answer: C
             question_score: '10'
         3:
-            code: |
+            code: |-
                 gäster = {ask} 'Hur många personer är på festen?'
                 {if} gäster _ 130
                     {print} 'Välkommen in!'
@@ -3216,13 +3170,13 @@ levels:
                 option: '`=` och `>=`'
             -   feedback: Du har rätt
                 option: '`<` och `>=`'
-            -   option: ' `+` och `==`'
+            -   option: '`+` och `==`'
             hint: 130 personer får vistas i klubben
             correct_answer: C
             question_score: '10'
             feedback: Det är fel
         4:
-            code: |
+            code: |-
                 pris = 10
                 pengar = {ask} Hur mycket pengar har du?
                 köp = {ask} 'Vill du köpa den här nallebjörnen?'
@@ -3244,14 +3198,14 @@ levels:
             correct_answer: B
             question_score: '10'
         5:
-            code: |
+            code: |-
                 ålder = {ask} 'Hur gammal är du?'
                 biljett = {ask} 'Har du en biljett?'
                 {if} ålder _ och biljett == 'ja'
                     {print} 'Du kan gå in i biosalongen.'
                 {else}
                     {print} 'Du får inte komma in!'
-            question_text: 'Vilken symbol ska det vara på den tomma platsen om filmen är tillåten för barn från 12 år och uppåt? '
+            question_text: Vilken symbol ska det vara på den tomma platsen om filmen är tillåten för barn från 12 år och uppåt?
             mp_choice_options:
             -   feedback: 12-åringar är också tillåtna
                 option: '`> 12`'
@@ -3265,7 +3219,7 @@ levels:
             correct_answer: B
             question_score: '10'
         6:
-            code: |
+            code: |-
                 liv = 2
                 {repeat} 10 gånger
                     {if} liv != 0
@@ -3286,7 +3240,7 @@ levels:
             correct_answer: D
             question_score: '10'
         7:
-            code: |
+            code: |-
                 {print} 'Gissa talet'
                 talen = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
                 tal = talen {at} {random}
@@ -3315,7 +3269,7 @@ levels:
             correct_answer: B
             question_score: '10'
         8:
-            code: |
+            code: |-
                 längd = {ask} 'Fyll i din längd i cm, tack'
                 {if} längd > 120
                     {print} 'Tyvärr, du kan inte åka på den här berg-och-dalbanan.'
@@ -3335,7 +3289,7 @@ levels:
             correct_answer: A
             question_score: '10'
         9:
-            code: |
+            code: |-
                 choklad = {ask} 'Hur många bitar choklad har du ätit?'
                   {if} choklad <= 2
                       {print} 'Det är en hälsosam mängd'
@@ -3357,7 +3311,7 @@ levels:
             correct_answer: D
             question_score: '10'
         10:
-            code: |
+            code: |-
                 {print} 'Den som får flest poäng vinner!'
                 {if} poäng_spelare_1 < poäng_spelare_2
                     {print} _
@@ -3376,7 +3330,7 @@ levels:
             question_score: '10'
     15:
         1:
-            code: |
+            code: |-
                 answer = 0
                 while answer _ 'Amsterdam'
                     answer = ask 'What is the capital city of the Netherlands?'
@@ -3398,22 +3352,22 @@ levels:
             question_text: Which of these codes has used the correct symbol(s)?
             mp_choice_options:
             -   feedback: 'No'
-                option: |
+                option: |-
                     ```
                     {while} name = Hedy
                     ```
             -   feedback: 'No'
-                option: |
+                option: |-
                     ```
                     {while} age = 24
                     ```
             -   feedback: Yes!
-                option: |
+                option: |-
                     ```
                     {while} time > 0
                     ```
             -   feedback: A quotation mark is missing
-                option: |
+                option: |-
                     ```
                     {while} answer == yes'
                     ```
@@ -3421,7 +3375,7 @@ levels:
             correct_answer: C
             question_score: '10'
         3:
-            code: |
+            code: |-
                 _ age >= 18
                   print 'you are not allowed in this bar'
             question_text: Which command should be filled in on the two blanks?
@@ -3438,7 +3392,7 @@ levels:
             correct_answer: B
             question_score: '10'
         4:
-            code: |
+            code: |-
                 options = 1, 2, 3, 4, 5, 6
                 print 'Throw 6 as fast as you can!'
                 thrown = 0
@@ -3462,7 +3416,7 @@ levels:
             correct_answer: D
             question_score: '10'
         5:
-            code: |
+            code: |-
                 wetness = 10
                 while wetness != 0
                     print 'Your hair is still wet, hair dryer on!'
@@ -3485,7 +3439,7 @@ levels:
             correct_answer: C
             question_score: '10'
         6:
-            code: |
+            code: |-
                 lives = 100
                     {while} lives != 0
                     answer = {ask} 'Are you annoyed yet?'
@@ -3505,7 +3459,7 @@ levels:
             correct_answer: D
             question_score: '10'
         7:
-            code: |
+            code: |-
                 {print} 'Guess which number'
                 numbers = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
                 number = numbers {at} {random}
@@ -3533,7 +3487,7 @@ levels:
             correct_answer: A
             question_score: '10'
         8:
-            code: |
+            code: |-
                 while toilet == 'occupied'
                     lights = 'on'
                     air_freshener_sprays = 'yes'
@@ -3554,7 +3508,7 @@ levels:
             correct_answer: B
             question_score: '10'
         9:
-            code: |
+            code: |-
                 chocolate = {ask} 'How many calories have you eaten today?'
                   {while} calories <= 1000
                       {print} 'You could eat some more'
@@ -3576,7 +3530,7 @@ levels:
             correct_answer: C
             question_score: '10'
         10:
-            code: |
+            code: |-
                 name_player_1 = {ask} 'Name player 1:'
                 name_player_2 = {ask} 'Name player 2:'
                 {while} points_player_1 > points_player_2

@@ -16,6 +16,9 @@ import traceback
 from flask_babel import gettext, format_date, format_datetime, format_timedelta
 from ruamel import yaml
 import commonmark
+from bs4.element import ResultSet
+from io import BufferedWriter
+from typing import Iterator
 
 commonmark_parser = commonmark.Parser()
 commonmark_renderer = commonmark.HtmlRenderer()
@@ -80,7 +83,7 @@ def times():
 DEBUG_MODE = False
 
 
-def is_debug_mode():
+def is_debug_mode() -> bool:
     """Return whether or not we're in debug mode.
 
     We do more expensive things that are better for development in debug mode.
@@ -88,7 +91,7 @@ def is_debug_mode():
     return DEBUG_MODE
 
 
-def set_debug_mode(debug_mode):
+def set_debug_mode(debug_mode: bool) -> None:
     """Switch debug mode to given value."""
     global DEBUG_MODE
     DEBUG_MODE = debug_mode
@@ -108,7 +111,7 @@ def dump_yaml_rt(data):
     return yaml.round_trip_dump(data, indent=4, width=999)
 
 
-def slash_join(*args):
+def slash_join(*args) -> str:
     ret = []
     for arg in args:
         if not arg:
@@ -131,7 +134,7 @@ def is_testing_request(request):
     return not is_heroku() and bool('X-Testing' in request.headers and request.headers['X-Testing'])
 
 
-def extract_bcrypt_rounds(hash):
+def extract_bcrypt_rounds(hash: str) -> int:
     return int(re.match(r'\$2b\$\d+', hash)[0].replace('$2b$', ''))
 
 
@@ -141,12 +144,12 @@ def isoformat(timestamp):
     return dt.isoformat() + 'Z'
 
 
-def is_production():
+def is_production() -> bool:
     """Whether we are serving production traffic."""
     return os.getenv('IS_PRODUCTION', '') != ''
 
 
-def is_heroku():
+def is_heroku() -> bool:
     """Whether we are running on Heroku.
 
     Only use this flag if you are making a decision that really has to do with
@@ -181,7 +184,7 @@ def valid_email(s):
 
 
 @contextlib.contextmanager
-def atomic_write_file(filename, mode='wb'):
+def atomic_write_file(filename: str, mode: str = 'wb') -> Iterator[BufferedWriter]:
     """Write to a filename atomically.
 
     First write to a unique tempfile, then rename the tempfile into
@@ -261,7 +264,7 @@ def random_id_generator(
 # by rendering the Markdown into HTML.
 
 
-def markdown_to_html_tags(markdown):
+def markdown_to_html_tags(markdown: str) -> ResultSet:
     _html = commonmark_renderer.render(commonmark_parser.parse(markdown))
     soup = BeautifulSoup(_html, 'html.parser')
     return soup.find_all()
@@ -302,7 +305,7 @@ def session_id():
 
 
 # https://github.com/python-babel/babel/issues/454
-def customize_babel_locale(custom_locales: dict):
+def customize_babel_locale(custom_locales: dict) -> None:
     from babel.core import get_global
     db = get_global('likely_subtags')
     for custom_name in custom_locales:

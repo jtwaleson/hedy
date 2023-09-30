@@ -26,7 +26,7 @@ from .website_module import WebsiteModule, route
 
 
 class ProfileModule(WebsiteModule):
-    def __init__(self, db: Database):
+    def __init__(self, db: Database) -> None:
         super().__init__("profile", __name__, url_prefix="/profile")
         self.db = db
 

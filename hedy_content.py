@@ -292,7 +292,7 @@ for lang in ALL_KEYWORD_LANGUAGES.keys():
 class StructuredDataFile:
     """Base class for all data files in the content directory."""
 
-    def __init__(self, filename):
+    def __init__(self, filename: str) -> None:
         self.filename = filename
         self._file = None
 
@@ -305,7 +305,7 @@ class StructuredDataFile:
 
 
 class Commands(StructuredDataFile):
-    def __init__(self, language):
+    def __init__(self, language: str) -> None:
         self.language = language
         super().__init__(f'content/cheatsheets/{self.language}.yaml')
 
@@ -344,7 +344,7 @@ class NoSuchCommand:
 
 
 class Adventures(StructuredDataFile):
-    def __init__(self, language):
+    def __init__(self, language: str) -> None:
         self.language = language
         super().__init__(f'content/adventures/{self.language}.yaml')
 
@@ -367,7 +367,7 @@ class NoSuchAdventure:
 
 
 class ParsonsProblem(StructuredDataFile):
-    def __init__(self, language):
+    def __init__(self, language: str) -> None:
         self.language = language
         super().__init__(f'content/parsons/{self.language}.yaml')
 
@@ -382,7 +382,7 @@ class ParsonsProblem(StructuredDataFile):
 
 
 class Quizzes(StructuredDataFile):
-    def __init__(self, language):
+    def __init__(self, language: str) -> None:
         self.language = language
         super().__init__(f'content/quizzes/{self.language}.yaml')
 
@@ -404,7 +404,7 @@ class NoSuchQuiz:
 class Tutorials(StructuredDataFile):
     # Want to parse the keywords only once, they can be cached -> perform this
     # action on server start
-    def __init__(self, language):
+    def __init__(self, language: str) -> None:
         self.language = language
         super().__init__(f'content/tutorials/{self.language}.yaml')
 
@@ -425,7 +425,7 @@ class NoSuchTutorial:
 
 
 class Slides(StructuredDataFile):
-    def __init__(self, language):
+    def __init__(self, language: str) -> None:
         self.language = language
         super().__init__(f'content/slides/{self.language}.yaml')
 

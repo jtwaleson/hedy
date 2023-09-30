@@ -19,7 +19,7 @@ QueryResult = namedtuple("QueryResult", ["id", "status"])
 
 class AwsAthenaClient:
     @staticmethod
-    def from_env():
+    def from_env() -> None:
         if os.getenv("AWS_ACCESS_KEY_ID"):
             db = boto3.client("athena", region_name=config["athena"]["region"])
             database = config["athena"]["database"]
@@ -61,7 +61,7 @@ class AwsAthenaClient:
 
 
 class LogFetcher:
-    def __init__(self, client):
+    def __init__(self, client: None) -> None:
         self.client = client
 
     def query(self, filters):

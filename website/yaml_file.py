@@ -11,6 +11,7 @@ from ruamel import yaml
 
 from utils import atomic_write_file
 from flask import has_request_context, g
+from typing import Dict, List, Union
 
 yaml_loader = yaml.YAML(typ="safe", pure=True)
 logger = logging.getLogger(__name__)
@@ -51,14 +52,14 @@ class YamlFile:
     """
 
     @staticmethod
-    def for_file(filename):
+    def for_file(filename: str) -> "YamlFile":
         """Factory function: return a singleton YamlFile instance for the given file."""
         filename = path.abspath(filename)
         if filename not in YAML_FILES_CACHE:
             YAML_FILES_CACHE[filename] = YamlFile(filename)
         return YAML_FILES_CACHE[filename]
 
-    def __init__(self, filename):
+    def __init__(self, filename: str) -> None:
         """Create a new YamlFile for the given filename.
 
         try_pickle controls on whether we pickle or not. Can be
@@ -71,10 +72,10 @@ class YamlFile:
         self.pickle_filename = path.join(tempfile.gettempdir(), 'hedy_pickles',
                                          f"{pathname_slug(self.filename)}.pickle")
 
-    def exists(self):
+    def exists(self) -> bool:
         return os.path.exists(self.filename)
 
-    def to_dict(self):
+    def to_dict(self) -> Dict[str, str]:
         """Return the contents of the file as a plain dict, or an empty dict if the file doesn't exist.
 
         You should generally not need to use this: this object can be used in places
@@ -85,7 +86,7 @@ class YamlFile:
             return self.access()
         return {}
 
-    def access(self):
+    def access(self) -> Union[Dict[str, Dict[str, Dict[str, str]]], Dict[str, str], Dict[str, Dict[str, Dict[str, Union[str, Dict[int, Dict[str, str]]]]]], Dict[str, Dict[int, Dict[int, Dict[str, str]]]], Dict[int, List[Dict[str, str]]]]:
         """Access the data from memory.
 
         Load it if we haven't loaded it yet or the data on disk changed.
@@ -105,7 +106,7 @@ class YamlFile:
         yaml_cache[self.filename] = data
         return data
 
-    def load(self):
+    def load(self) -> Union[Dict[str, Dict[str, Dict[str, str]]], Dict[str, str], Dict[str, Dict[str, Dict[str, Union[str, Dict[int, Dict[str, str]]]]]], Dict[str, Dict[int, Dict[int, Dict[str, str]]]], Dict[int, List[Dict[str, str]]]]:
         """Load the data from disk.
 
         Load from a pickle file if available, or load the original YAML
@@ -131,12 +132,12 @@ class YamlFile:
         return data
 
     @querylog.timed_as('load_yaml_pickled')
-    def load_pickle(self):
+    def load_pickle(self) -> Union[Dict[str, Dict[str, Dict[str, str]]], Dict[str, str], Dict[int, List[Dict[str, str]]]]:
         with open(self.pickle_filename, "rb") as f:
             return pickle.load(f)
 
     @querylog.timed_as('load_yaml_uncached')
-    def load_uncached(self):
+    def load_uncached(self) -> Union[Dict[str, Dict[str, Dict[str, str]]], Dict[str, str], Dict[str, Dict[str, Dict[str, Union[str, Dict[int, Dict[str, str]]]]]], Dict[str, Dict[int, Dict[int, Dict[str, str]]]], Dict[int, List[Dict[str, str]]]]:
         """Load the source YAML file."""
         try:
             with open(self.filename, "r", encoding="utf-8") as f:
@@ -144,17 +145,17 @@ class YamlFile:
         except IOError:
             return {}
 
-    def _file_timestamp(self, filename):
+    def _file_timestamp(self, filename: str) -> float:
         try:
             return os.stat(filename).st_mtime
         except FileNotFoundError:
             return None
 
     # Make this object look like a readonly 'dict'
-    def __getitem__(self, key):
+    def __getitem__(self, key: Union[str, int]) -> Union[Dict[str, Dict[str, str]], Dict[str, Dict[str, Union[str, Dict[int, Dict[str, str]]]]], List[Dict[str, str]]]:
         return self.access()[key]
 
-    def get(self, key, default=None):
+    def get(self, key: str, default: None = None) -> Dict[int, Dict[int, Dict[str, str]]]:
         return self.access().get(key, default)
 
     def has_key(self, k):
@@ -179,7 +180,7 @@ class YamlFile:
         return len(self.access())
 
 
-def pathname_slug(x):
+def pathname_slug(x: str) -> str:
     """Turn a path name into an identifier we can use as a file name.
 
     Take into account that it may contain characters we want to remove,
@@ -190,5 +191,5 @@ def pathname_slug(x):
     return x[-20:] + md5digest(x)
 
 
-def md5digest(x):
+def md5digest(x: str) -> str:
     return hashlib.md5(x.encode("utf-8")).hexdigest()

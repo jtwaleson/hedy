@@ -11,7 +11,7 @@ import traceback
 import textwrap
 import zipfile
 import jinja_partials
-from typing import Optional
+from typing import Dict, Optional
 from logging.config import dictConfig as logConfig
 from os import path
 
@@ -241,7 +241,7 @@ def load_customized_adventures(level, customizations, into_adventures):
 
 
 @babel.localeselector
-def get_locale():
+def get_locale() -> str:
     return session.get("lang", request.accept_languages.best_match(ALL_LANGUAGES.keys(), 'en'))
 
 
@@ -445,7 +445,7 @@ def set_security_headers(response):
 
 
 @app.teardown_request
-def teardown_request_finish_logging(exc):
+def teardown_request_finish_logging(exc: None) -> None:
     log_record = querylog.finish_global_log_record(exc)
     if is_debug_mode():
         logger.debug(repr(log_record.as_data()))
@@ -741,7 +741,7 @@ def hedy_error_to_response(ex):
     }
 
 
-def translate_error(code, arguments, keyword_lang):
+def translate_error(code: str, arguments: Dict[str, str], keyword_lang: str) -> str:
     arguments_that_require_translation = [
         'allowed_types',
         'invalid_type',

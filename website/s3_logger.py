@@ -17,7 +17,7 @@ class S3ParseLogger:
     """
 
     @staticmethod
-    def from_env_vars():
+    def from_env_vars() -> NullLogger:
         transmitter = aws_helpers.s3_parselog_transmitter_from_env()
         if not transmitter:
             return NullLogger()

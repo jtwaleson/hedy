@@ -2,6 +2,7 @@ import regex as re
 import json
 import os
 import unittest
+from typing import Dict, List, Tuple, Union
 
 # Transcription of the used tokens into a symbol (a letter) in order to apply a coloring
 TOKEN_CODE = {
@@ -348,7 +349,7 @@ class HighlightTester(unittest.TestCase):
         return "".join(code), "".join(coloring)
 
 
-def genInterTest(code, expected):
+def genInterTest(code: str, expected: str) -> Tuple[List[str], List[str]]:
     """generates intermediate tests, word by word,
     to check that the highlighting when
     typing the code will be consistent."""
@@ -376,11 +377,11 @@ def genInterTest(code, expected):
 class SimulatorAce:
 
     # constructor of SimulatorAce with check on state_machine
-    def __init__(self, state_machine):
+    def __init__(self, state_machine: Dict[str, Union[List[Dict[str, str]], List[Union[Dict[str, Union[str, List[str]]], Dict[str, str], Dict[str, Union[str, List[str], bool]]]], List[Union[Dict[str, Union[str, List[str]]], Dict[str, str], Dict[str, Union[str, List[str], bool]], Dict[str, Union[str, bool]]]], List[Union[Dict[str, Union[str, List[str]]], Dict[str, Union[str, bool]], Dict[str, Union[str, List[str], bool]]]]]]) -> None:
         self.state_machine = state_machine
         self._precompile_regexes()
 
-    def _precompile_regexes(self):
+    def _precompile_regexes(self) -> None:
         """Initialization and verification of the provided state_machine.
 
         The provided state_machine must have the following format:
@@ -426,7 +427,7 @@ class SimulatorAce:
                                 f"The number of groups in the regex is different from the number of tokens.\
                                   In this rule : {rule}!")
 
-    def highlight(self, code, start_token="start"):
+    def highlight(self, code: str, start_token: str = "start") -> Tuple[str, str]:
         """Simulates the application of syntax highlighting state_machine on a code.
 
         Arguments:
@@ -444,7 +445,7 @@ class SimulatorAce:
             outputs.append(output)
         return "\n".join(outputs), token
 
-    def highlight_rules_line(self, code, start_token="start"):
+    def highlight_rules_line(self, code: str, start_token: str = "start") -> Tuple[str, str]:
         """Simulates the application of syntax highlighting state_machine on a line of code.
 
         Arguments:
@@ -513,7 +514,7 @@ class SimulatorAce:
 
         return "".join(output), current_state
 
-    def find_match(self, code, current_position, current_state):
+    def find_match(self, code: str, current_position: int, current_state: str) -> Tuple[bool, Dict[str, None]]:
         """ Find the next matching rule in the given code.
 
         If there are multiple rules that match the code in the given state,

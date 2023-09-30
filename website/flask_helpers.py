@@ -5,6 +5,7 @@ from . import querylog
 import flask
 from flask.json.provider import JSONProvider
 from jinja2 import Undefined
+from typing import Any, Dict
 
 
 @querylog.timed
@@ -13,7 +14,7 @@ def render_template(filename, **kwargs):
     return flask.render_template(filename, **kwargs)
 
 
-def proper_json_dumps(x, **kwargs):
+def proper_json_dumps(x: Dict[Any, Any], **kwargs) -> str:
     """Properly convert the input to JSON that deals with a bunch of edge cases.
 
     This function will account for:
@@ -49,7 +50,7 @@ def strip_nones(x):
 class JinjaCompatibleJsonProvider(JSONProvider):
     """A JSON provider for Flask 2.3+ that removes Nones and Jinja Undefineds."""
 
-    def dumps(self, obj, **kwargs):
+    def dumps(self, obj: Dict[Any, Any], **kwargs) -> str:
         return proper_json_dumps(obj, **kwargs)
 
     def loads(self, s, **kwargs):

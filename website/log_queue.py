@@ -6,6 +6,7 @@ import os
 import threading
 import time
 import traceback
+from typing import Callable, Dict, List, Optional, Union
 
 logger = logging.getLogger(__name__)
 
@@ -31,7 +32,7 @@ class LogQueue:
     to allow for maximum parallelism.
     """
 
-    def __init__(self, name, batch_window_s, do_print=False):
+    def __init__(self, name: str, batch_window_s: int, do_print: bool = False) -> None:
         self.name = name
         self.records_queue = collections.defaultdict(list)
         self.batch_window_s = batch_window_s
@@ -41,7 +42,7 @@ class LogQueue:
         self.thread = threading.Thread(target=self._write_thread, name=f"{name}Writer", daemon=True)
         self.thread.start()
 
-    def add(self, data):
+    def add(self, data: Dict[str, Union[str, int, float, bool]]) -> None:
         bucket = div_clip(time.time(), self.batch_window_s)
 
         if self.do_print:
@@ -50,7 +51,7 @@ class LogQueue:
         with self.mutex:
             self.records_queue[bucket].append(data)
 
-    def set_transmitter(self, transmitter):
+    def set_transmitter(self, transmitter: Optional[Callable]) -> None:
         """Configure a function that will be called for every set of records.
 
         The function looks like:
@@ -60,7 +61,7 @@ class LogQueue:
         """
         self.transmitter = transmitter
 
-    def emergency_save_to_disk(self):
+    def emergency_save_to_disk(self) -> None:
         """Save all untransmitted records to disk.
 
         They will be picked up and attempted to be transmitted by a future
@@ -79,7 +80,7 @@ class LogQueue:
         with open(filename, "w", encoding="utf-8") as f:
             json.dump(all_records, f)
 
-    def try_load_emergency_saves(self):
+    def try_load_emergency_saves(self) -> None:
         """Try to load emergency saves from disk, if found.
 
         There may be multiple LogQueues trying to load the same files at the
@@ -107,7 +108,7 @@ class LogQueue:
             except OSError:
                 pass
 
-    def transmit_now(self, max_time=None):
+    def transmit_now(self, max_time: None = None) -> None:
         """(Try to) transmit all pending records with recording timestamps
         smaller than the given time now."""
         with self.mutex:
@@ -131,7 +132,7 @@ class LogQueue:
                 with self.mutex:
                     del self.records_queue[bucket_ts]
 
-    def _save_records(self, timestamp, records):
+    def _save_records(self, timestamp: int, records: List[Dict[str, Union[str, int, float, bool]]]) -> None:
         if self.transmitter:
             return self.transmitter(timestamp, records)
         else:
@@ -155,6 +156,6 @@ class LogQueue:
             next_wake += self.batch_window_s
 
 
-def div_clip(x, y):
+def div_clip(x: float, y: int) -> int:
     """Return the highest value < x that's a multiple of y."""
     return int(x // y) * y

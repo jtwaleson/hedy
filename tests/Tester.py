@@ -14,10 +14,12 @@ from hedy_content import ALL_KEYWORD_LANGUAGES, KEYWORDS
 import pickle
 
 from hedy_sourcemap import SourceRange
+from bs4.element import NavigableString
+from typing import List, Optional, Set, Tuple, Union
 
 
 class Snippet:
-    def __init__(self, filename, level, code, field_name=None, adventure_name=None, error=None, language=None, key=None, counter=0):
+    def __init__(self, filename: str, level: int, code: Union[str, NavigableString], field_name: Optional[str] = None, adventure_name: Optional[str] = None, error: Optional[bool] = None, language: Optional[str] = None, key: Optional[str] = None, counter: int = 0) -> None:
         self.filename = filename
         self.level = level
         self.field_name = field_name if field_name is not None else ''
@@ -43,7 +45,7 @@ class Snippet:
 class SkippedMapping:
     """ Class used to test if a certain source mapping contains an exception type """
 
-    def __init__(self, source_range: SourceRange, exception_type: type(Exception)):
+    def __init__(self, source_range: SourceRange, exception_type: type(Exception)) -> None:
         self.source_range = source_range
         self.exception_type = exception_type
 
@@ -155,7 +157,7 @@ class HedyTester(unittest.TestCase):
         return lambda c: c.exception.arguments['command'] == command
 
     @staticmethod
-    def as_list_of_tuples(*args):
+    def as_list_of_tuples(*args) -> List[Union[Tuple[str, str, str, str, str, str, str], Tuple[str, str, str, str, str], Tuple[str, str, str], Tuple[str, str, str, str]]]:
         # used to conver a variable number of paralel list
         # into a list of tuples to be used by the parametrized tester
         # All of the lists need to have the same size
@@ -317,7 +319,7 @@ class HedyTester(unittest.TestCase):
     # The turtle commands get transpiled into big pieces of code that probably will change
     # The followings methods abstract the specifics of the tranpilation and keep tests succinct
     @staticmethod
-    def forward_transpiled(val, level):
+    def forward_transpiled(val: int, level: int) -> str:
         return HedyTester.turtle_command_transpiled('forward', val, level)
 
     @staticmethod
@@ -325,7 +327,7 @@ class HedyTester(unittest.TestCase):
         return HedyTester.turtle_command_transpiled('right', val, level)
 
     @staticmethod
-    def turtle_command_transpiled(command, val, level):
+    def turtle_command_transpiled(command: str, val: int, level: int) -> str:
         command_text = 'turn'
         suffix = ''
         if command == 'forward':
@@ -389,12 +391,12 @@ class HedyTester(unittest.TestCase):
     # Used to overcome indentation issues when the above code is inserted
     # in test cases which use different indentation style (e.g. 2 or 4 spaces)
     @staticmethod
-    def dedent(*args):
+    def dedent(*args) -> str:
         return '\n'.join([textwrap.indent(textwrap.dedent(a[0]), a[1]) if isinstance(a, tuple) else textwrap.dedent(a)
                           for a in args])
 
     @staticmethod
-    def indent(code, spaces_amount=2, skip_first_line=False):
+    def indent(code: str, spaces_amount: int = 2, skip_first_line: bool = False) -> str:
         lines = code.split('\n')
 
         if not skip_first_line:
@@ -403,7 +405,7 @@ class HedyTester(unittest.TestCase):
             return lines[0] + '\n' + '\n'.join([' ' * spaces_amount + line for line in lines[1::]])
 
     @staticmethod
-    def translate_keywords_in_snippets(snippets):
+    def translate_keywords_in_snippets(snippets: List[Tuple[str, Snippet]]) -> List[Tuple[str, Snippet]]:
         # fill keyword dict for all keyword languages
         keyword_dict = {}
         for lang in ALL_KEYWORD_LANGUAGES:
@@ -439,7 +441,7 @@ class HedyTester(unittest.TestCase):
             return ''
 
 
-def get_list_from_pickle(filename):
+def get_list_from_pickle(filename: str) -> Set[str]:
     try:
         with open(filename, 'rb') as f:
             snippet_hashes = pickle.load(f)
@@ -459,5 +461,5 @@ def get_list_from_pickle(filename):
     return snippet_hashes
 
 
-def md5digest(x):
+def md5digest(x: Union[str, NavigableString]) -> str:
     return hashlib.md5(x.encode('utf-8')).hexdigest()

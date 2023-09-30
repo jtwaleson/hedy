@@ -1,6 +1,7 @@
 import collections
 
 import flask
+from typing import Callable, Optional
 
 
 class WebsiteModule(flask.Blueprint):
@@ -18,7 +19,7 @@ class WebsiteModule(flask.Blueprint):
     [2] https://gist.github.com/dplepage/2024199
     """
 
-    def __init__(self, name: str, import_name: str, url_prefix=None):
+    def __init__(self, name: str, import_name: str, url_prefix: Optional[str] = None) -> None:
         """Initialize the Blueprint.
 
         Call as follows:
@@ -38,7 +39,7 @@ class WebsiteModule(flask.Blueprint):
 RoutingData = collections.namedtuple("RoutingData", ["args", "kwargs"])
 
 
-def route(*args, **kwargs):
+def route(*args, **kwargs) -> Callable:
     def wrap(fn):
         route = getattr(fn, "_routing_data", [])
         route.append(RoutingData(args, kwargs))

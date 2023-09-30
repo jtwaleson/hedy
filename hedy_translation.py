@@ -5,13 +5,14 @@ import operator
 import yaml
 from os import path
 import hedy_content
+from typing import Dict, List
 
 # Holds the token that needs to be translated, its line number, start and
 # end indexes and its value (e.g. ", ").
 Rule = namedtuple("Rule", "keyword line start end value")
 
 
-def keywords_to_dict(lang="nl"):
+def keywords_to_dict(lang: str = "nl") -> Dict[str, List[str]]:
     """ "Return a dictionary of keywords from language of choice. Key is english value is lang of choice"""
     base = path.abspath(path.dirname(__file__))
 
@@ -27,12 +28,12 @@ def keywords_to_dict(lang="nl"):
     return command_combinations
 
 
-def keywords_to_dict_single_choice(lang):
+def keywords_to_dict_single_choice(lang: str) -> Dict[str, str]:
     command_combinations = keywords_to_dict(lang)
     return {k: v[0] for (k, v) in command_combinations.items()}
 
 
-def all_keywords_to_dict():
+def all_keywords_to_dict() -> Dict[str, List[str]]:
     """Return a dictionary where each value is a list of the translations of that keyword (key). Used for testing"""
     keyword_dict = {}
     for lang in hedy_content.ALL_KEYWORD_LANGUAGES:
@@ -43,7 +44,7 @@ def all_keywords_to_dict():
     return all_translations
 
 
-def translate_keyword_from_en(keyword, lang="en"):
+def translate_keyword_from_en(keyword: str, lang: str = "en") -> str:
     # translated the keyword to a local lang
     local_keywords = keywords_to_dict(lang)
     if keyword in local_keywords.keys():

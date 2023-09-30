@@ -26,7 +26,7 @@ class ProgramsLogic:
     Achievements and stuff.
     """
 
-    def __init__(self, db: Database, achievements: Achievements):
+    def __init__(self, db: Database, achievements: Achievements) -> None:
         self.db = db
         self.achievements = achievements
 
@@ -89,7 +89,7 @@ class ProgramsLogic:
 class ProgramsModule(WebsiteModule):
     """Flask routes that deal with manipulating programs."""
 
-    def __init__(self, db: Database, achievements: Achievements):
+    def __init__(self, db: Database, achievements: Achievements) -> None:
         super().__init__("programs", __name__, url_prefix="/programs")
         self.logic = ProgramsLogic(db, achievements)
         self.db = db

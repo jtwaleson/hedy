@@ -3,10 +3,11 @@ import collections
 from website.yaml_file import YamlFile
 import glob
 from os import path
+from typing import DefaultDict, Dict
 
 
 class AchievementTranslations:
-    def __init__(self):
+    def __init__(self) -> None:
         self.data = {}
 
         translations = glob.glob('content/achievements/*.yaml')
@@ -14,7 +15,7 @@ class AchievementTranslations:
             lang = path.splitext(path.basename(trans_file))[0]
             self.data[lang] = YamlFile.for_file(trans_file)
 
-    def get_translations(self, language):
+    def get_translations(self, language: str) -> DefaultDict[str, Dict[str, Dict[str, str]]]:
         d = collections.defaultdict(lambda: 'Unknown Exception')
         d.update(**self.data.get('en', {}))
         d.update(**self.data.get(language, {}))

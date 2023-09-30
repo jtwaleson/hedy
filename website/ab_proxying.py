@@ -12,6 +12,7 @@ from flask import make_response, request, session
 import utils
 
 from .auth import current_user
+from typing import Dict
 
 
 class ABProxying:
@@ -88,7 +89,7 @@ def hash_user_or_session(string):
 
 # Used by A/B testing to extract a session from a set-cookie header.
 # The signature is ignored. The source of the session should be trusted.
-def extract_session_from_cookie(cookie_header, secret_key):
+def extract_session_from_cookie(cookie_header: str, secret_key: str) -> Dict[str, str]:
     parsed_cookie = SimpleCookie(cookie_header)
     if "session" not in parsed_cookie:
         return {}

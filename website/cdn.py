@@ -1,4 +1,5 @@
 import utils
+from flask.app import Flask
 
 
 class Cdn:
@@ -24,7 +25,7 @@ class Cdn:
     cached by the CDN.
     """
 
-    def __init__(self, app, cdn_prefix, commit):
+    def __init__(self, app: Flask, cdn_prefix: None, commit: str) -> None:
         self.cdn_prefix = cdn_prefix or ""
         self.commit = commit
         self.static_prefix = "/"

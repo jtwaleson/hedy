@@ -18,6 +18,7 @@ from config import config
 from safe_format import safe_format
 from utils import is_debug_mode, timems, times
 from website import querylog
+from typing import Callable
 
 TOKEN_COOKIE_NAME = config["session"]["cookie_name"]
 
@@ -185,7 +186,7 @@ def has_public_profile(user):
 # Thanks to https://stackoverflow.com/a/34499643
 
 
-def requires_login(f):
+def requires_login(f: Callable) -> Callable:
     """Decoractor to indicate that a particular route requires the user to be logged in.
 
     If the user is not logged in, an error page will be shown. If they are, the
@@ -215,7 +216,7 @@ def requires_login(f):
     return inner
 
 
-def requires_login_redirect(f):
+def requires_login_redirect(f: Callable) -> Callable:
     """Decoractor to indicate that a particular route requires the user to be logged in.
 
     If the user is not logged in, they will be redirected to the front page.
@@ -233,7 +234,7 @@ def requires_login_redirect(f):
     return inner
 
 
-def requires_admin(f):
+def requires_admin(f: Callable) -> Callable:
     """Similar to 'requires_login', but also tests that the user is an admin.
 
     The decorated function MUST declare an argument named 'user'.
@@ -248,7 +249,7 @@ def requires_admin(f):
     return inner
 
 
-def requires_teacher(f):
+def requires_teacher(f: Callable) -> Callable:
     """Similar to 'requires_login', but also tests that the user is a teacher.
 
     The decorated function MUST declare an argument named 'user'.

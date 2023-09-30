@@ -31,7 +31,7 @@ class UserType(Enum):
 
 
 class StatisticsModule(WebsiteModule):
-    def __init__(self, db: Database):
+    def __init__(self, db: Database) -> None:
         super().__init__("stats", __name__)
         self.db = db
 
@@ -211,7 +211,7 @@ class StatisticsModule(WebsiteModule):
 
 
 class LiveStatisticsModule(WebsiteModule):
-    def __init__(self, db: Database):
+    def __init__(self, db: Database) -> None:
         super().__init__("live-stats", __name__)
         self.db = db
         """

@@ -35,7 +35,7 @@ for lang in hedy_content.ALL_LANGUAGES.keys():
 
 
 class ForTeachersModule(WebsiteModule):
-    def __init__(self, db: Database, achievements: Achievements):
+    def __init__(self, db: Database, achievements: Achievements) -> None:
         super().__init__("teachers", __name__, url_prefix="/for-teachers")
         self.db = db
         self.achievements = achievements

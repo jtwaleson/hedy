@@ -23,6 +23,10 @@ import yaml
 # Some useful constants
 from hedy_content import KEYWORDS
 from hedy_sourcemap import SourceMap, source_map_transformer
+import lark.lark
+import lark.tree
+from lark.lexer import Token
+from typing import Any, Callable, List, Optional, Tuple, Union, Self
 
 HEDY_MAX_LEVEL = 18
 HEDY_MAX_LEVEL_SKIPPING_FAULTY = 5
@@ -339,7 +343,7 @@ characters_that_need_escaping = ["\\", "'"]
 character_skulpt_cannot_parse = re.compile('[^a-zA-Z0-9_]')
 
 
-def get_list_keywords(commands, to_lang):
+def get_list_keywords(commands: List[str], to_lang: str) -> List[str]:
     """ Returns a list with the local keywords of the argument 'commands'
     """
 
@@ -372,7 +376,7 @@ def get_list_keywords(commands, to_lang):
     return translation_commands
 
 
-def get_suggestions_for_language(lang, level):
+def get_suggestions_for_language(lang: str, level: int) -> List[str]:
     if not local_keywords_enabled:
         lang = 'en'
 
@@ -385,12 +389,12 @@ def get_suggestions_for_language(lang, level):
     return en_lang_commands
 
 
-def escape_var(var):
+def escape_var(var: str) -> str:
     var_name = var.name if type(var) is LookupEntry else var
     return "_" + var_name if var_name in reserved_words else var_name
 
 
-def closest_command(invalid_command, known_commands, threshold=2):
+def closest_command(invalid_command: str, known_commands: List[str], threshold: int = 2) -> Optional[str]:
     # closest_command() searches for a similar command (distance smaller than threshold)
     # TODO: make the result value be tuple instead of a ugly None & string mix
     # returns None if the invalid command does not contain any known command.
@@ -407,11 +411,11 @@ def closest_command(invalid_command, known_commands, threshold=2):
     return min_command
 
 
-def style_command(command):
+def style_command(command: str) -> str:
     return f'<span class="command-highlighted">{command}</span>'
 
 
-def closest_command_with_min_distance(invalid_command, commands, threshold):
+def closest_command_with_min_distance(invalid_command: str, commands: List[str], threshold: int) -> Optional[str]:
     # FH, early 2020: simple string distance, could be more sophisticated MACHINE LEARNING!
 
     minimum_distance = 1000
@@ -425,7 +429,7 @@ def closest_command_with_min_distance(invalid_command, commands, threshold):
     return closest_command
 
 
-def calculate_minimum_distance(s1, s2):
+def calculate_minimum_distance(s1: str, s2: str) -> int:
     """Return string distance between 2 strings."""
     if len(s1) > len(s2):
         s1, s2 = s2, s1
@@ -462,7 +466,7 @@ class LookupEntry:
 
 
 class TypedTree(Tree):
-    def __init__(self, data, children, meta, type_):
+    def __init__(self, data: Union[str, Token], children: List[Union[Self, str, Any]], meta:     lark.tree.Meta, type_: str) -> None:
         super().__init__(data, children, meta)
         self.type_ = type_
 
@@ -470,13 +474,13 @@ class TypedTree(Tree):
 @v_args(meta=True)
 class ExtractAST(Transformer):
     # simplifies the tree: f.e. flattens arguments of text, var and punctuation for further processing
-    def text(self, meta, args):
+    def text(self, meta:     lark.tree.Meta, args: List[Token]) -> lark.tree.Tree:
         return Tree('text', [' '.join([str(c) for c in args])], meta)
 
     def INT(self, args):
         return Tree('integer', [str(args)])
 
-    def NUMBER(self, args):
+    def NUMBER(self, args: Token) -> lark.tree.Tree:
         return Tree('number', [str(args)])
 
     def POSITIVE_NUMBER(self, args):
@@ -515,12 +519,12 @@ class ExtractAST(Transformer):
 # used in the inner commands which are visited before the iterator variable is added to the lookup.
 
 class LookupEntryCollector(visitors.Visitor):
-    def __init__(self, level):
+    def __init__(self, level: int) -> None:
         super().__init__()
         self.level = level
         self.lookup = []
 
-    def ask(self, tree):
+    def ask(self, tree:     lark.tree.Tree) -> None:
         # in level 1 there is no variable name on the left side of the ask command
         if self.level > 1:
             self.add_to_lookup(tree.children[0].children[0], tree, tree.meta.line)
@@ -598,19 +602,19 @@ class LookupEntryCollector(visitors.Visitor):
 # their inferred type. It also performs type validation for commands, e.g. 'text' + 1 results in error.
 @v_args(tree=True)
 class TypeValidator(Transformer):
-    def __init__(self, lookup, level, lang, input_string):
+    def __init__(self, lookup: List[Any], level: int, lang: str, input_string: str) -> None:
         super().__init__()
         self.lookup = lookup
         self.level = level
         self.lang = lang
         self.input_string = input_string
 
-    def print(self, tree):
+    def print(self, tree:     lark.tree.Tree) -> TypedTree:
         self.validate_args_type_allowed(Command.print, tree.children, tree.meta)
 
         return self.to_typed_tree(tree)
 
-    def ask(self, tree):
+    def ask(self, tree:     lark.tree.Tree) -> TypedTree:
         if self.level > 1:
             self.save_type_to_lookup(tree.children[0].children[0], HedyType.input)
         self.validate_args_type_allowed(Command.ask, tree.children[1:], tree.meta)
@@ -620,7 +624,7 @@ class TypeValidator(Transformer):
         self.validate_args_type_allowed(Command.ask, tree.children[1:], tree.meta)
         return self.to_typed_tree(tree, HedyType.input)
 
-    def forward(self, tree):
+    def forward(self, tree:     lark.tree.Tree) -> TypedTree:
         if tree.children:
             self.validate_args_type_allowed(Command.forward, tree.children, tree.meta)
         return self.to_typed_tree(tree)
@@ -630,7 +634,7 @@ class TypeValidator(Transformer):
             self.validate_args_type_allowed(Command.color, tree.children, tree.meta)
         return self.to_typed_tree(tree)
 
-    def turn(self, tree):
+    def turn(self, tree:     lark.tree.Tree) -> TypedTree:
         if tree.children:
             name = tree.children[0].data
             if self.level > 1 or name not in command_turn_literals:
@@ -721,7 +725,7 @@ class TypeValidator(Transformer):
     def integer(self, tree):
         return self.to_typed_tree(tree, HedyType.integer)
 
-    def text(self, tree):
+    def text(self, tree:     lark.tree.Tree) -> TypedTree:
         # under level 12 integers appear as text, so we parse them
         if self.level < 12:
             type_ = HedyType.integer if ConvertToPython.is_int(tree.children[0]) else HedyType.string
@@ -741,7 +745,7 @@ class TypeValidator(Transformer):
     def var(self, tree):
         return self.to_typed_tree(tree, HedyType.none)
 
-    def number(self, tree):
+    def number(self, tree:     lark.tree.Tree) -> TypedTree:
         number = tree.children[0]
         if ConvertToPython.is_int(number):
             return self.to_typed_tree(tree, HedyType.integer)
@@ -808,13 +812,13 @@ class TypeValidator(Transformer):
                 command, left_arg, right_arg, left_type, right_type, tree.meta.line)
         return prom_left_type, prom_right_type
 
-    def validate_args_type_allowed(self, command, children, meta):
+    def validate_args_type_allowed(self, command: str, children: List[Union[TypedTree, Any]], meta:     lark.tree.Meta) -> None:
         allowed_types = get_allowed_types(command, self.level)
         children = children if type(children) is list else [children]
         for child in children:
             self.check_type_allowed(command, allowed_types, child, meta)
 
-    def check_type_allowed(self, command, allowed_types, tree, meta=None):
+    def check_type_allowed(self, command: str, allowed_types: List[str], tree: TypedTree, meta: Optional[lark.tree.Meta] = None) -> str:
         arg_type = self.get_type(tree)
         if arg_type not in allowed_types and not self.ignore_type(arg_type):
             variable = tree.children[0]
@@ -836,7 +840,7 @@ class TypeValidator(Transformer):
                                                           invalid_argument=variable, allowed_types=allowed_types, line_number=meta.line)
         return arg_type
 
-    def get_type(self, tree):
+    def get_type(self, tree: TypedTree) -> str:
         # The rule var_access is used in the grammars definitions only in places where a variable needs to be accessed.
         # So, if it cannot be found in the lookup table, then it is an undefined variable for sure.
         if tree.data == 'var_access':
@@ -897,7 +901,7 @@ class TypeValidator(Transformer):
     #  In the above case, we visit `print i`, before the definition of i in the for cycle. In this case, the tree of
     #  lookup entry is used to infer the type and continue the started validation. This approach might cause issues
     #  in case of cyclic references, e.g. b is b + 1. The flag `inferring` is used as a guard against these cases.
-    def try_get_type_from_lookup(self, name):
+    def try_get_type_from_lookup(self, name: str) -> Tuple[bool, None]:
         matches = [entry for entry in self.lookup if entry.name == escape_var(name)]
         if matches:
             match = matches[0]
@@ -921,14 +925,14 @@ class TypeValidator(Transformer):
         # variable referenced before it is defined. In this case, we rely on python to return an error. For now.
         return HedyType.any if type_in_lookup is None else type_in_lookup
 
-    def to_typed_tree(self, tree, type_=HedyType.none):
+    def to_typed_tree(self, tree:     lark.tree.Tree, type_: str = HedyType.none) -> TypedTree:
         return TypedTree(tree.data, tree.children, tree.meta, type_)
 
-    def __default__(self, data, children, meta):
+    def __default__(self, data: Token, children: List[Union[TypedTree, Any]], meta:     lark.tree.Meta) -> TypedTree:
         return TypedTree(data, children, meta, HedyType.none)
 
 
-def flatten_list_of_lists_to_list(args):
+def flatten_list_of_lists_to_list(args: List[Union[str, Any, List[str], List[List[str]]]]) -> List[Union[str, Any]]:
     flat_list = []
     for element in args:
         if isinstance(
@@ -942,7 +946,7 @@ def flatten_list_of_lists_to_list(args):
     return flat_list
 
 
-def are_all_arguments_true(args):
+def are_all_arguments_true(args: List[Union[Token, Tuple[bool, Tuple[str, int]], Any, Tuple[bool, str, lark.tree.Meta], Tuple[bool, List[Any], lark.tree.Meta]]]) -> Tuple[bool, List[Any]]:
     bool_arguments = [x[0] for x in args]
     arguments_of_false_nodes = flatten_list_of_lists_to_list([x[1] for x in args if not x[0]])
     return all(bool_arguments), arguments_of_false_nodes
@@ -952,11 +956,11 @@ def are_all_arguments_true(args):
 # because both filter out some types of 'wrong' nodes
 @v_args(meta=True)
 class Filter(Transformer):
-    def __default__(self, data, children, meta):
+    def __default__(self, data: Union[str, Token], children: List[Union[Token, Tuple[bool, Tuple[str, int]], Any, Tuple[bool, str,     lark.tree.Meta], Tuple[bool, List[Any],     lark.tree.Meta]]], meta:     lark.tree.Meta) -> Tuple[bool, List[Any],     lark.tree.Meta]:
         result, args = are_all_arguments_true(children)
         return result, args, meta
 
-    def program(self, meta, args):
+    def program(self, meta:     lark.tree.Meta, args: List[Tuple[bool, List[Any],     lark.tree.Meta]]) -> List[bool]:
         bool_arguments = [x[0] for x in args]
         if all(bool_arguments):
             return [True]  # all complete
@@ -972,13 +976,13 @@ class Filter(Transformer):
     def random(self, meta, args):
         return True, 'random', meta
 
-    def number(self, meta, args):
+    def number(self, meta:     lark.tree.Meta, args: List[str]) -> Tuple[bool, str,     lark.tree.Meta]:
         return True, ''.join([c for c in args]), meta
 
     def NEGATIVE_NUMBER(self, args):
         return True, ''.join([c for c in args]), None
 
-    def text(self, meta, args):
+    def text(self, meta:     lark.tree.Meta, args: List[Union[str, Token]]) -> Tuple[bool, str,     lark.tree.Meta]:
         return all(args), ''.join([c for c in args]), meta
 
 
@@ -995,10 +999,10 @@ while not pygame_end:
 
 
 class AllCommands(Transformer):
-    def __init__(self, level):
+    def __init__(self, level: int) -> None:
         self.level = level
 
-    def translate_keyword(self, keyword):
+    def translate_keyword(self, keyword: Union[str, Token]) -> str:
         # some keywords have names that are not a valid name for a command
         # that's why we call them differently in the grammar
         # we have to translate them to the regular names here for further communciation
@@ -1028,7 +1032,7 @@ class AllCommands(Transformer):
             return 'print'
         return str(keyword)
 
-    def __default__(self, args, children, meta):
+    def __default__(self, args: Union[str, Token], children: List[Any], meta:     lark.tree.Meta) -> List[Union[str, Any]]:
         # if we are matching a rule that is a command
         production_rule_name = self.translate_keyword(args)
         leaves = flatten_list_of_lists_to_list(children)
@@ -1044,10 +1048,10 @@ class AllCommands(Transformer):
         else:
             return leaves  # 'pop up' the children
 
-    def command(self, args):
+    def command(self, args: List[List[str]]) -> List[List[str]]:
         return args
 
-    def program(self, args):
+    def program(self, args: List[List[List[str]]]) -> List[str]:
         return flatten_list_of_lists_to_list(args)
 
     # somehow tokens are not picked up by the default rule so they need their own rule
@@ -1057,7 +1061,7 @@ class AllCommands(Transformer):
     def NAME(self, args):
         return []
 
-    def NUMBER(self, args):
+    def NUMBER(self, args: Token) -> List[Any]:
         return []
 
     def POSITIVE_NUMBER(self, args):
@@ -1066,11 +1070,11 @@ class AllCommands(Transformer):
     def NEGATIVE_NUMBER(self, args):
         return []
 
-    def text(self, args):
+    def text(self, args: List[Token]) -> List[Any]:
         return []
 
 
-def all_commands(input_string, level, lang='en'):
+def all_commands(input_string: str, level: int, lang: str = 'en') -> List[str]:
     input_string = process_input_string(input_string, level, lang)
     program_root = parse_input(input_string, level, lang)
 
@@ -1145,7 +1149,7 @@ class IsValid(Filter):
 
 
 @v_args(meta=True)
-def valid_echo(ast):
+def valid_echo(ast: lark.tree.Tree) -> bool:
     commands = ast.children
     command_names = [x.children[0].data for x in commands]
     no_echo = 'echo' not in command_names
@@ -1159,13 +1163,13 @@ def valid_echo(ast):
 
 @v_args(meta=True)
 class IsComplete(Filter):
-    def __init__(self, level):
+    def __init__(self, level: int) -> None:
         self.level = level
     # print, ask and echo can miss arguments and then are not complete
     # used to generate more informative error messages
     # tree is transformed to a node of [True] or [False, args, line_number]
 
-    def ask(self, meta, args):
+    def ask(self, meta:     lark.tree.Meta, args: List[Tuple[bool, str,     lark.tree.Meta]]) -> Tuple[bool, Tuple[str, int]]:
         # in level 1 ask without arguments means args == []
         # in level 2 and up, ask without arguments is a list of 1, namely the var name
         incomplete = (args == [] and self.level == 1) or (len(args) == 1 and self.level >= 2)
@@ -1174,7 +1178,7 @@ class IsComplete(Filter):
         else:
             return not incomplete, ('ask', 1)
 
-    def print(self, meta, args):
+    def print(self, meta:     lark.tree.Meta, args: List[Tuple[bool, str,     lark.tree.Meta]]) -> Tuple[bool, Tuple[str, int]]:
         return args != [], ('print', meta.line)
 
     def input(self, meta, args):
@@ -1186,21 +1190,21 @@ class IsComplete(Filter):
     def error_print_nq(self, meta, args):
         return args != [], ('print level 2', meta.line)
 
-    def echo(self, meta, args):
+    def echo(self, meta:     lark.tree.Meta, args: List[Tuple[bool, str,     lark.tree.Meta]]) -> Tuple[bool, Tuple[str, int]]:
         # echo may miss an argument
         return True, ('echo', meta.line)
 
     # other rules are inherited from Filter
 
 
-def process_characters_needing_escape(value):
+def process_characters_needing_escape(value: str) -> str:
     # defines what happens if a kids uses ' or \ in in a string
     for c in characters_that_need_escaping:
         value = value.replace(c, f'\\{c}')
     return value
 
 
-def get_allowed_types(command, level):
+def get_allowed_types(command: str, level: int) -> List[str]:
     # get only the allowed types of the command for all levels before the requested level
     allowed = [values for key, values in commands_and_types_per_level[command].items() if key <= level]
     # use the allowed types of the highest level available
@@ -1208,7 +1212,7 @@ def get_allowed_types(command, level):
 
 
 # decorator used to store each class in the lookup table
-def hedy_transpiler(level):
+def hedy_transpiler(level: int) -> Callable:
     def decorator(c):
         TRANSPILER_LOOKUP[level] = c
         c.level = level
@@ -1224,7 +1228,7 @@ class ConvertToPython(Transformer):
 
     # default for line number is max lines so if it is not given, there
     # is no check on whether the var is defined
-    def is_variable(self, variable_name, access_line_number=100):
+    def is_variable(self, variable_name: str, access_line_number: int = 100) -> None:
         all_names = [a.name for a in self.lookup]
         all_names_before_access_line = [a.name for a in self.lookup if a.linenumber <= access_line_number]
 
@@ -1281,7 +1285,7 @@ class ConvertToPython(Transformer):
 
         return f"print(f'{argument_string}')"
 
-    def get_fresh_var(self, name):
+    def get_fresh_var(self, name: str) -> str:
         while self.is_variable(name):
             name = '_' + name
         return name
@@ -1317,7 +1321,7 @@ class ConvertToPython(Transformer):
         return len(s) > 1 and (s[0] in opening_quotes and s[-1] in closing_quotes)
 
     @staticmethod
-    def is_int(n):
+    def is_int(n) -> bool:
         try:
             int(n)
             return True
@@ -1351,7 +1355,7 @@ class ConvertToPython(Transformer):
 @source_map_transformer(source_map)
 class ConvertToPython_1(ConvertToPython):
 
-    def __init__(self, lookup, numerals_language):
+    def __init__(self, lookup: List[Any], numerals_language: str) -> None:
         self.numerals_language = numerals_language
         self.lookup = lookup
         __class__.level = 1
@@ -1362,14 +1366,14 @@ class ConvertToPython_1(ConvertToPython):
     def command(self, meta, args):
         return args[0]
 
-    def text(self, meta, args):
+    def text(self, meta:     lark.tree.Meta, args: List[str]) -> str:
         return ''.join([str(c) for c in args])
 
     def integer(self, meta, args):
         # remove whitespaces
         return str(int(args[0].replace(' ', '')))
 
-    def number(self, meta, args):
+    def number(self, meta:     lark.tree.Meta, args: List[str]) -> str:
         return str(int(args[0]))
 
     def NEGATIVE_NUMBER(self, meta, args):
@@ -1397,7 +1401,7 @@ class ConvertToPython_1(ConvertToPython):
     def empty_line(self, meta, args):
         return ''
 
-    def forward(self, meta, args):
+    def forward(self, meta:     lark.tree.Meta, args: List[str]) -> str:
         if len(args) == 0:
             return sleep_after('t.forward(50)', False)
         return self.make_forward(int(args[0]))
@@ -1414,7 +1418,7 @@ class ConvertToPython_1(ConvertToPython):
             raise exceptions.InvalidArgumentTypeException(command=Command.color, invalid_type='', invalid_argument=arg,
                                                           allowed_types=get_allowed_types(Command.color, self.level), line_number=meta.line)
 
-    def turn(self, meta, args):
+    def turn(self, meta:     lark.tree.Meta, args: List[lark.tree.Tree]) -> str:
         if len(args) == 0:
             return "t.right(90)"  # no arguments defaults to a right turn
 
@@ -1431,13 +1435,13 @@ class ConvertToPython_1(ConvertToPython):
     def make_turn(self, parameter):
         return self.make_turtle_command(parameter, Command.turn, 'right', False, 'int')
 
-    def make_forward(self, parameter):
+    def make_forward(self, parameter: int) -> str:
         return self.make_turtle_command(parameter, Command.forward, 'forward', True, 'int')
 
     def make_color(self, parameter):
         return self.make_turtle_color_command(parameter, Command.color, 'pencolor')
 
-    def make_turtle_command(self, parameter, command, command_text, add_sleep, type):
+    def make_turtle_command(self, parameter: int, command: str, command_text: str, add_sleep: bool, type: str) -> str:
         exception = ''
         if isinstance(parameter, str):
             exception = self.make_catch_exception([parameter])
@@ -1899,7 +1903,7 @@ class ConvertToPython_6(ConvertToPython_5):
         return self.make_forward(int(args[0]))
 
 
-def sleep_after(commands, indent=True):
+def sleep_after(commands: str, indent: bool = True) -> str:
     lines = commands.split()
     if lines[-1] == "time.sleep(0.1)":  # we don't sleep double so skip if final line is a sleep already
         return commands
@@ -2365,7 +2369,7 @@ class ConvertToPython_18(ConvertToPython_17):
         return self.print(meta, args)
 
 
-def merge_grammars(grammar_text_1, grammar_text_2, level):
+def merge_grammars(grammar_text_1: str, grammar_text_2: str, level: int) -> str:
     # this function takes two grammar files and merges them into one
     # rules that are redefined in the second file are overridden
     # rules that are new in the second file are added (remaining_rules_grammar_2)
@@ -2467,7 +2471,7 @@ def get_remaining_rules(orig_def, sub_def):
     return result_cmd_list
 
 
-def create_grammar(level, lang="en"):
+def create_grammar(level: int, lang: str = "en") -> str:
     # start with creating the grammar for level 1
     result = get_full_grammar_for_level(1)
     keywords = get_keywords_for_language(lang)
@@ -2562,7 +2566,7 @@ def create_grammar(level, lang="en"):
     return result
 
 
-def save_total_grammar_file(level, grammar, lang):
+def save_total_grammar_file(level: int, grammar: str, lang: str) -> None:
     # Load Lark grammars relative to directory of current file
     script_dir = path.abspath(path.dirname(__file__))
     filename = "level" + str(level) + "." + lang + "-Total.lark"
@@ -2583,7 +2587,7 @@ def get_additional_rules_for_level(level, sub=0):
     return grammar_text
 
 
-def get_full_grammar_for_level(level):
+def get_full_grammar_for_level(level: int) -> str:
     script_dir = path.abspath(path.dirname(__file__))
     filename = "level" + str(level) + ".lark"
     with open(path.join(script_dir, "grammars", filename), "r", encoding="utf-8") as file:
@@ -2594,7 +2598,7 @@ def get_full_grammar_for_level(level):
 # opportunity to combine?
 
 
-def get_keywords_for_language(language):
+def get_keywords_for_language(language: str) -> str:
     script_dir = path.abspath(path.dirname(__file__))
     try:
         if not local_keywords_enabled:
@@ -2612,7 +2616,7 @@ def get_keywords_for_language(language):
 PARSER_CACHE = {}
 
 
-def get_parser(level, lang="en", keep_all_tokens=False):
+def get_parser(level: int, lang: str = "en", keep_all_tokens: bool = False) -> lark.lark.Lark:
     """Return the Lark parser for a given level.
     """
     key = str(level) + "." + lang + '.' + str(keep_all_tokens) + '.' + str(source_map.skip_faulty)
@@ -2672,7 +2676,7 @@ def transpile_inner_with_skipping_faulty(input_string, level, lang="en"):
     return transpile_result
 
 
-def transpile(input_string, level, lang="en", skip_faulty=True):
+def transpile(input_string: str, level: int, lang: str = "en", skip_faulty: bool = True) -> "ParseResult":
     """
     Function that transpiles the Hedy code to Python
 
@@ -2959,7 +2963,7 @@ def preprocess_ifs(code, lang='en'):
     return "\n".join(processed_code)
 
 
-def location_of_first_blank(code_snippet):
+def location_of_first_blank(code_snippet: str) -> int:
     # returns 0 if the code does not contain _
     # otherwise returns the first location (line) of the blank
     lines = code_snippet.split('\n')
@@ -2971,14 +2975,14 @@ def location_of_first_blank(code_snippet):
     return 0
 
 
-def check_program_size_is_valid(input_string):
+def check_program_size_is_valid(input_string: str) -> None:
     number_of_lines = input_string.count('\n')
     # parser is not made for huge programs!
     if number_of_lines > MAX_LINES:
         raise exceptions.InputTooBigException(lines_of_code=number_of_lines, max_lines=MAX_LINES)
 
 
-def process_input_string(input_string, level, lang, escape_backslashes=True, preprocess_ifs_enabled=True):
+def process_input_string(input_string: str, level: int, lang: str, escape_backslashes: bool = True, preprocess_ifs_enabled: bool = True) -> str:
     result = input_string.replace('\r\n', '\n')
 
     location = location_of_first_blank(result)
@@ -2999,7 +3003,7 @@ def process_input_string(input_string, level, lang, escape_backslashes=True, pre
     return result
 
 
-def parse_input(input_string, level, lang):
+def parse_input(input_string: str, level: int, lang: str) -> lark.tree.Tree:
     parser = get_parser(level, lang)
     try:
         parse_result = parser.parse(input_string + '\n')
@@ -3028,7 +3032,7 @@ def parse_input(input_string, level, lang):
             raise e
 
 
-def is_program_valid(program_root, input_string, level, lang):
+def is_program_valid(program_root: lark.tree.Tree, input_string: str, level: int, lang: str) -> None:
     # IsValid returns (True,) or (False, args)
     instance = IsValid()
     instance.level = level  # TODO: could be done in a constructor once we are sure we will go this way
@@ -3126,7 +3130,7 @@ def is_program_valid(program_root, input_string, level, lang):
                                                      fixed_code=fixed_code, fixed_result=result)
 
 
-def is_program_complete(abstract_syntax_tree, level):
+def is_program_complete(abstract_syntax_tree: lark.tree.Tree, level: int) -> None:
     is_complete = IsComplete(level).transform(abstract_syntax_tree)
     if not is_complete[0]:
         incomplete_command_and_line = is_complete[1][0]
@@ -3136,7 +3140,7 @@ def is_program_complete(abstract_syntax_tree, level):
                                                     line_number=line)
 
 
-def create_lookup_table(abstract_syntax_tree, level, lang, input_string):
+def create_lookup_table(abstract_syntax_tree: lark.tree.Tree, level: int, lang: str, input_string: str) -> List[Any]:
     visitor = LookupEntryCollector(level)
     visitor.visit_topdown(abstract_syntax_tree)
     entries = visitor.lookup
@@ -3146,7 +3150,7 @@ def create_lookup_table(abstract_syntax_tree, level, lang, input_string):
     return entries
 
 
-def transpile_inner(input_string, level, lang="en", populate_source_map=False):
+def transpile_inner(input_string: str, level: int, lang: str = "en", populate_source_map: bool = False) -> "ParseResult":
     check_program_size_is_valid(input_string)
 
     level = int(level)

@@ -2,6 +2,7 @@
 
 import random  # noqa F401
 import time  # noqa F401
+from typing import Union
 
 try:
     import extensions  # noqa F401
@@ -16,7 +17,7 @@ global convert_numerals  # needed for recursion to work
 int_saver = int
 
 
-def int(s):
+def int(s: str) -> int:
     if isinstance(s, str):
         numerals_dict = {'0': '0', '1': '1', '2': '2', '3': '3', '4': '4', '5': '5', '6': '6', '7': '7', '8': '8',
                          '9': '9', '𑁦': '0', '𑁧': '1', '𑁨': '2', '𑁩': '3', '𑁪': '4', '𑁫': '5', '𑁬': '6', '𑁭': '7',
@@ -47,7 +48,7 @@ def int(s):
     return (int_saver(s))
 
 
-def convert_numerals(alphabet, number):
+def convert_numerals(alphabet: str, number: Union[str, int, float]) -> Union[str, int, float]:
     numerals_dict_return = {
         'Latin': ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
         'Brahmi': ['𑁦', '𑁧', '𑁨', '𑁩', '𑁪', '𑁫', '𑁬', '𑁭', '𑁮', '𑁯'],

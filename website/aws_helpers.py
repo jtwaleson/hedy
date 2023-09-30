@@ -12,7 +12,7 @@ import utils
 logger = logging.getLogger(__name__)
 
 
-def s3_querylog_transmitter_from_env():
+def s3_querylog_transmitter_from_env() -> None:
     """Return an S3 transmitter, or return None."""
     have_aws_creds = os.getenv("AWS_ACCESS_KEY_ID") and os.getenv("AWS_SECRET_ACCESS_KEY")
 
@@ -23,7 +23,7 @@ def s3_querylog_transmitter_from_env():
     return make_s3_transmitter(config.config["s3-query-logs"])
 
 
-def s3_parselog_transmitter_from_env():
+def s3_parselog_transmitter_from_env() -> None:
     """Return an S3 transmitter, or return None."""
     have_aws_creds = os.getenv("AWS_ACCESS_KEY_ID") and os.getenv("AWS_SECRET_ACCESS_KEY")
 

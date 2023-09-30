@@ -2,10 +2,12 @@ from flask import g, jsonify
 from flask_babel import gettext
 
 from .website_module import WebsiteModule, route
+from hedy_content import ParsonsProblem
+from typing import DefaultDict
 
 
 class ParsonsModule(WebsiteModule):
-    def __init__(self, parsons):
+    def __init__(self, parsons: DefaultDict[str, ParsonsProblem]) -> None:
         super().__init__("parsons", __name__, url_prefix="/parsons")
 
         self.parsons = parsons

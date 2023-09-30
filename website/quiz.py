@@ -23,7 +23,7 @@ NO_SUCH_QUESTION = 'No such question'
 class QuizLogic:
     """Business logic for quiz-related things."""
 
-    def __init__(self, db: Database):
+    def __init__(self, db: Database) -> None:
         self.db = db
 
     def quiz_threshold_for_user(self):
@@ -33,7 +33,7 @@ class QuizLogic:
 
 
 class QuizModule(WebsiteModule):
-    def __init__(self, db: Database, achievements: Achievements, quizzes: Dict[str, Quizzes]):
+    def __init__(self, db: Database, achievements: Achievements, quizzes: Dict[str, Quizzes]) -> None:
         super().__init__("quiz", __name__, url_prefix="/quiz")
         self.logic = QuizLogic(db)
         self.db = db

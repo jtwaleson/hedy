@@ -2,6 +2,7 @@ import re
 import exceptions
 from os import path
 from lark import Tree
+from typing import Callable, Dict, Optional
 
 
 class SourceRange:
@@ -23,13 +24,13 @@ class SourceRange:
     Tip: You can use a more advanced text editor like Notepad++ to get these values for a certain cursor position
     """
 
-    def __init__(self, from_line, from_column, to_line, to_column):
+    def __init__(self, from_line: Optional[int], from_column: Optional[int], to_line: Optional[int], to_column: Optional[int]) -> None:
         self.from_line = from_line
         self.from_column = from_column
         self.to_line = to_line
         self.to_column = to_column
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f'{self.from_line}/{self.from_column}-{self.to_line}/{self.to_column}'
 
     def __repr__(self):
@@ -53,18 +54,18 @@ class SourceCode:
     a source_range (SourceRange) and the code (str)
     """
 
-    def __init__(self, source_range: SourceRange, code: str, error: Exception = None):
+    def __init__(self, source_range: SourceRange, code: str, error: Exception = None) -> None:
         self.source_range = source_range
         self.code = code
         self.error = error
 
-    def __hash__(self):
+    def __hash__(self) -> int:
         return hash((
             self.source_range.from_line, self.source_range.from_column,
             self.source_range.to_line, self.source_range.to_column
         ))
 
-    def __eq__(self, other):
+    def __eq__(self, other: "SourceCode") -> bool:
         return (
             self.source_range.from_line, self.source_range.from_column,
             self.source_range.to_line, self.source_range.to_column
@@ -112,23 +113,23 @@ class SourceMap:
     python_code = ''
     grammar_rules = []
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.get_grammar_rules()
 
-    def set_level(self, level):
+    def set_level(self, level: int) -> None:
         self.level = level
 
-    def set_language(self, language):
+    def set_language(self, language: str) -> None:
         self.language = language
 
-    def set_skip_faulty(self, skip_faulty):
+    def set_skip_faulty(self, skip_faulty: bool) -> None:
         # if the mapping encounters an error and skip_faulty is True we will 'skip' the exception
         self.skip_faulty = skip_faulty
 
-    def set_hedy_input(self, hedy_code):
+    def set_hedy_input(self, hedy_code: str) -> None:
         self.hedy_code = hedy_code
 
-    def set_python_output(self, python_code):
+    def set_python_output(self, python_code: str) -> None:
         self.python_code = python_code
         python_code_mapped = list()
 
@@ -159,7 +160,7 @@ class SourceMap:
 
             python_code_mapped.append(python_source_code.code)
 
-    def get_grammar_rules(self):
+    def get_grammar_rules(self) -> None:
         script_dir = path.abspath(path.dirname(__file__))
 
         with open(path.join(script_dir, "grammars", "level1.lark"), "r", encoding="utf-8") as file:
@@ -173,10 +174,10 @@ class SourceMap:
         self.grammar_rules = [rule for rule in self.grammar_rules if 'text' not in rule]  # exclude text from mapping
         self.grammar_rules = list(set(self.grammar_rules))  # remove duplicates
 
-    def add_source(self, hedy_code: SourceCode, python_code: SourceCode):
+    def add_source(self, hedy_code: SourceCode, python_code: SourceCode) -> None:
         self.map[hedy_code] = python_code
 
-    def clear(self):
+    def clear(self) -> None:
         self.map.clear()
         self.level = 0
         self.language = 'en'
@@ -208,7 +209,7 @@ class SourceMap:
 
         return response_map
 
-    def get_compressed_mapping(self):
+    def get_compressed_mapping(self) -> Dict[str, str]:
         response_map = dict()
 
         for hedy_source_code, python_source_code in self.map.items():
@@ -238,7 +239,7 @@ class SourceMap:
         return str()
 
 
-def source_map_rule(source_map: SourceMap):
+def source_map_rule(source_map: SourceMap) -> Callable:
     """ A decorator function that should decorator the transformer method (grammar rule)
         the decorator adds the hedy code & python code to the map when the transformer method (grammar rule) is used
     """
@@ -298,7 +299,7 @@ def source_map_rule(source_map: SourceMap):
     return decorator
 
 
-def source_map_transformer(source_map: SourceMap):
+def source_map_transformer(source_map: SourceMap) -> Callable:
     """ A decorator function that should decorate a transformer class
 
         This is used for convenience, instead of adding source_map_rule to all methods,

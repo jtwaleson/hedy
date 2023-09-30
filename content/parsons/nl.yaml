@@ -1,21 +1,16 @@
 levels:
     1:
         1:
-            story: |
-                In de sleeppuzzels zijn de regels code al voor je geschreven. Je hoeft ze alleen nog maar in de juiste volgorde te plaatsen! Sleep de regels code in je invoerscherm en voer de code uit. Kun jij het programma aan de praat krijgen?
-
-
-                Je bent een klant bij bakkerij Hedy. 
-                Je loopt de bakkerij binnen en wordt verwelkomd door de bakker.
-                Hij vraagt wat voor taart je wil bestellen en herhaalt het antwoord.
-                Daarna wordt je bestelling klaargezet.
+            story: "In de sleeppuzzels zijn de regels code al voor je geschreven. Je hoeft ze alleen nog maar in de juiste volgorde te plaatsen! Sleep de regels code in je invoerscherm en voer de code uit. Kun jij het programma aan de praat krijgen?\n\n\nJe bent een klant bij bakkerij Hedy. \nJe loopt\
+                \ de bakkerij binnen en wordt verwelkomd door de bakker.\nHij vraagt wat voor taart je wil bestellen en herhaalt het antwoord.\nDaarna wordt je bestelling klaargezet.\n"
             code: |-
                 {print} Welkom bij bakkerij Hedy!
                 {ask} Welke taart wilt u bestellen?
                 {echo} Dus u wilt
                 {print} De bestelling wordt klaargezet!
         2:
-            story: "Je staat bij de DJ om een liedje aan te vragen. Maak een programma dat vraagt of je klaar bent voor een feestje en daarna vraagt welk liedje je wilt horen.\n"
+            story: |
+                Je staat bij de DJ om een liedje aan te vragen. Maak een programma dat vraagt of je klaar bent voor een feestje en daarna vraagt welk liedje je wilt horen.
             code: |-
                 {print} Hier is DJ Hedy
                 {ask} Klaar voor een feestje?
@@ -32,7 +27,8 @@ levels:
                 {print} We gaan kijken naar film
                 {print} Heel veel plezier!
         2:
-            story: "Dit is de webshop van een speelgoedwinkel. Maak een programma waarin klanten een artikel aan hun winkelwagentje kunnen toevoegen.\n"
+            story: |
+                Dit is de webshop van een speelgoedwinkel. Maak een programma waarin klanten een artikel aan hun winkelwagentje kunnen toevoegen.
             code: |-
                 {print} Welkom in onze speelgoedwinkel
                 speelgoed {is} {ask} Wat wilt u kopen?
@@ -40,12 +36,8 @@ levels:
                 {print} Bedankt voor het winkelen bij ons!
     3:
         1:
-            story: |
-                Het nieuwe schooljaar op Zweinstein gaat van start! 
-                Het is de taak van de sorteerhoed om jou in te delen in een van de afdelingen. 
-                Bij welke afdeling zou jij willen?
-                Ben jij een Griffoendor, Huffelpuf, Zwadderich of Ravenklauw. 
-                Voordat de sorteerhoed zijn keuze bekend maakt, kun je aangeven bij welk huis je niet terecht wil komen.
+            story: "Het nieuwe schooljaar op Zweinstein gaat van start! \nHet is de taak van de sorteerhoed om jou in te delen in een van de afdelingen. \nBij welke afdeling zou jij willen?\nBen jij een Griffoendor, Huffelpuf, Zwadderich of Ravenklauw. \nVoordat de sorteerhoed zijn keuze bekend maakt,\
+                \ kun je aangeven bij welk huis je niet terecht wil komen.\n"
             code: |-
                 {print} De sorteerhoed is er klaar voor om jou in te delen op Zweinstein.
                 afdelingen {is} Griffoendor, Huffelpuf, Zwadderich, Ravenklauw
@@ -53,7 +45,8 @@ levels:
                 {remove} liever_niet {from} afdelingen
                 {print} Niet bij liever_niet he? Dan wordt het maar... afdelingen {at} {random}
         2:
-            story: "Maak een programma dat een willekeurige maaltijd voor je kiest. Maak een lijst met eten en een lijst met toppings en laat het programma beslissen wat je krijgt!\n"
+            story: |
+                Maak een programma dat een willekeurige maaltijd voor je kiest. Maak een lijst met eten en een lijst met toppings en laat het programma beslissen wat je krijgt!
             code: |-
                 eten {is} pizza, ijs, salade, sandwich
                 topping {is} chocolade, kaas, tonijn, hagelslag
@@ -114,11 +107,7 @@ levels:
                 {else} {print} 'Fout! Het was 72'
     6:
         1:
-            story: |
-                Maak een programma dat voor jou berekent hoe oud jij bent in hondenjaren en in kattenjaren.
-                Vraag eerst de leeftijd van de gebruiker en rekenen maar. 
-                **Bereken eerst de hondenjaren en dan de kattenjaren.**
-                Laat de gebruiker de nieuwe leeftijden zien!
+            story: "Maak een programma dat voor jou berekent hoe oud jij bent in hondenjaren en in kattenjaren.\nVraag eerst de leeftijd van de gebruiker en rekenen maar. \n**Bereken eerst de hondenjaren en dan de kattenjaren.**\nLaat de gebruiker de nieuwe leeftijden zien!\n"
             code: |
                 leeftijd = {ask} 'Hoe oud ben je?'
                 hond_leeftijd = leeftijd * 7
@@ -267,7 +256,6 @@ levels:
                 Hela hup, daar gaat ie
                 Hela hup, daar gaat ie
                 's Morgens in de vroegte
-
             code: |
                 coupletten = 'Wat zullen we doen met de dronken zeeman', 'Hela hup daar gaat ie'
                 {for} couplet {in} coupletten

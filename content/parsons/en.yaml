@@ -42,11 +42,8 @@ levels:
                 {print} Thank you for shopping with us!
     3:
         1:
-            story: |
-                The new school year at Hogwarts is starting! 
-                It is the job of the sorting hat to sort you into one of the houses.
-                Which house will you be sorted into? Are you a Gryffindor, Hufflepuff, Ravenclaw or Slytherin.
-                Before the sorting hat reveals your house, you can tell it to not pick one of the houses.
+            story: "The new school year at Hogwarts is starting! \nIt is the job of the sorting hat to sort you into one of the houses.\nWhich house will you be sorted into? Are you a Gryffindor, Hufflepuff, Ravenclaw or Slytherin.\nBefore the sorting hat reveals your house, you can tell it to not pick\
+                \ one of the houses.\n"
             code: |-
                 {print} The sorting hat is ready to sort you into a Hogwarts house.
                 houses {is} Gryffindor, Hufflepuf, Ravenclaw, Slytherin
@@ -75,7 +72,6 @@ levels:
                 {print} player_1 ' first plays against ' player_2
                 {remove} player_2 {from} players
                 {print} 'The winner plays against ' players {at} {random}
-
     4:
         1:
             story: |
@@ -176,7 +172,6 @@ levels:
                     {print} counter
                     {sleep} 1
                 {print} 'Ready or not here I come!'
-
     9:
         1:
             story: |
@@ -270,7 +265,6 @@ levels:
                 Way hey and up she rises
                 Way hey and up she rises
                 Early in the morning
-
             code: |
                 verses = 'What will we do with the drunken sailor', 'Way hey and up she rises'
                 {for} verse {in} verses
@@ -286,4 +280,3 @@ levels:
                 colors = 'red', 'blue', 'green', 'yellow'
                 {for} person {in} people
                     {print} person ', put your ' limbs {at} {random} ' on ' colors {at} {random}
-

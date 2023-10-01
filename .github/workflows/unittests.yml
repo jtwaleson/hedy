@@ -15,6 +15,10 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        part: ['--all-part-1', '--all-part-2']
+
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python 3.9
@@ -59,4 +63,4 @@ jobs:
       shell: pwsh
       if: ${{ ((github.event.pull_request.user.login != 'weblate') || github.event.label.name == 'force_tests') }}
       run: |
-        build-tools/github/validate --all
+        build-tools/github/validate ${{ matrix.part }}

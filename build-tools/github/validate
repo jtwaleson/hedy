@@ -18,10 +18,12 @@ elif [[ "${1:-}" == "test_highlighting" ]]; then
     python -m pytest -n 2 tests/test_highlighting/
 elif [[ "${1:-}" == "test_public_programs" ]]; then
     python -m pytest -n 2 tests/test_public_programs/
-elif [[ "${1:-}" == "test_snippets__adventures_2-9" ]]; then
+elif [[ "${1:-}" == "test_snippets__adventures_0x" ]]; then
     python -m pytest -n 2 tests/test_snippets/test_adventures.py -k 'level0'
-elif [[ "${1:-}" == "test_snippets__adventures_1x" ]]; then
-    python -m pytest -n 2 tests/test_snippets/test_adventures.py -k 'level1'
+elif [[ "${1:-}" == "test_snippets__adventures_10-14" ]]; then
+    python -m pytest -n 2 tests/test_snippets/test_adventures.py -k 'level10 or level11 or level12 or level13 or level14'
+elif [[ "${1:-}" == "test_snippets__adventures_15-18" ]]; then
+    python -m pytest -n 2 tests/test_snippets/test_adventures.py -k 'level15 or level16 or level17 or level18'
 elif [[ "${1:-}" == "test_snippets__cheatsheets" ]]; then
     python -m pytest -n 2 tests/test_snippets/test_cheatsheets.py
 elif [[ "${1:-}" == "rest" ]]; then

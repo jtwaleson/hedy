@@ -17,7 +17,7 @@ jobs:
 
     strategy:
       matrix:
-        part: ['base', 'test_level', 'test_highlighting', 'test_public_programs', 'test_snippets', 'rest']
+        part: ['base', 'test_level', 'test_highlighting', 'test_public_programs', 'test_snippets__adventures', 'test_snippets__cheatsheets', 'rest']
 
     steps:
     - uses: actions/checkout@v4

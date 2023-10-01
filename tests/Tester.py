@@ -33,7 +33,7 @@ class Snippet:
         else:
             self.language = language
         self.adventure_name = adventure_name
-        self.name = f'{self.language}-level{self.level}-{self.key}-{self.field_name}'
+        self.name = f'{self.language}-level{str(self.level).zfill(2)}-{self.key}-{self.field_name}'
         self.hash = sha1digest(self.code)
         self.counter = counter
         if counter > 0:

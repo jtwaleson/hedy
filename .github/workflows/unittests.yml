@@ -52,7 +52,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: .test-cache
-        key: "hedy-test-cache-${{ steps.hedy_cache_key.outputs.value }}"
+        key: "hedy-test-cache-${{ steps.hedy_cache_key.outputs.value }}-${{ matrix.part }}"
     - name: Run weblate tests
       shell: pwsh
       id: weblate_tests

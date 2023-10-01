@@ -7,7 +7,6 @@ scriptdir=$(cd $(dirname $0) && pwd)
 
 $scriptdir/validate-python # TODO extract to separate parallel job
 $scriptdir/validate-typescript # TODO extract
-$scriptdir/validate-yaml # TODO extract
 if [[ "${1:-}" == "--all" ]]; then
   $scriptdir/validate-tests --all
 elif [[ "${1:-}" == "--weblate" ]]; then

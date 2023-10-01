@@ -18,9 +18,10 @@ elif [[ "${1:-}" == "test_highlighting" ]]; then
     python -m pytest -n 2 tests/test_highlighting/
 elif [[ "${1:-}" == "test_public_programs" ]]; then
     python -m pytest -n 2 tests/test_public_programs/
-elif [[ "${1:-}" == "test_snippets__adventures" ]]; then
-    # TODO this is by far the slowest, we should probably apply pytest marks and filtering on them
-    python -m pytest -n 2 tests/test_snippets/test_adventures.py
+elif [[ "${1:-}" == "test_snippets__adventures_2-9" ]]; then
+    python -m pytest -n 2 tests/test_snippets/test_adventures.py -k 'level2 or level3 or level4 or level4 or level5 or level5 or level6 or level7 or level8 or level9'
+elif [[ "${1:-}" == "test_snippets__adventures_1x" ]]; then
+    python -m pytest -n 2 tests/test_snippets/test_adventures.py -k 'level1'
 elif [[ "${1:-}" == "test_snippets__cheatsheets" ]]; then
     python -m pytest -n 2 tests/test_snippets/test_cheatsheets.py
 elif [[ "${1:-}" == "rest" ]]; then

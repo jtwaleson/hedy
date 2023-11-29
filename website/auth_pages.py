@@ -240,12 +240,12 @@ class AuthModule(WebsiteModule):
 
         return redirect("/landing-page")
 
-    @ route("/logout", methods=["POST"])
+    @ route("/logout", methods=["POST", "GET"])
     def logout(self):
         forget_current_user()
         if request.cookies.get(TOKEN_COOKIE_NAME):
             self.db.forget_token(request.cookies.get(TOKEN_COOKIE_NAME))
-        return "", 200
+        return redirect("/")
 
     @ route("/destroy", methods=["POST"])
     @ requires_login

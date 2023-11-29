@@ -57,11 +57,6 @@ function redirect(where: string) {
 
 // *** User POST without data ***
 
-export async function logout() {
-  await postNoResponse('/auth/logout');
-  window.location.reload();
-}
-
 // Todo TB: It might be nice to get a confirmation pop-up from the server instead with some secret key
 // As with the current flow one can destroy an account by "accidentally" making an empty POST to /auth/destroy
 export function destroy(confirmation: string) {

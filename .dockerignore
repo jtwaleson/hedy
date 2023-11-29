@@ -1,6 +1,2 @@
-.git
-.github
-*.md
-.dockerignore
-Dockerfile
-License.txt
+*
+!requirements.txt
